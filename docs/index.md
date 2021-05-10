@@ -2,11 +2,19 @@
 
 ### Documentation to write
 
-* Menus, buttons, and commands
-* Adding a tool window
-* Template packs
-* Interacting with the editor
-    * Adornments
-    * IntelliSense
-    * Textmate grammar
-    * Commands
+* Getting started
+    * Get the tools
+    * Your first extension
+    * Extension anatomy
+* Extension capabilities
+* Extensibility guides
+   * Menus, buttons, and commands
+   * Tool window
+   * Templates
+   * Snippets
+   * Events
+   * Interacting with the editor
+   * Custom languages
+* Extension packs
+* Publishing extensions
+* API reference
