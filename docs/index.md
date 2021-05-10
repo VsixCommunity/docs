@@ -3,7 +3,7 @@
 ### Documentation to write
 
 * Getting started
-    * Get the tools
+    * [Get the tools](getting-started/)
     * Your first extension
     * Extension anatomy
 * Extension capabilities
