@@ -9,7 +9,8 @@
 * Extension capabilities
 * Extensibility guides
    * Menus, buttons, and commands
-   * Tool window
+   * Tool windows
+       * Write to the Output Window
    * Templates
    * Snippets
    * Events
