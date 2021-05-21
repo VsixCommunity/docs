@@ -97,12 +97,24 @@ main {
     text-decoration: underline;
 }
 
+#menu .current {
+    color: red;
+}
+
 #menu ul {
     list-style: none;
 }
 
 #menu > ul > li {
     margin-bottom: .6em;
+}
+
+#menu ul ul {
+    display: none;
+}
+
+#menu .current {
+    display: block !important;
 }
 
 #menu ul ul li {

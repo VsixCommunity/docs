@@ -39,6 +39,26 @@
     <footer>
         Copyright &copy; 2021 <a href="https://github.com/VsixCommunity">VSIX Community</a>
     </footer>
+    
+    <script>
+        var url = location.pathname.split("/", -1).filter(entry => entry.trim() != '');;
+        var navLinks = document.getElementsByTagName("nav")[0].getElementsByTagName("a");
+        var currentPage = url[url.length - 1];
+
+        for(var i = 0; i < navLinks.length; i++) {
+            var link = navLinks[i];
+
+            if (link.href.endsWith(currentPage)) {
+                link.classList.add("current");
+
+                if (link.parentNode && link.parentNode.parentNode){
+                    link.parentNode.parentNode.classList.add("current");
+                }
+
+                break;
+            }
+        }
+    </script>
 </body>
 
 </html>
