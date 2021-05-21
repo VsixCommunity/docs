@@ -4,32 +4,33 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ page.title }}</title>
-    <meta name="description" content="{{ page.description }}" />
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}" />
+    <base href="/docs/" />
     <link rel="stylesheet" href="https://vanillacss.com/vanilla.css" />
-    <link rel="stylesheet" href="/docs/assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
     <header>
         <h1>{{ page.title }}</h1>
-        <p>{{ page.description }}</p>
+        <p>{{ site.description }}</p>
     </header>
     <main>
         <nav id="menu">
             <ul>
-                <li><a href="/docs">Home</a></li>
-                <li><a href="/docs/getting-started/">Getting started</a>
+                <li><a href="">Home</a></li>
+                <li><a href="getting-started/">Getting started</a>
                     <ul>
-                        <li><a href="/docs/gettings-started/get-the-docs.html">Get the tools</a></li>
-                        <li><a href="/docs/gettings-started/your-first-extension.html">Your first extension</a></li>
-                        <li><a href="/docs/gettings-started/extension-anatomy.html">Extension anatomy</a></li>
-                        <li><a href="/docs/gettings-started/vocabulary.html">Vocabulary</a></li>
+                        <li><a href="getting-started/get-the-docs.html">Get the tools</a></li>
+                        <li><a href="getting-started/your-first-extension.html">Your first extension</a></li>
+                        <li><a href="getting-started/extension-anatomy.html">Extension anatomy</a></li>
+                        <li><a href="getting-started/vocabulary.html">Vocabulary</a></li>
                     </ul>
                 </li>
-                <li><a href="/docs/walkthroughs/">Walkthroughs</a></li>
-                <li><a href="/docs/common-scenarios/">Common scenarios</a></li>
-                <li><a href="/docs/api/">API</a></li>
+                <li><a href="walkthroughs/">Walkthroughs</a></li>
+                <li><a href="common-scenarios/">Common scenarios</a></li>
+                <li><a href="api/">API</a></li>
             </ul>
         </nav>
         <section>
