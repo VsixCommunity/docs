@@ -1,5 +1,5 @@
 ---
-title: Visual Studio Cookbook
+title: Your first extension
 ---
 
 Before we start writing our first Visual Studio extension (it's easy, I promise!), make sure you've got the [tools needed](get-the-tools.md).
