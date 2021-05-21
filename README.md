@@ -1,4 +1,4 @@
-# Cookbook home
+# Cookbook
 
 See the docs website here: <https://vsixcommunity.github.io/docs/>
 
