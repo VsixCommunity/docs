@@ -14,16 +14,11 @@ See the docs website here: <https://vsixcommunity.github.io/docs/>
   * Add menus, buttons, and commands
   * Build custom tool windows
   * Interact with the editor
-  * [Creat an extension packs](https://docs.microsoft.com/visualstudio/extensibility/walkthough-create-extension-pack)
-* Extension capabilities
-  * Write to the Output Window
-  * Write to the status bar
-  * Showing progress
+  * [Create an extension packs](https://docs.microsoft.com/visualstudio/extensibility/walkthough-create-extension-pack)
+  * Publishing extensions
 * Common scenarios
   * Displaying errors
   * Showing progress
-* Publishing extensions
-  * Checklist before publishing
   * Private galleries
 * API reference
 

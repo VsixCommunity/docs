@@ -1,6 +1,12 @@
+:root {
+    --border-color: #d8d8d8;
+}
+
 body {
     max-width: 960px;
     margin: 0 auto;
+    height: 100%;
+    font-size: 12pt;
 }
 
 header p,
@@ -9,16 +15,44 @@ header h1 {
     margin: 0;
 }
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav li {
-    display: inline-flex;
-}
-
 main {
-    margin: 2em 0;
+    margin: 2em 0 0 0;
+    display: flex;
+}
+
+#menu {
+    flex: 1;
+    min-width: fit-content;
+    border-right: 1px solid var(--border-color);
+    line-height: 1.8em;
+    padding-right: 2em;
+}
+
+#menu a{
+    color: black;
+    text-decoration: none;
+}
+
+#menu a:hover {
+    text-decoration: underline;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+#menu ul ul li {
+    padding: 0 0 0 1em;
+}
+
+main > section{
+    flex: 5;
+    margin-left: 2em;
+}
+
+footer {
+border-top: 1px solid var(--border-color);
 }
