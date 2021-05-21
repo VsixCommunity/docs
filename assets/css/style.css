@@ -2,11 +2,19 @@
     --border-color: #d8d8d8;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
 body {
-    max-width: 960px;
+    max-width: 1200px;
     margin: 0 auto;
     height: 100%;
-    font-size: 12pt;
+    padding: 0 10px;
+    font: 19px/1.6 "Open Sans",Ubuntu,"Nimbus Sans L",Avenir,AvenirNext,"Segoe UI",Helvetica,Arial,sans-serif;
 }
 
 header p,
@@ -16,16 +24,17 @@ header h1 {
 }
 
 main {
-    margin: 2em 0 0 0;
+    margin: 1em 0 0 0;
     display: flex;
+    border-top: 1px solid var(--border-color);
 }
 
 #menu {
     flex: 1;
     min-width: fit-content;
     border-right: 1px solid var(--border-color);
-    line-height: 1.8em;
-    padding-right: 2em;
+
+    padding: 1em 2em 1em 0;
 }
 
 #menu a{
@@ -51,8 +60,10 @@ main {
 main > section{
     flex: 5;
     margin-left: 2em;
+    padding: 1em 0;
 }
 
 footer {
-border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    padding: 2em 0;
 }
