@@ -97,8 +97,8 @@ main {
     text-decoration: underline;
 }
 
-#menu .current {
-    color: red;
+#menu a.current {
+    font-weight: bold;
 }
 
 #menu ul {
