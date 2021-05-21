@@ -1,5 +1,15 @@
 :root {
     --border-color: #d8d8d8;
+    --background: #efefef;
+    --foreground: #000;
+}
+
+@media (prefers-color-scheme: dark)
+{
+    :root {
+        --background: #121212;
+        --foreground: #eee;
+    }
 }
 
 * {
@@ -20,6 +30,8 @@ body {
     min-height: 100vh;
     padding: 0 10px;
     display: flex;
+    background: var(--background);
+    color: var(--foreground);
     flex-direction: column;
     font: 18px/1.6 "Open Sans",Ubuntu,"Nimbus Sans L",Avenir,AvenirNext,"Segoe UI",Helvetica,Arial,sans-serif;
 }
@@ -75,7 +87,7 @@ main {
 }
 
 #menu a {
-    color: black;
+    color: var(--foreground);
     text-decoration: none;
 }
 
