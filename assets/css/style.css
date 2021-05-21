@@ -113,8 +113,11 @@ main {
     display: none;
 }
 
-#menu .current {
-    display: block !important;
+#menu ul .current,
+#menu ul :active *,
+#menu ul :focus-within *,
+#menu ul :hover * {
+    display: block;
 }
 
 #menu ul ul li {
