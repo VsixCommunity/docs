@@ -59,6 +59,7 @@ h4 {
 img {
     max-width: 100%;
     height: auto;
+    margin: 1em 0
 }
 
 header h1 {
@@ -69,6 +70,7 @@ header p {
     font-variant: small-caps;
     color: slategray;
     letter-spacing: 1px;
+    font-size: 1.2em;
 }
 
 main {
