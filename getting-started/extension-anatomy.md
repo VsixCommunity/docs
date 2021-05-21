@@ -1,3 +1,1 @@
----
-title: Extension anatomy
----
+# Extension anatomy

@@ -1,3 +1,1 @@
----
-title: Your first extension
----
+# Your first extension
