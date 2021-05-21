@@ -1,1 +1,5 @@
-# Extension anatomy
+---
+title: Visual Studio Cookbook
+---
+
+## Extension anatomy

@@ -1,1 +1,5 @@
-# Your first extension
+---
+title: Visual Studio Cookbook
+---
+
+## Your first extension
