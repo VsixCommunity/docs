@@ -1,13 +1,12 @@
-# Docs
-
 See the docs here <https://vsixcommunity.github.io/docs/>
 
 ## Content
 
+* Why build extensions?
 * Getting started
-    * Get the tools
-    * Your first extension
-    * Extension anatomy
+    * [Get the tools](getting-started/get-the-tools.md)
+    * [Your first extension](getting-started/your-first-extension.md)
+    * [Extension anatomy](getting-started/extension-anatomy.md)
 * Extension capabilities
 * Extensibility guides
    * Menus, buttons, and commands
@@ -21,3 +20,9 @@ See the docs here <https://vsixcommunity.github.io/docs/>
 * Extension packs
 * Publishing extensions
 * API reference
+
+## Contribute
+TBD
+
+## License
+[MIT](LICENSE)
