@@ -1,6 +1,10 @@
-# Cookbook
+---
+title: Cookbook
+---
 
-See the docs website here: <https://vsixcommunity.github.io/docs/>
+See the cookbook website here: <https://vsixcommunity.github.io/docs/>
+
+## Content
 
 * Why build extensions?
 * Getting started
