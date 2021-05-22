@@ -72,7 +72,7 @@ main {
 #menu {
     min-width: fit-content;
     border-right: 1px solid var(--border-color);
-    padding: 1em 2em 1em 0;
+    padding: 1em 1.5em 1em .7em;
 }
 
 #menu a {
@@ -80,33 +80,37 @@ main {
     text-decoration: none;
 }
 
-#menu a:hover {
+#menu a:hover,
+#menu a:focus,
+#menu a:active {
     text-decoration: underline;
 }
 
-#menu a.current {
-    font-weight: bold;
+#menu a[aria-current] {
+    font-weight: 500;
 }
 
 #menu ul {
     list-style: none;
+    position: relative;
+}
+
+#menu a[aria-haspopup]::before {
+    content: "›";
+    position:absolute;
+    left: -10px;
+}
+
+#menu .open a[aria-haspopup]::before {   
+    transform: rotate(90deg);
+}
+
+#menu li:not(.open) ul {
+    display: none;
 }
 
 #menu > ul > li {
     margin-bottom: .6em;
-}
-
-#menu ul ul {
-    visibility: hidden;
-    height: 0;
-}
-
-#menu ul .current,
-#menu ul :active *,
-#menu ul :focus-within *,
-#menu ul :hover * {
-    visibility: visible;
-    height:fit-content;
 }
 
 #menu ul ul li {
@@ -114,7 +118,7 @@ main {
 }
 
 main > section {
-    margin: 0 2em;
+    margin: 0 1em 0 1.5em;
     padding: 1em 0;
 }
 

@@ -18,8 +18,9 @@
     <main>
         <nav id="menu">
             <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="getting-started/">Getting started</a>
+                <li><a href="" tabindex="0">Home</a></li>
+                <li class="parent">
+                    <a href="getting-started/" aria-haspopup="menu">Getting started</a>
                     <ul>
                         <li><a href="getting-started/get-the-tools.html">Get the tools</a></li>
                         <li><a href="getting-started/your-first-extension.html">Your first extension</a></li>
@@ -27,8 +28,23 @@
                         <li><a href="getting-started/vocabulary.html">Vocabulary</a></li>
                     </ul>
                 </li>
-                <li><a href="walkthroughs/">Walkthroughs</a></li>
-                <li><a href="common-scenarios/">Common scenarios</a></li>
+                <li class="parent">
+                    <a href="walkthroughs/" aria-haspopup="menu">Walkthroughs</a>
+                    <ul>
+                        <li><a href="walkthroughs/menus-buttons-commands.html">Menus and commands</a></li>
+                        <li><a href="walkthroughs/build-custom-tool-windows.html">Tool windows</a></li>
+                        <li><a href="walkthroughs/interact-with-editor.html">The editor</a></li>
+                        <li><a href="walkthroughs/create-extension-pack.html">Extension packs</a></li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    <a href="common-scenarios/" aria-haspopup="menu">Common scenarios</a>
+                    <ul>
+                        <li><a href="common-scenarios/displaying-errors.html">Displaying errors</a></li>
+                        <li><a href="common-scenarios/showing-progress.html">Showing progress</a></li>
+                        <li><a href="common-scenarios/private-galleries.html">Private galleries</a></li>
+                    </ul>
+                </li>
                 <li><a href="api/">API</a></li>
             </ul>
         </nav>
@@ -41,23 +57,31 @@
     </footer>
     
     <script>
-        var url = location.pathname.split("/", -1).filter(entry => entry.trim() != '');;
-        var navLinks = document.getElementsByTagName("nav")[0].getElementsByTagName("a");
+        var url = location.pathname.split("/", -1).filter(entry => entry.trim() != '');
+        var menu = document.getElementById("menu");
+        var navLinks = menu.getElementsByTagName("a");
         var currentPage = url[url.length - 1];
 
         for(var i = 0; i < navLinks.length; i++) {
-            var link = navLinks[i];
+            var a = navLinks[i];
 
-            if (link.href.endsWith(currentPage)) {
-                link.classList.add("current");
+            if (a.href.endsWith(currentPage)) {
+                a.setAttribute("aria-current", "page");
 
-                if (link.parentNode && link.parentNode.parentNode){
-                    link.parentNode.parentNode.classList.add("current");
+                if (a.parentNode && a.parentNode.parentNode){
+                    a.parentNode.parentNode.parentNode.classList.add("open");
                 }
 
                 break;
             }
         }
+
+        menu.addEventListener("click", function(e) {
+            if (e.target.nextElementSibling !== null){
+                e.preventDefault();
+                e.target.parentNode.classList.toggle("open")
+            }
+        })
     </script>
 </body>
 
