@@ -1,3 +1,6 @@
+---
+---
+
 :root {
     --border-color: #d8d8d8;
     --background: #efefef;
@@ -14,6 +17,7 @@
 
 * {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -35,6 +39,10 @@ body {
 
 a {
     color: dodgerblue;
+}
+
+section > p {
+    padding-bottom: 1em;
 }
 
 img {
@@ -62,7 +70,6 @@ main {
 }
 
 #menu {
-    width: 230px;
     min-width: fit-content;
     border-right: 1px solid var(--border-color);
     padding: 1em 2em 1em 0;
@@ -77,10 +84,8 @@ main {
     text-decoration: underline;
 }
 
-#menu a.current::before {
-    content: "▲";
-    transform: rotate(90deg);
-    color: var(--border-color)
+#menu a.current {
+    font-weight: bold;
 }
 
 #menu ul {
@@ -92,14 +97,16 @@ main {
 }
 
 #menu ul ul {
-    display: none;
+    visibility: hidden;
+    height: 0;
 }
 
 #menu ul .current,
 #menu ul :active *,
 #menu ul :focus-within *,
 #menu ul :hover * {
-    display: block;
+    visibility: visible;
+    height:fit-content;
 }
 
 #menu ul ul li {
