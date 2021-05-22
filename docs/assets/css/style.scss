@@ -125,3 +125,17 @@ main > section {
 footer {
     padding: 2em 0;
 }
+
+@media only screen and (max-width: 800px) {
+    #menu > a {
+        display: inline-block;
+        cursor: pointer;
+    }
+    #menu > ul {
+        display: none;
+    }
+    #menu:focus-within > ul,
+    #menu:hover > ul {
+        display: block;
+    }    
+}
