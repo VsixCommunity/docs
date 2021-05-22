@@ -34,6 +34,7 @@ body {
     background: var(--background);
     color: var(--foreground);
     flex-direction: column;
+    font-size-adjust: none;
     font: 18px/1.6 "Open Sans",Ubuntu,"Nimbus Sans L",Avenir,AvenirNext,"Segoe UI",Helvetica,Arial,sans-serif;
 }
 
@@ -134,6 +135,8 @@ footer {
     #menu > a {
         display: inline-block;
         cursor: pointer;
+        font-weight: bold;
+        color: darkgray;
     }
     #menu > ul {
         display: none;
