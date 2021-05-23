@@ -53,9 +53,9 @@ img {
     max-width: 100%;
     height: auto;
 }
+
 header {
-    white-space: nowrap;
-    overflow: hidden;
+    min-width: fit-content;
 }
 
 header h1 {
