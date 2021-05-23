@@ -5,6 +5,7 @@
     --border-color: #d8d8d8;
     --background: #efefef;
     --foreground: #000;
+    --link-color: #0A4F94;
 }
 
 @media (prefers-color-scheme: dark)
@@ -12,6 +13,7 @@
     :root {
         --background: #121212;
         --foreground: #eee;
+        --link-color: #5AADFF;
     }
 }
 
@@ -40,7 +42,7 @@ body {
 }
 
 a {
-    color: dodgerblue;
+    color: var(--link-color);
 }
 
 section > p {
@@ -58,7 +60,6 @@ header h1 {
 
 header p {
     font-variant: small-caps;
-    color: slategray;
     letter-spacing: 1px;
     font-size: 1.2em;
 }
