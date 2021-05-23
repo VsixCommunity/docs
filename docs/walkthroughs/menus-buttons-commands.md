@@ -1,5 +1,5 @@
 ---
-title: Menus, buttons, and commands
+title: Menus and commands
 ---
 
 TBD
