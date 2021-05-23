@@ -23,6 +23,7 @@
 
 html {
       height: 100%;
+      min-width: 600px;
 }
 
 body {
@@ -159,14 +160,14 @@ footer {
         display: none;
     }
     #menu > ul {
-        background: var(--background);
         display: none;
+        background: var(--background);
         position: absolute;
         right: 0;
-        left: 0;
-        padding: 0 1em;
+        left: 10px;
+        margin-left: unquote("max(env(safe-area-inset-left), 10px)");
     }
-    #menu input:checked ~ ul {
+    #menu input:checked + ul {
         display: block;
     }   
     
