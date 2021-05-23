@@ -76,6 +76,11 @@ main {
     padding: 1em 1.5em 1em .7em;
 }
 
+#menu label,
+#menu input {
+    display: none;
+}
+
 #menu a {
     color: var(--foreground);
     text-decoration: none;
@@ -131,7 +136,7 @@ footer {
     padding: 2em 0;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1024px) {
     body {
         margin-left: unquote("max(env(safe-area-inset-left), 10px)");
     }
@@ -140,11 +145,13 @@ footer {
         border: none;
     }
     #menu label {
+        display: block;
         cursor: pointer;
         color: darkgray;
         position: absolute;
-        top: 3.5em;
-        right: 1em;
+        top: .5em;
+        right: .8em;
+        font-size: 1.5em;
         float: right;
     }
     #hamburger { 
