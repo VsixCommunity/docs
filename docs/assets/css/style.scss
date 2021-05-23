@@ -55,7 +55,8 @@ img {
 }
 
 header {
-    min-width: fit-content;
+    white-space: nowrap;
+    word-break: keep-all;
 }
 
 header h1 {
@@ -158,6 +159,7 @@ footer {
         top: .5em;
         right: .8em;
         font-size: 1.5em;
+        background-color: var(--background);
     }
     #hamburger { 
         display: none;
