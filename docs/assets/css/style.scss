@@ -139,14 +139,16 @@ footer {
         padding: 0;
         border: none;
     }
-    #menu > a {
-        display: block;
+    #menu label {
         cursor: pointer;
         color: darkgray;
         position: absolute;
         top: 3.5em;
         right: 1em;
         float: right;
+    }
+    #hamburger { 
+        display: none;
     }
     #menu > ul {
         background: var(--background);
@@ -156,7 +158,7 @@ footer {
         left: 0;
         padding: 0 1em;
     }
-    #menu:focus-within > ul {
+    #menu input:checked ~ ul {
         display: block;
     }   
     

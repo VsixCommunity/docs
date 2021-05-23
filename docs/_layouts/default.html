@@ -17,7 +17,8 @@
     </header>
     <main>
         <nav id="menu">
-            <a tabindex="0" aria-label="Open menu">☰</a>
+            <label for="hamburger">&#9776;</label>
+            <input type="checkbox" id="hamburger" />
             <ul>
                 <li><a href="" tabindex="0">Home</a></li>
                 <li class="parent">
@@ -56,20 +57,20 @@
     <footer>
         Copyright &copy; 2021 <a href="https://github.com/VsixCommunity">VSIX Community</a>
     </footer>
-    
+
     <script>
         var url = location.pathname.split("/", -1).filter(entry => entry.trim() != '');
         var menu = document.getElementById("menu");
         var navLinks = menu.getElementsByTagName("a");
         var currentPage = url[url.length - 1];
 
-        for(var i = 0; i < navLinks.length; i++) {
+        for (var i = 0; i < navLinks.length; i++) {
             var a = navLinks[i];
 
             if (a.href.endsWith(currentPage)) {
                 a.setAttribute("aria-current", "page");
 
-                if (a.parentNode && a.parentNode.parentNode){
+                if (a.parentNode && a.parentNode.parentNode) {
                     a.parentNode.parentNode.parentNode.classList.add("open");
                 }
 
@@ -77,8 +78,8 @@
             }
         }
 
-        menu.addEventListener("click", function(e) {
-            if (e.target.nextElementSibling !== null){
+        menu.addEventListener("click", function (e) {
+            if (e.target.nextElementSibling !== null && e.target.tagName === "A") {
                 e.preventDefault();
                 e.target.parentNode.classList.toggle("open")
             }
