@@ -34,7 +34,7 @@ body {
     background: var(--background);
     color: var(--foreground);
     flex-direction: column;
-    font-size-adjust: none;
+    text-size-adjust: none;
     -webkit-text-size-adjust: none;
     font: 18px/1.6 "Open Sans",Ubuntu,"Nimbus Sans L",Avenir,AvenirNext,"Segoe UI",Helvetica,Arial,sans-serif;
 }
@@ -137,7 +137,7 @@ footer {
     padding: 2em 0;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1023px) {
     body {
         margin-left: unquote("max(env(safe-area-inset-left), 10px)");
     }
