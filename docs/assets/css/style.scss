@@ -23,7 +23,6 @@
 
 html {
       height: 100%;
-      min-width: 600px;
 }
 
 body {
@@ -143,7 +142,7 @@ footer {
         margin-left: unquote("max(env(safe-area-inset-left), 10px)");
     }
     #menu {
-        padding: 0;
+        padding: 1em 0 0 0;
         border: none;
     }
     #menu label {
@@ -154,7 +153,6 @@ footer {
         top: .5em;
         right: .8em;
         font-size: 1.5em;
-        float: right;
     }
     #hamburger { 
         display: none;
