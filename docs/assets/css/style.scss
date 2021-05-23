@@ -131,21 +131,36 @@ footer {
     padding: 2em 0;
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 900px) {
     body {
         margin-left: unquote("max(env(safe-area-inset-left), 10px)");
     }
+    #menu {
+        padding: 0;
+        border: none;
+    }
     #menu > a {
-        display: inline-block;
+        display: block;
         cursor: pointer;
-        font-weight: bold;
         color: darkgray;
+        position: absolute;
+        top: 3.5em;
+        right: 1em;
+        float: right;
     }
     #menu > ul {
+        background: var(--background);
         display: none;
+        position: absolute;
+        right: 0;
+        left: 0;
+        padding: 0 1em;
     }
-    #menu:focus-within > ul,
-    #menu:hover > ul {
+    #menu:focus-within > ul {
         display: block;
-    }    
+    }   
+    
+    main > section {
+        margin: 0
+    }
 }
