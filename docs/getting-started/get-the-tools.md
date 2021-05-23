@@ -6,6 +6,8 @@ To write extensions you have to install the extensibility workload. That's techn
 
 ## Install extensibility workload
 
+Open the *Visual Studio Installer* from **Tools -> Get Tools and Features...** top menu inside Visual Studio and make sure to install the *Visual Studio extension development* workload found toward the bottom.
+
 ![VS Installer](../assets/img/vs-installer.png)
 
 ## Install Extensibility Essentials
