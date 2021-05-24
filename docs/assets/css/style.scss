@@ -135,7 +135,24 @@ main > section {
 }
 
 footer {
-    padding: 2em 0;
+    padding: 1em 0;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+footer strong {
+    color: crimson;
+    font-size: 1.3em;
+    position: relative;
+    top: 3px;
+}
+
+footer li {
+    display: inline-block;
+}
+
+footer li:not(:last-child):after{
+    content: ' - '
 }
 
 @media only screen and (max-width: 1023px) {
