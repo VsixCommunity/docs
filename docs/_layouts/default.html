@@ -77,18 +77,17 @@
     </footer>
 
     <script>
-        var url = location.pathname.split("/", -1).filter(entry => entry.trim() != '');
         var menu = document.getElementById("menu");
         var navLinks = menu.getElementsByTagName("a");
-        var currentPage = url[url.length - 1];
 
         for (var i = 0; i < navLinks.length; i++) {
             var a = navLinks[i];
 
-            if (a.href.endsWith(currentPage)) {
+            if (location.pathname.endsWith(a.pathname)) {
                 a.setAttribute("aria-current", "page");
 
                 if (a.parentNode && a.parentNode.parentNode) {
+                    a.parentNode.classList.add("open");
                     a.parentNode.parentNode.parentNode.classList.add("open");
                 }
 
