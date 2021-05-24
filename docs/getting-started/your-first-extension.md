@@ -1,5 +1,6 @@
 ---
 title: Your first extension
+description: Shows you the few simple steps to get your first Visual Studio extension up and running.
 ---
 
 Before we start writing our first Visual Studio extension (it's easy, I promise!), make sure you've got the [tools needed](get-the-tools.md).
