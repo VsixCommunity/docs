@@ -36,8 +36,8 @@ body {
     background: var(--background);
     color: var(--foreground);
     flex-direction: column;
-    -webkit-text-size-adjust: none;
     text-size-adjust: none;
+    -webkit-text-size-adjust: none;
     font: 18px/1.6 "Open Sans",Ubuntu,"Nimbus Sans L",Avenir,AvenirNext,"Segoe UI",Helvetica,Arial,sans-serif;
 }
 
@@ -54,10 +54,8 @@ img {
     height: auto;
 }
 
-header {
-    padding-top: .2em;
-    white-space: nowrap;
-    word-break: keep-all;
+header h1 {
+    padding: .2em 0 0 0;
 }
 
 header p {
@@ -153,7 +151,7 @@ footer {
         cursor: pointer;
         color: darkgray;
         position: absolute;
-        top: .5em;
+        top: .4em;
         right: .8em;
         font-size: 1.5em;
         background-color: var(--background);
