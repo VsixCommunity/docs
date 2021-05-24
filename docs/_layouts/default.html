@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
     <title>{{ page.title }} | {{ site.title }}</title>
-    <meta name="description" content="{{ site.description }}" />
-    <base href="/docs/" />
+    <meta name="description" content="{{ page.description }}" />
+    {% if site.baseurl %}
+    <base href="{{site.baseurl}}" />
+    {% else %}
+    <base href="/docs/_site/" />
+    {% endif %}
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel=apple-touch-icon href="assets/img/icon-180x180.png" />
     <link rel=icon type=image/png sizes=32x32 href="assets/img/icon-32x32.png" />
@@ -14,8 +18,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{ site.title }}" />
     <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:description" content="{{ page.description }}" />
     <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-    <meta property="og:image" content="{{site.url}}assets/img/icon-180x180.png" />
+    <meta property="og:image" content="{{site.url}}{{site.baseurl}}/assets/img/icon-180x180.png" />
 </head>
 <body>
     <header>
