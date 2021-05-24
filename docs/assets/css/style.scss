@@ -192,3 +192,15 @@ footer li:not(:last-child):after{
         margin: 0
     }
 }
+
+@media print {
+    #menu {
+        display: none;
+    }
+    main > section {
+        margin: 0
+    }
+    footer ul {
+        display: none
+    }
+}
