@@ -1,5 +1,6 @@
 ---
 title: Notifications
+description: A walkthrough the various diffent ways to show notifications to users.
 date: 2021-5-25
 ---
 
@@ -30,7 +31,7 @@ Use the status bar when you don't need to take the full attention of the user, b
 ### Set the text
 This will set the text in the statusbar to any string.
 
-```Csharp
+```csharp
 // call it from an async context
 await VS.Notifications.SetStatusbarTextAsync("My text");
 
@@ -45,7 +46,7 @@ Adding an animation icon to the status bar is easy.
 
 Simply specify which animation icon to use.
 
-```Csharp
+```csharp
 // call it from an async context
 await VS.Notifications.StartStatusbarAnimationAsync(StatusAnimation.Sync);
 
@@ -55,7 +56,7 @@ VS.Notifications.StartStatusbarAnimationAsync(StatusAnimation.Sync).FireAndForge
 
 Stop the animation again by calling `EndStatusbarAnimationAsync`.
 
-```CSharp
+```csharp
 // call it from an async context
 await VS.Notifications.EndStatusbarAnimationAsync(StatusAnimation.Sync);
 

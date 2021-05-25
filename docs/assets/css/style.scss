@@ -6,14 +6,24 @@
     --background: #efefef;
     --foreground: #000;
     --link-color: #0A4F94;
+    --code-c1: green;
+    --code-k: blue;
+    --code-s: #A31515;
+    --code-n: #2B91AF;
+    --code-nf: #74531F;
 }
 
 @media (prefers-color-scheme: dark)
 {
     :root {
         --background: #121212;
-        --foreground: #eee;
+        --foreground: #ddd;
         --link-color: #5AADFF;
+        --code-c1: #57A64A;
+        --code-k: #569CD6;
+        --code-s: #D69D85;
+        --code-n: #4EC9B0;
+        --code-nf: #DCDCAA;
     }
 }
 
@@ -78,6 +88,26 @@ pre {
 
 code {
     font-family: consolas, monospace;
+}
+
+code .c1 {
+    color: var(--code-c1);
+}
+
+code .s {
+    color: var(--code-s);
+}
+
+code .n {
+    color: var(--code-n);
+}
+
+code .k {
+    color: var(--code-k);
+}
+
+code .nf {
+    color: var(--code-nf);
 }
 
 p > code {

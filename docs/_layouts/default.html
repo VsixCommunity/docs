@@ -89,26 +89,25 @@
     </footer>
 
     <script>
-        window.addEventListener("load", function (e)
-        {
-            var menu = document.getElementById("menu");
-            var navLinks = menu.getElementsByTagName("a");
-
-            for (var i = 0; i < navLinks.length; i++) {
-                var a = navLinks[i];
-
+        window.addEventListener("load", function (e) {
+            
+            // Expand menu on load
+            var navLinks = document.querySelectorAll("nav a");            
+            navLinks.forEach(function(a) {    
                 if (location.pathname.endsWith(a.pathname)) {
                     a.setAttribute("aria-current", "page");
 
                     if (a.parentNode && a.parentNode.parentNode) {
                         a.parentNode.classList.add("open");
                         a.parentNode.parentNode.parentNode.classList.add("open");
+                        return;
                     }
-
-                    break;
+                    
                 }
-            }
-
+            });
+            
+            // Open menu items on click
+            var menu = document.getElementById("menu");
             menu.addEventListener("click", function (e) {
                 if (e.target.nextElementSibling !== null && e.target.tagName === "A") {
                     e.preventDefault();
@@ -116,17 +115,15 @@
                 }
             })
 
-            var images = document.getElementsByTagName("main")[0].querySelectorAll("img[alt]");
-
-            for (var i = 0; i < images.length; i++){
-                var img = images[i];
+            // Display alt text as caption under the image
+            var images = document.querySelectorAll("main img[alt]");
+            images.forEach(function(img){
                 var caption = document.createElement("span");
                 caption.classList.add("caption");
                 caption.textContent = img.getAttribute("alt");
                 img.insertAdjacentElement("afterend", caption);
-            }
+            });
         });
-    </script>  
+    </script>
 </body>
-
 </html>
