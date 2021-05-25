@@ -54,6 +54,20 @@ img {
     height: auto;
 }
 
+pre {
+    background: rgba(180, 180, 180, .1);
+    color: var(--foreground);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid dodgerblue;
+    font-size: .8em;
+    font-family: courier, consolas, monospace;
+    page-break-inside: avoid;
+    word-wrap: break-word;
+    overflow: auto;
+    padding: 1em 1.5em;
+    margin: -1em 0 2em 0;
+}
+
 header h1 {
     padding: .2em 0 0 0;
 }

@@ -36,7 +36,7 @@ Follow the same design patterns and principles that Visual Studio itself uses. T
 
 * Don't ever add a new top level menu (next to File, Edit, etc.)
 * No buttons, menus and toolbars should be visible in contexts they don't apply to
-* If [auto load](https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncPackageMigration) is necessary (it probably isn't), do it as late as possible. 
+* If [auto load](https://github.com/microsoft/VSSDK-Extensibility-Samples/tree/master/AsyncPackageMigration) is necessary (it probably isn't), do it as late as possible.
 * Use [VisibilityConstraints](https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/VisibilityConstraints) to toggle visibility of commands instead of relying on auto load
 
 ## Use proper version ranges
