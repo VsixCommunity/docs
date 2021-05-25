@@ -18,6 +18,6 @@ If you are new to extension development, you want to start at the beginning to e
 
 Once you know the basics of the Visual Studio extensibility model, it is time to explore what type of features to extend. To do that, check out the [walkthrough section](walkthroughs/) for inspiration and step-by-step walkthroughs.
 
-### Recipes for specific user experiences
+### Publishing the finished extension
 
-For the more advanced extender looking for best practice recipes on how to extend specific features or use specific APIs. If this is you, go explore the library of [delicious recipes](recipes/).
+When you've written your extension, it is time to publish it. Whether you want to share it with just a few friends, your company, or the whole world, you want to check out the [publishing section](publish/).
