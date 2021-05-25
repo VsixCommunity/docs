@@ -66,8 +66,8 @@
         <section>
             {% if page.date %}
             <p class="meta">
-                <span>Last updated: <time datetime="{{ page.date }}">{{ page.date | date_to_string: "ordinal", "US" }}</time></span>
-                <a href="{{site.github.repository_url}}/blob/main/{{page.path}}">Edit</a>
+                <span>last updated: <time datetime="{{ page.date }}">{{ page.date | date_to_string: "ordinal", "US" }}</time> </span>
+                <a href="{{site.github.repository_url}}/blob/main/docs/{{page.path}}" title="Edit this page on GitHub">edit</a>
             </p>
             {% endif %}
             {{ content }}
