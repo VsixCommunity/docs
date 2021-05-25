@@ -72,6 +72,13 @@ main {
     border-bottom: 1px solid var(--border-color);
 }
 
+
+main .meta {
+    font-size: .8em;
+    opacity: 0.7;
+    padding-bottom: .4em;
+}
+
 #menu {
     min-width: fit-content;
     border-right: 1px solid var(--border-color);
@@ -142,13 +149,11 @@ footer {
 
 footer strong {
     color: crimson;
-    font-size: 1.3em;
-    position: relative;
-    top: 3px;
 }
 
 footer li {
     display: inline-block;
+    margin-bottom: .3em;
 }
 
 footer li:not(:last-child):after{

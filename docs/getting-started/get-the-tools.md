@@ -1,6 +1,7 @@
 ---
 title: Get the tools
 description: A list of tools you need to write Visual Studio extensions and how to install them.
+date: 2021-5-24
 ---
 
 To write extensions you have to install the extensibility workload. That's technically all you need, but this set of documentation make use of the community driven extension called [Extensibility Essentials](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2019).  
