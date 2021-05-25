@@ -1,5 +1,6 @@
 ---
 title: Anatomy of an extension
+date: 2021-5-24
 ---
 
 Now that we've written our [first extension](your-first-extension.md), it is time to learn more about how extensions work.

@@ -1,6 +1,7 @@
 ---
 title: Cookbook
 description: Welcome to the Visual Studio Extensibility Cookbook
+date: 2021-5-24
 ---
 
 This cookbook will help you write succesful Visual Studio extensions and there's something for absolute beginners to experts alike.
