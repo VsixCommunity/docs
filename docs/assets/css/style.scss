@@ -73,6 +73,7 @@ main {
 }
 
 #menu {
+    font-size: .85em;
     min-width: fit-content;
     border-right: 1px solid var(--border-color);
     padding: 1em 1.5em 1em .7em;
@@ -122,11 +123,11 @@ main {
 }
 
 #menu > ul > li {
-    margin-bottom: .6em;
+    margin-bottom: .3em;
 }
 
 #menu ul ul li {
-    padding: .3em 0 .3em 1em;
+    padding: .3em 0 0 1em;
 }
 
 main > section {
