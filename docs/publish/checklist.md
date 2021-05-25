@@ -13,7 +13,7 @@ Add the [Microsoft.VisualStudio.SDK.Analyzers](https://www.nuget.org/packages/Mi
 All extensions should have an icon associated with it. Make sure the icon is a high-quality .png file with the size **90x90** pixels in 96 DPI or more. After adding the icon to your VSIX project, register it in the .vsixmanifest file as both the Icon and Preview image.
 
 ## Name and description
-Studies show that extensions with a short and descriptive name and an accurate description are more likely to be installed by users. Make sure the name reflects the essense of what the extension does. The short description in the .vsixmanifest file should set expectations as to what the extension does. So a brief mention of what problems it solves and what main features it has are key.
+Studies show that extensions with a short and descriptive name and an accurate description are more likely to be installed by users. Make sure the name reflects the essence of what the extension does. The short description in the .vsixmanifest file should set expectations as to what the extension does. So a brief mention of what problems it solves and what main features it has are key.
 
 ## Write good Marketplace description
 This is one of the most important things you should do to make your extension successful. A good description consist of:

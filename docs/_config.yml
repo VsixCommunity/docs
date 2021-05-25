@@ -3,6 +3,9 @@ description: The Visual Studio Extensibility Cookbook
 #theme: jekyll-theme-tactile
 layout: default
 
+css:
+  syntax: true
+
 defaults:
   - scope:
       path: ""

@@ -87,11 +87,12 @@ pre {
 }
 
 code {
-    font-family: consolas, monospace;
+    font-family: "Cascadia Code", Consolas, monospace;
 }
 
 code .c1 {
     color: var(--code-c1);
+    font-weight: 600;
 }
 
 code .s {
@@ -181,7 +182,8 @@ main {
 }
 
 #menu li:not(.open) ul {
-    display: none;
+    visibility: collapse;
+    height: 0;
 }
 
 #menu > ul > li {

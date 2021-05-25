@@ -4,7 +4,7 @@ description: Helping beginners get a good basic understanding of Visual Studio e
 date: 2021-5-24
 ---
 
-There goal of the getting started guide is to give you a basic understanding of Visual Studio extensions and get you on the right path to write succesful extensions.
+There goal of the getting started guide is to give you a basic understanding of Visual Studio extensions and get you on the right path to write successful extensions.
 
 ## Get the tools
 

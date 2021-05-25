@@ -8,43 +8,33 @@ To better understand this cookbook and being able to search for help online, hav
 ## Vocabulary
 
 ### DTE
-
 TBD
 
 ### Marketplace
-
 TBD
 
 ### MEF
-
 TBD
 
 ### Package
-
 TBD
 
-### Pkgdef
-
+### .pkgdef
 TBD
 
 ### VSCT
-
 TBD
 
 ### VSIX
-
 TBD
 
 ### UI Context
-
 TBD
 
 ### TextBuffer
-
 TBD
 
 ### TextView
-
 TBD
 
 Find more information in the [Visual Studio SDK Glossary](https://docs.microsoft.com/en-us/visualstudio/extensibility/visual-studio-sdk-glossary?view=vs-2019).

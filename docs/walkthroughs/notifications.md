@@ -1,13 +1,13 @@
 ---
 title: Notifications
-description: A walkthrough the various diffent ways to show notifications to users.
+description: A walkthrough the various different ways to show notifications to users.
 date: 2021-5-25
 ---
 
-There are several mechanisms for displaying notifications to the user of your extension. Picking the right one can be difficult, so let's look at the options.
+There are several mechanisms for displaying notifications to the user of your extension. Picking the right one can be challenging, so let's look at the options.
 
 ## Message box
-There are various ways of showing a message box using .NET. For instance through Wndows Forms or WPF. They cause some issues in Visual Studio extensions with parenting correctly against the main window, so it is recommended to use Visual Studio's own message box.
+There are various ways of showing a message box using .NET. For instance through Windows Forms or WPF. They cause some issues in Visual Studio extensions with parenting correctly against the main window, so it is recommended to use Visual Studio's own message box.
 
 ![Native Visual Studio message box](../assets/img/messagebox.png)
 
