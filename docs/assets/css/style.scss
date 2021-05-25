@@ -72,13 +72,6 @@ main {
     border-bottom: 1px solid var(--border-color);
 }
 
-
-main .meta {
-    font-size: .8em;
-    opacity: 0.8;
-    padding-bottom: .4em;
-}
-
 #menu {
     min-width: fit-content;
     border-right: 1px solid var(--border-color);
@@ -139,6 +132,16 @@ main .meta {
 main > section {
     margin: 0 1em 0 1.5em;
     padding: 1em 0;
+    width: 100%;
+    position: relative;
+}
+
+main .meta {
+    font-size: .8em;
+    opacity: 0.7;
+    position: absolute;
+    bottom: 1em;
+    right: 0
 }
 
 footer {
@@ -187,6 +190,7 @@ footer li:not(:last-child):after{
         position: absolute;
         right: 0;
         left: 10px;
+        z-index: 1;
         margin-left: unquote("max(env(safe-area-inset-left), 10px)");
     }
     #menu input:checked + ul {

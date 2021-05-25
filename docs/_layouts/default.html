@@ -64,20 +64,17 @@
             </ul>
         </nav>
         <section>
-            {% if page.date %}
-            <p class="meta">
-                <span>last updated: <time datetime="{{ page.date }}">{{ page.date | date_to_string: "ordinal", "US" }}</time> </span>
-                <a href="{{site.github.repository_url}}/blob/main/docs/{{page.path}}" title="Edit this page on GitHub">edit</a>
-            </p>
-            {% endif %}
             {{ content }}
+            {% if page.date %}
+                <div class="meta">Last updated: <time datetime="{{ page.date }}">{{ page.date | date_to_string: "ordinal", "US" }}</time></div>
+            {% endif %}
         </section>
     </main>
     <footer>
         <ul>
+            <li><a rel="noopener" href="{{site.github.repository_url}}/blob/main/docs/{{page.path}}" target="_blank">Edit this page</a></li>
             <li><a rel="noopener" href="https://github.com/VsixCommunity/docs/" target="_blank">Contribute</a></li>
             <li><a rel="noopener" href="https://github.com/VsixCommunity/docs/issues/" target="_blank">Report issues</a></li>
-            <li><a rel="noopener" href="https://github.com/VsixCommunity/docs/discussions" target="_blank">Request more docs</a></li>
         </ul>
         <p>Made with <strong>❤</strong> by fellow extenders</p>
     </footer>
