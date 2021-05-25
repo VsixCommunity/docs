@@ -54,18 +54,30 @@ img {
     height: auto;
 }
 
+.caption {
+    display: block;
+    font-style: italic;
+    font-size: .9em;
+}
+
+.caption::before {
+    content: "Figure: ";
+}
+
 pre {
     background: rgba(180, 180, 180, .1);
     color: var(--foreground);
     border: 1px solid var(--border-color);
     border-left: 3px solid dodgerblue;
-    font-size: .8em;
-    font-family: courier, consolas, monospace;
-    page-break-inside: avoid;
-    word-wrap: break-word;
     overflow: auto;
     padding: 1em 1.5em;
     margin: -1em 0 2em 0;
+    font-size: .8em;
+    width: 100%;
+}
+
+code {
+    font-family: consolas, monospace;
 }
 
 header h1 {
@@ -149,6 +161,7 @@ main > section {
     padding: 1em 0;
     width: 100%;
     position: relative;
+    min-width: 0; // needed for <pre> not to be too wide
 }
 
 main .meta {

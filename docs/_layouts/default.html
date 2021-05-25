@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -23,6 +24,7 @@
     <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
     <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/icon-180x180.png" />
 </head>
+
 <body>
     <header>
         <h1>{{ page.title }}</h1>
@@ -70,44 +72,61 @@
         <section>
             {{ content }}
             {% if page.date %}
-                <div class="meta">Last updated: <time datetime="{{ page.date }}">{{ page.date | date_to_string: "ordinal", "US" }}</time></div>
+            <div class="meta">Last updated: <time datetime="{{ page.date }}">{{ page.date | date_to_string: "ordinal",
+                    "US" }}</time></div>
             {% endif %}
         </section>
     </main>
     <footer>
         <ul>
-            <li><a rel="noopener" href="{{site.github.repository_url}}/blob/main/docs/{{page.path}}" target="_blank">Edit this page</a></li>
+            <li><a rel="noopener" href="{{site.github.repository_url}}/blob/main/docs/{{page.path}}"
+                    target="_blank">Edit this page</a></li>
             <li><a rel="noopener" href="https://github.com/VsixCommunity/docs/" target="_blank">Contribute</a></li>
-            <li><a rel="noopener" href="https://github.com/VsixCommunity/docs/issues/" target="_blank">Report issues</a></li>
+            <li><a rel="noopener" href="https://github.com/VsixCommunity/docs/issues/" target="_blank">Report issues</a>
+            </li>
         </ul>
         <p>Made with <strong>❤</strong> by fellow extenders</p>
     </footer>
 
     <script>
-        var menu = document.getElementById("menu");
-        var navLinks = menu.getElementsByTagName("a");
+        window.addEventListener("load", function (e)
+        {
+            var menu = document.getElementById("menu");
+            var navLinks = menu.getElementsByTagName("a");
 
-        for (var i = 0; i < navLinks.length; i++) {
-            var a = navLinks[i];
+            for (var i = 0; i < navLinks.length; i++) {
+                var a = navLinks[i];
 
-            if (location.pathname.endsWith(a.pathname)) {
-                a.setAttribute("aria-current", "page");
+                if (location.pathname.endsWith(a.pathname)) {
+                    a.setAttribute("aria-current", "page");
 
-                if (a.parentNode && a.parentNode.parentNode) {
-                    a.parentNode.classList.add("open");
-                    a.parentNode.parentNode.parentNode.classList.add("open");
+                    if (a.parentNode && a.parentNode.parentNode) {
+                        a.parentNode.classList.add("open");
+                        a.parentNode.parentNode.parentNode.classList.add("open");
+                    }
+
+                    break;
                 }
-
-                break;
             }
-        }
 
-        menu.addEventListener("click", function (e) {
-            if (e.target.nextElementSibling !== null && e.target.tagName === "A") {
-                e.preventDefault();
-                e.target.parentNode.classList.toggle("open")
+            menu.addEventListener("click", function (e) {
+                if (e.target.nextElementSibling !== null && e.target.tagName === "A") {
+                    e.preventDefault();
+                    e.target.parentNode.classList.toggle("open")
+                }
+            })
+
+            var images = document.getElementsByTagName("main")[0].querySelectorAll("img[alt]");
+
+            for (var i = 0; i < images.length; i++){
+                var img = images[i];
+                var caption = document.createElement("span");
+                caption.classList.add("caption");
+                caption.textContent = img.getAttribute("alt");
+                img.insertAdjacentElement("afterend", caption);
             }
-        })
+        });
     </script>
 </body>
+
 </html>
