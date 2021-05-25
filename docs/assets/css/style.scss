@@ -80,6 +80,12 @@ code {
     font-family: consolas, monospace;
 }
 
+p > code {
+    background: rgba(180, 180, 180, .1);
+    padding: 0 2px;
+    font-size: .9em;
+}
+
 header h1 {
     padding: .2em 0 0 0;
 }

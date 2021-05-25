@@ -8,11 +8,11 @@ There are several mechanisms for displaying notifications to the user of your ex
 ## Message box
 There are various ways of showing a message box using .NET. For instance through Wndows Forms or WPF. They cause some issues in Visual Studio extensions with parenting correctly against the main window, so it is recommended to use Visual Studio's own message box.
 
-![Message box](../assets/img/messagebox.png)
+![Native Visual Studio message box](../assets/img/messagebox.png)
 
 Use a message box when you need to block the UI to get the full attention of the user.
 
-``` C#
+```csharp
 // Simple text box
 VS.Notifications.ShowMessage("Title", "The message");
 
@@ -30,7 +30,7 @@ Use the status bar when you don't need to take the full attention of the user, b
 ### Set the text
 This will set the text in the statusbar to any string.
 
-``` C#
+```Csharp
 // call it from an async context
 await VS.Notifications.SetStatusbarTextAsync("My text");
 
@@ -45,7 +45,7 @@ Adding an animation icon to the status bar is easy.
 
 Simply specify which animation icon to use.
 
-``` C#
+```Csharp
 // call it from an async context
 await VS.Notifications.StartStatusbarAnimationAsync(StatusAnimation.Sync);
 
@@ -55,7 +55,7 @@ VS.Notifications.StartStatusbarAnimationAsync(StatusAnimation.Sync).FireAndForge
 
 Stop the animation again by calling `EndStatusbarAnimationAsync`.
 
-``` C#
+```CSharp
 // call it from an async context
 await VS.Notifications.EndStatusbarAnimationAsync(StatusAnimation.Sync);
 
