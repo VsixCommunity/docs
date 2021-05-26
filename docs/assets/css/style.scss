@@ -84,6 +84,7 @@ pre {
     margin: -1em 0 2em 0;
     font-size: .8em;
     width: 100%;
+    line-height: 1.4;
 }
 
 code {
@@ -99,7 +100,8 @@ code .s {
     color: var(--code-s);
 }
 
-code .n {
+code .n,
+code .na {
     color: var(--code-n);
 }
 
@@ -107,7 +109,8 @@ code .k {
     color: var(--code-k);
 }
 
-code .nf {
+code .nf,
+code .nt {
     color: var(--code-nf);
 }
 
@@ -208,6 +211,16 @@ main .meta {
     position: absolute;
     bottom: 1em;
     right: 0
+}
+
+main > section ol,
+main > section ul {
+    padding-left: 2.5em;
+    margin-bottom: 1em;
+}
+
+main > section li::marker {
+    font-weight: bold;
 }
 
 footer {
