@@ -28,6 +28,9 @@ TBD
 ### VSIX
 TBD
 
+### VSSDK
+This is short for the *Visual Studio SDK* which are the classes, services, and component that make up the public surface are of Visual Studio's extensibility API. It's usually used when referring to the [Microsoft.VisualStudio.SDK](https://www.nuget.org/packages/Microsoft.VisualStudio.SDK/) NuGet package.
+
 ### UI Context
 TBD
 
