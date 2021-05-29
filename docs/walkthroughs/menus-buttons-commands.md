@@ -54,3 +54,7 @@ protected override async Task InitializeAsync(CancellationToken cancellationToke
 ```
 
 The command Guid and ID must match the guid/id pair from `Button` element in the .vsct file
+
+## Additional resources
+
+* [Visual Studio Command Table (.Vsct) Files](https://docs.microsoft.com/visualstudio/extensibility/internals/visual-studio-command-table-dot-vsct-files)

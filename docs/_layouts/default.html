@@ -65,13 +65,12 @@
                 <li><a href="api.html">API</a></li>
             </ul>
         </nav>
-        <section>
+        <article>
             {{ content }}
             {% if page.date %}
-            <div class="meta">Last updated: <time datetime="{{ page.date }}">{{ page.date | date_to_string: "ordinal",
-                    "US" }}</time></div>
+            <div class="meta">Last updated: <time datetime="{{ page.date }}">{{ page.date | date_to_string: "ordinal", "US" }}</time></div>
             {% endif %}
-        </section>
+        </article>
     </main>
     <footer>
         <ul>
