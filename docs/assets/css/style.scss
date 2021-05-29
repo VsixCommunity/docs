@@ -224,15 +224,6 @@ article li::marker {
     font-weight: bold;
 }
 
-article a[href^="http"]:after{
-    content: "🡽";
-    text-decoration: none;
-    font-size: .7em;    
-    position: relative;
-    top: -5px;
-    left: 2px;
-}
-
 footer {
     padding: 1em 0;
     text-align: center;
