@@ -16,7 +16,7 @@ There are several project templates to choose from, so we want to make sure we m
 
 This time, we'll select the **VSIX Project w/Command (Community)** template, as shown in the screenshot below.
 
-![New Project Dialog](../assets/img/new-project-dialog.png)
+![New Project Dialog showing VSIX project templates](../assets/img/new-project-dialog.png)
 
 After selecting the project template, we need to give our project a name. Call it **InsertGuid**.
 
@@ -24,7 +24,7 @@ After selecting the project template, we need to give our project a name. Call i
 
 After hitting the *Create* button, you should end up with a basic VSIX Project looking like this:
 
-![New project files](../assets/img/new-project-files.png)
+![New project files and folders](../assets/img/new-project-files.png)
 
 ## Overview of the files
 Let's go over the most important files.
@@ -110,7 +110,7 @@ Doing so will start the Experimental Instance of Visual Studio with your extensi
 
 When the Experimental Instance starts up, you should see the *Insert GUID* command in the *Edit* main menu.
 
-![Insert GUID command](../assets/img/insert-guid-command.png)
+![Insert GUID command located in the Edit main menu](../assets/img/insert-guid-command.png)
 
 Open any text based file and execute the command to insert a new guid. That's it!
 

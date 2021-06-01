@@ -10,12 +10,12 @@ To write extensions you have to install the extensibility workload. That's techn
 
 Open the *Visual Studio Installer* from **Tools -> Get Tools and Features...** top menu inside Visual Studio and make sure to install the *Visual Studio extension development* workload found toward the bottom.
 
-![VS Installer](../assets/img/vs-installer.png)
+![VS Installer showing the extensibility workload](../assets/img/vs-installer.png)
 
 ## Install Extensibility Essentials
 
 Install the [Extensibility Essentials](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2019) by going to **Extensions -> Manage Extensions** and search for *extensibility*.
 
-![Install Extensibility Essentials](../assets/img/install-ext-essentials.png)
+![Install Extensibility Essentials from the Extension Manager dialog](../assets/img/install-ext-essentials.png)
 
 That's it, you are now ready to start developing [your first extension](your-first-extension.md).
