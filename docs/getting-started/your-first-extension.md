@@ -52,7 +52,7 @@ For our extension, we want the *Insert GUID* command button to be under the *Edi
 
 You get full IntelliSense for the placements to make it easy to find the right spot.
 
-![VSCT parent IntelliSense](../_site/assets/img/vsct-parent-intellisense.png)
+![VSCT parent IntelliSense](../assets/img/vsct-parent-intellisense.png)
 
 The `<Button>` needs updating as well. We'll give it a new icon, update the button text and it's canonical name.
 
