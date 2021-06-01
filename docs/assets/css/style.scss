@@ -76,7 +76,9 @@ img {
 
 pre {
     background: rgba(180, 180, 180, .1);
+    color: var(--foreground);
     border: 1px solid var(--border-color);
+    border-left: 3px solid dodgerblue;
     overflow: auto;
     padding: 1em 1.5em;
     margin: -1em 0 2em 0;
@@ -116,12 +118,6 @@ p > code {
     background: rgba(180, 180, 180, .1);
     padding: 0 2px;
     font-size: .9em;
-}
-
-blockquote {
-    padding: .3em 1em;
-    border: 1px solid var(--border-color);
-    border-left: 3px solid dodgerblue;
 }
 
 header h1 {

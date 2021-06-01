@@ -4,12 +4,12 @@ description: Shows you the few simple steps to get your first Visual Studio exte
 date: 2021-5-24
 ---
 
-Before we start writing our first Visual Studio extension (it's easy, I promise!), make sure you've got the [tools needed](get-the-tools.md).
-
 A Visual Studio extension is written using the .NET Framework and C#.
 If you're already a .NET developer, you will find that writing extensions is similar to writing most other .NET programs and libraries.
 
 The extension we'll be writing today adds a command that inserts a new guid into the text editor when executed. It's simple, useful, and provides a good introduction to the various aspects of extension development.
+
+Before we start writing our first Visual Studio extension (it's easy, I promise!), make sure you've got the [tools needed](get-the-tools.md).
 
 ## Create the project
 There are several project templates to choose from, so we want to make sure we make the right choice. The templates we use in this cookbook, all have the moniker **(Community)** in the name.
@@ -29,7 +29,7 @@ After hitting the *Create* button, you should end up with a basic VSIX Project l
 ## Overview of the files
 Let's go over the most important files.
 
-**InsertGuidPackage.cs** is what we refer to as the Package class. It's `InitializeAsync(...)` method is called by Visual Studio too initialize your extension. It's from here you add event listeners and registers commands, tool windows, settings and other things.
+**InsertGuidPackage.cs** is what we refer to as the Package class. Its `InitializeAsync(...)` method is called by Visual Studio to initialize your extension. It's from here you add event listeners and register commands, tool windows, settings and other things.
 
 **source.extension.vsixmanifest** is the manifest file for your extension. It contains meta data such as title and description, but also information about what the extension contains.
 
@@ -40,7 +40,7 @@ Let's go over the most important files.
 ## Modifying the command
 First, we want to make sure our command has the right name, icon, and position within the Visual Studio menu system.
 
-Open the *VSCommandTable.vsct* file and find a `<Group>` and a `<Button>`. Notice how the button specifies the group as being its parent and the group's parent is the built-in VSMainMenu/Tools menu.
+Open the *VSCommandTable.vsct* file and find a `<Group>` and a `<Button>`. Notice how the button specifies the group as being its parent and the group's parent is the built-in *VSMainMenu/Tools* menu.
 
 For our extension, we want the *Insert GUID* command button to be under the *Edit* main menu, so we are going to re-parent the group to match.
 
@@ -68,11 +68,11 @@ The `<Button>` needs updating as well. We'll give it a new icon, update the butt
 </Button>
 ```
 
-We can use the thousands of icons available within Visual Studio's vast image library and even get a preview in IntelliSense:
+We can use the thousands of icons available within Visual Studio's image library and even get a preview shown in IntelliSense:
 
 ![VSCT icon IntelliSense](../assets/img/vsct-icon-intellisense.png)
 
-Now, we've updated the name, icon, and location of our command and it's time to write some code to insert the GUID into the text editor.
+Now, we've updated the name, icon, and location of our command and it's time to write some code to insert the guid into the text editor.
 
 Open the */Commands/MyCommand.cs* file and modify it to insert a new guid when executed:
 
@@ -106,9 +106,9 @@ The first draft of our extension is now complete and it is time to test it.
 ## Running and debugging
 Running your extension is as easy as running any other .NET project. Simply hit *F5* to run with the debugger attached or *Ctrl+F5* for running without.
 
-Doing so will start the Experimental Instance of Visual Studio with your extension installed. The Experimental Instance is your regular version Visual Studio, but with separate settings and extensions installed. It helps keep things separate.
+Doing so will start the Experimental Instance of Visual Studio with your extension installed. The Experimental Instance is your regular version of Visual Studio, but with separate settings and extensions installed. It helps keep things separate.
 
-When the Experimental Instance starts up, you should see the Insert GUID command in the Edit main menu.
+When the Experimental Instance starts up, you should see the *Insert GUID* command in the *Edit* main menu.
 
 ![Insert GUID command](../assets/img/insert-guid-command.png)
 
