@@ -42,7 +42,7 @@ First, we want to make sure our command has the right name, icon, and position w
 
 Open the *VSCommandTable.vsct* file and find a `<Group>` and a `<Button>`. Notice how the button specifies the group as being its parent and the group's parent is the built-in *VSMainMenu/Tools* menu.
 
-For our extension, we want the *Insert GUID* command button to be under the *Edit* main menu, so we are going to re-parent the group to match.
+For our extension, we want the *Insert GUID* command button to be under the *Edit* main menu, so we are going to re-parent the group to the Edit menu. Replace *Tools* with *Edit* just like in the following snippet:
 
 ```xml
 <Group guid="InsertGuid" id="MyMenuGroup" priority="0x0600">
