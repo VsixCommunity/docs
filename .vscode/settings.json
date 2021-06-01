@@ -6,6 +6,7 @@
         "VSIX",
         "VSSDK",
         "Walkthroughs",
+        "devenv",
         "pkgdef",
         "vsixmanifest",
         "walkthrough"

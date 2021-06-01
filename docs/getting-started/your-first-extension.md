@@ -9,6 +9,12 @@ If you're already a .NET developer, you will find that writing extensions is sim
 
 The extension we'll be writing today adds a command that inserts a new guid into the text editor when executed. It's simple, useful, and provides a good introduction to the various aspects of extension development.
 
+If you're a visual learner, check out this short video of someone following the tutorial.
+
+<video controls>
+  <source src="../assets/video/writing-your-first-extension.mp4" />
+</video>
+
 Before we start writing our first Visual Studio extension (it's easy, I promise!), make sure you've got the [tools needed](get-the-tools.md).
 
 ## Create the project
