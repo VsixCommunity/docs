@@ -1,5 +1,5 @@
 dotnet tool install --global dotnet-serve
 
 cd docs
-start cmd /k dotnet-serve -o -d _site
-jekyll b -w
+start cmd /k jekyll b -w
+dotnet-serve -o -d _site
