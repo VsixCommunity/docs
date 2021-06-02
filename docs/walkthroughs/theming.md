@@ -8,7 +8,7 @@ Whenever you are building any custom UI using WPF, you need to make sure it matc
 
 There's an easy way to make sure that our UI's background colors, button styling, etc. matches that of Visual Studio's with a simple little trick.
 
-## WPF UserControl
+## [WPF UserControl](#wpf-usercontrol)
 Here's an example of a WPF `<UserControl>` that can be used directly inside a tool window.
 
 ```xml
@@ -28,7 +28,7 @@ Notice the `xmlns:toolkit` imported namespace and the `toolkit:Themes.UseVsTheme
 
 An added benefit is that when the user changes the color theme from e.g. Light to Dark, then our UI will switch immediately as well without the need to reload.
 
-## DialogWindow control
+## [DialogWindow control](#dialogwindow-control)
 Visual Studio ships with a control we can use for custom windows, which is the `DialogWindow` control. It is recommended you use that for any dialog windows, but it can also be used inside tool windows.
 
 It's very similar to other XAML window types.

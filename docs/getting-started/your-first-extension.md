@@ -17,7 +17,7 @@ If you're a visual learner, check out this short video of someone following the 
 
 Before we start writing our first Visual Studio extension (it's easy, I promise!), make sure you've got the [tools needed](get-the-tools.md).
 
-## Create the project
+## [Create the project](#create-the-project)
 There are several project templates to choose from, so we want to make sure we make the right choice. The templates we use in this cookbook, all have the moniker **(Community)** in the name.
 
 This time, we'll select the **VSIX Project w/Command (Community)** template, as shown in the screenshot below.
@@ -32,7 +32,7 @@ After hitting the *Create* button, you should end up with a basic VSIX Project l
 
 ![New project files and folders](../assets/img/new-project-files.png)
 
-## Overview of the files
+## [Overview of the files](#overview-of-the-files)
 Let's go over the most important files.
 
 **InsertGuidPackage.cs** is what we refer to as the Package class. Its `InitializeAsync(...)` method is called by Visual Studio to initialize your extension. It's from here you add event listeners and register commands, tool windows, settings and other things.
@@ -109,7 +109,7 @@ We're using the `VS` object to get the active document, and then inserts the gui
 
 The first draft of our extension is now complete and it is time to test it.
 
-## Running and debugging
+## [Running and debugging](#running-and-debugging)
 Running your extension is as easy as running any other .NET project. Simply hit *F5* to run with the debugger attached or *Ctrl+F5* for running without.
 
 Doing so will start the Experimental Instance of Visual Studio with your extension installed. The Experimental Instance is your regular version of Visual Studio, but with separate settings and extensions installed. It helps keep things separate.
@@ -120,14 +120,14 @@ When the Experimental Instance starts up, you should see the *Insert GUID* comma
 
 Open any text based file and execute the command to insert a new guid. That's it!
 
-## Summary
+## [Summary](#summary)
 You've now created your first extension that adds a command button to the main menu and interacts with the text editor when executed. 
 
 Congratulations!!
 
 You can find the code for this extension in the [samples repository](https://github.com/VsixCommunity/Samples).
 
-## Continue your learning journey
+## [Additional resources](#additional-resources)
 
 * [Anatomy of extensions](extension-anatomy.md)
 * [Menus & Commands](../walkthroughs/menus-buttons-commands.html)

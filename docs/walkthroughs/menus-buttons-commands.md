@@ -8,7 +8,7 @@ Commands are most often used as buttons in menus around Visual Studio. To create
 1. Define the command
 2. Handle the click/invocation
 
-## Define the command
+## [Define the command](#define-the-command)
 Every button in every menu is a command. To add a command to your extension, you must define it in the .vsct file first. It could look something like this:
 
 ```xml
@@ -28,7 +28,7 @@ This button is placed in the parent group located in the **View -> Other Windows
 
 You can now run the extension now to see if the command shows up in the right location and menu.
 
-## Handle the click/invocations
+## [Handle the click/invocations](#handle-the-click)
 Once the button is defined, we need to handle what happens when it is invoked. We do that in a C# class that looks like this:
 
 ```csharp
@@ -55,6 +55,6 @@ protected override async Task InitializeAsync(CancellationToken cancellationToke
 
 The command Guid and ID must match the guid/id pair from `Button` element in the .vsct file
 
-## Additional resources
+## [Additional resources](#additional-resources)
 
 * [Visual Studio Command Table (.Vsct) Files](https://docs.microsoft.com/visualstudio/extensibility/internals/visual-studio-command-table-dot-vsct-files)

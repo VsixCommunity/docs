@@ -1,12 +1,11 @@
 ---
 title: Anatomy of an extension
-date: 2021-5-24
+date: 2021-6-1
 ---
-
 
 A VSIX package is a .vsix file that contains one or more Visual Studio extensions, together with the metadata Visual Studio uses to classify and install the extensions. The VSIX package format follows the Open Packaging Conventions (OPC) standard which means it can be opened by any tool that can open ZIP files.
 
-## File structure
+## [File structure](#file-structure)
 When creating a new extensions using the **VSIX Project w/Command (Community)** template, this is what the file structure looks like:
 
 ![File structure of a VSIX project](../assets/img/new-project-files.png)
@@ -17,12 +16,12 @@ The **VSCommandTable.vsct** file is where commands are declared. It's an XML fil
 
 The **\*Package.cs** file is the Package class which is the entry point for most extensions. In here you often find command handlers, tool windows, options pages, services, and other components registered.
 
-## Compilation
+## [Compilation](#compilation)
 The project compiles into a .vsix file located in the */bin/debug* folder and uses dedicated MSBuild targets and tasks to handle the VSIX project flavor.
 
 When the VSIX project builds, it automatically deploys itself to the Experimental Instance.
 
-## Experimental Instance
+## [Experimental Instance](#experimental-instance)
 To safeguard your Visual Studio development environment from untested applications that might change it, the VS SDK provides an experimental space that you can use to experiment. You develop new applications by using Visual Studio as usual, but you run them by using this Experimental Instance.
 
 Every application that has a VSIX package launches the Visual Studio experimental instance in debug mode.
