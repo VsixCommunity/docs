@@ -1,7 +1,7 @@
 ---
 title: Theming
 description: How to properly theme tool windows and other XAML controls to match Visual Studio's color themes.
-date: 2021-5-29
+date: 2021-6-2
 ---
 
 Whenever you are building any custom UI using WPF, you need to make sure it matches the theming of Visual Studio. That way your UI will look native and feel more like a natural part of Visual Studio. If not, your tool windows and dialogs might end up looking like this in the Light theme:
