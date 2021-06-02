@@ -149,6 +149,9 @@ private void OnSettingsSaved(object sender, General e)
 }
 ```
 
+## [Get the source code](#source-code)
+You can find the source code for this extension in the [samples repository](https://github.com/VsixCommunity/Samples).
+
 ## [Additional resources](#additional-resources)
 Read the docs for all the details surrounding these scenarios, but notice that while they do provide more detailed documentation, they don't follow the best practices outlined in this sample. They also don't use the Community Toolkit that makes working with settings so much easier.
 
