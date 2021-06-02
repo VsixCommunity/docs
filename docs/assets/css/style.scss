@@ -67,6 +67,7 @@ video {
 }
 
 .caption {
+    display: block;
     font-style: italic;
     font-size: .85em;
 }
@@ -90,7 +91,7 @@ pre {
 }
 
 code {
-    font-family: "Cascadia Code", Consolas, monospace;
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
 }
 
 code .c1 {
@@ -120,18 +121,22 @@ code .nt {
 
 p > code {
     background: rgba(180, 180, 180, .1);
-    padding: 0 2px;
-    font-size: .9em;
+    border-radius: 6px;
+    font-size: 85%;
+    padding: .2em .4em;
 }
 
 header h1 {
     padding: .2em 0 0 0;
 }
 
-header p {
+header a {
     font-variant: small-caps;
     letter-spacing: 1px;
     font-size: 1.2em;
+    text-decoration: none;
+    background-size: 20px;
+    color: inherit;
 }
 
 main {

@@ -121,7 +121,7 @@ When the Experimental Instance starts up, you should see the *Insert GUID* comma
 Open any text based file and execute the command to insert a new guid. That's it!
 
 ## [Summary](#summary)
-You've now created your first extension that adds a command button to the main menu and interacts with the text editor when executed. 
+You've now created your first extension that adds a command button to the main menu and interacts with the text editor when executed.
 
 Congratulations!!
 

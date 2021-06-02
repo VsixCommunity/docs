@@ -4,9 +4,25 @@ description: How to properly theme tool windows and other XAML controls to match
 date: 2021-5-29
 ---
 
-Whenever you are building any custom UI using WPF, you need to make sure it matches the theming of Visual Studio. That way your UI will look native and feel more like a natural part of Visual Studio.
+Whenever you are building any custom UI using WPF, you need to make sure it matches the theming of Visual Studio. That way your UI will look native and feel more like a natural part of Visual Studio. If not, your tool windows and dialogs might end up looking like this in the Light theme:
 
-There's an easy way to make sure that our UI's background colors, button styling, etc. matches that of Visual Studio's with a simple little trick.
+![Un-themed UI in the Light theme](../assets/img/theming-light-none.png)
+
+Notice how the padding around text boxes and buttons doesn't look right? It gets even worse in the Dark theme:
+
+![Un-themed UI in the Dark theme](../assets/img/theming-dark-none.png)
+
+Now the text and the background colors make it almost impossible to read. Not good.
+
+There's an easy way to make sure that our UI's background colors, button styling, etc. matches that of Visual Studio's with a simple little trick. That way the same UI can look like this in the Light theme:
+
+![Correctly themed UI in the Light theme](../assets/img/theming-light.png)
+
+Or in the Dark theme:
+
+![Correctly themed UI in the Dark theme](../assets/img/theming-dark.png)
+
+That looks much better. Let's look at how we can theme our UI.
 
 ## [WPF UserControl](#wpf-usercontrol)
 Here's an example of a WPF `<UserControl>` that can be used directly inside a tool window.
@@ -48,8 +64,19 @@ It's very similar to other XAML window types.
     Height="600"
     d:DesignHeight="450" d:DesignWidth="800"
     d:DataContext="{d:DesignInstance Type={x:Type local:ThemeWindowDialogViewModel}, IsDesignTimeCreatable=False}"
-    toolkit:Themes.UseVsTheme="{Binding UseVsTheme}"
-    >
+    toolkit:Themes.UseVsTheme="{Binding UseVsTheme}">
 ```
 
 Notice the imported namespaces for both the toolkit and the platform.
+
+That's all there is too it. 
+
+## [Get the source code](#source-code)
+You can find the source code for this extension in the [Community Toolkit test project](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit/tree/master/test/VSSDK.TestExtension).
+
+## [Additional resources](#additional-resources)
+Learn more about Visual Studio colors from these resources.
+
+* [Colors and styling for Visual Studio](https://docs.microsoft.com/visualstudio/extensibility/ux-guidelines/colors-and-styling-for-visual-studio)
+* [Shared colors for Visual Studio](https://docs.microsoft.com/visualstudio/extensibility/ux-guidelines/shared-colors-for-visual-studio)
+* [Color value reference](https://docs.microsoft.com/visualstudio/extensibility/ux-guidelines/color-value-reference-for-visual-studio)

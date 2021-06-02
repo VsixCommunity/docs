@@ -1,13 +1,27 @@
 {
     "cSpell.words": [
+        "Avenir",
         "Cascadia",
+        "GIFs",
         "Gitter",
+        "OKCANCEL",
+        "OLEMSGBUTTON",
+        "OLEMSGICON",
+        "UI's",
         "VSCT",
         "VSIX",
         "VSSDK",
         "Walkthroughs",
         "devenv",
+        "dialogwindow",
+        "haspopup",
+        "knownmonikers",
+        "messagebox",
         "pkgdef",
+        "textbuffer",
+        "textview",
+        "typeof",
+        "usercontrol",
         "vsixmanifest",
         "walkthrough"
     ]

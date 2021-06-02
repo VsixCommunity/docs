@@ -24,7 +24,7 @@ Every button in every menu is a command. To add a command to your extension, you
 </Buttons>
 ```
 
-This button is placed in the parent group located in the **View -> Other Windows** menu as specified in the `Parent` element. 
+This button is placed in the parent group located in the **View -> Other Windows** menu as specified in the `Parent` element.
 
 You can now run the extension now to see if the command shows up in the right location and menu.
 
