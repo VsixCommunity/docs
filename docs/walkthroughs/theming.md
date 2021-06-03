@@ -34,13 +34,10 @@ Here's an example of a WPF `<UserControl>` that can be used directly inside a to
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
-             toolkit:Themes.UseVsTheme="True"
-             mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300"
-             Name="MyToolWindow">
+             toolkit:Themes.UseVsTheme="True">
 ```
 
-Notice the `xmlns:toolkit` imported namespace and the `toolkit:Themes.UseVsTheme="True"` attribute. They will automatically apply the official styling for WPF controls that Visual Studio uses itself. We don't have to do anything else to get the styling applied.
+Notice the `xmlns:toolkit` imported namespace and the `toolkit:Themes.UseVsTheme="True"` attribute. They will automatically apply the official styling for WPF controls that Visual Studio uses itself. We don't have to do anything else to get the styling applied to the entire `<UserControl>`. Easy!
 
 An added benefit is that when the user changes the color theme from e.g. Light to Dark, then our UI will switch immediately as well without the need to reload.
 
@@ -54,22 +51,14 @@ It's very similar to other XAML window types.
     x:Class="TestExtension.ThemeWindowDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:platform="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
     xmlns:toolkit="clr-namespace:Community.VisualStudio.Toolkit;assembly=Community.VisualStudio.Toolkit"
-    xmlns:local="clr-namespace:TestExtension"
-    mc:Ignorable="d" 
-    Width="400"
-    Height="600"
-    d:DesignHeight="450" d:DesignWidth="800"
-    d:DataContext="{d:DesignInstance Type={x:Type local:ThemeWindowDialogViewModel}, IsDesignTimeCreatable=False}"
-    toolkit:Themes.UseVsTheme="{Binding UseVsTheme}">
+    toolkit:Themes.UseVsTheme="True">
 ```
 
-Notice the imported namespaces for both the toolkit and the platform.
+Notice the imported namespaces for both the toolkit and the platform and the attribute `toolkit:Themes.UseVsTheme="True"`.
 
-That's all there is too it. 
+That's all there is too it. Your dialog window is now themed using Visual Studio colors and styling.
 
 ## [Get the source code](#source-code)
 You can find the source code for this extension in the [Community Toolkit test project](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit/tree/master/test/VSSDK.TestExtension).

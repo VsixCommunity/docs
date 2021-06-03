@@ -11,6 +11,7 @@
     --code-s: #A31515;
     --code-n: #2B91AF;
     --code-nf: #74531F;
+    --code-nt: #116cb6;
 }
 
 @media (prefers-color-scheme: dark)
@@ -24,6 +25,16 @@
         --code-s: #D69D85;
         --code-n: #4EC9B0;
         --code-nf: #DCDCAA;
+        --code-nt: #569CD6;
+    }
+
+    article img {
+        opacity: .7;
+        transition: opacity 300ms linear;        
+    }
+
+    article img:hover {
+        opacity: 1;
     }
 }
 
@@ -117,6 +128,10 @@ code .kt {
 code .nf,
 code .nt {
     color: var(--code-nf);
+}
+
+.language-xml code .nt{
+    color: var(--code-nt);
 }
 
 p > code {

@@ -17,10 +17,10 @@ Here are some useful links to resources that can help you in your extension jour
 ## [Know how to search for help](#know-how-to-search-for-help)
 Writing extensions is a bit of a niche activity so searching for help online doesn’t always return relevant results. However, there are ways we can optimize our search terms to generate better results.
 
-Use the precise interface and class names as part of the search term
-Try adding the words *VSIX*, *VSSDK* or *Visual Studio* to the search terms
-Search directly on GitHub instead of Google/Bing when possible
-Ask questions to other extenders on the [Gitter.im](https://gitter.im/Microsoft/extendvs) chatroom
+* Use the precise interface and class names as part of the search term
+* Try adding the words *VSIX*, *VSSDK* or *Visual Studio* to the search terms
+* Search directly on GitHub instead of Google/Bing when possible
+* Ask questions to other extenders on the [Gitter.im](https://gitter.im/Microsoft/extendvs) chatroom
 
 ## [Use open source as a learning tool](#use-open-source-as-a-learning-tool)
 You probably have ideas about what you want your extension to do and how it should work. But what APIs should you use and how do you hook it all up correctly? These are difficult questions and a lot of people give up when these go unanswered.
