@@ -9,9 +9,8 @@
     --code-c1: green;
     --code-k: blue;
     --code-s: #A31515;
-    --code-n: #2B91AF;
+    --code-n: #22728a;
     --code-nf: #74531F;
-    --code-nt: #116cb6;
 }
 
 @media (prefers-color-scheme: dark)
@@ -25,7 +24,6 @@
         --code-s: #D69D85;
         --code-n: #4EC9B0;
         --code-nf: #DCDCAA;
-        --code-nt: #569CD6;
     }
 
     article img {
@@ -130,10 +128,6 @@ code .nt {
     color: var(--code-nf);
 }
 
-.language-xml code .nt{
-    color: var(--code-nt);
-}
-
 p > code {
     background: rgba(180, 180, 180, .1);
     border-radius: 6px;
@@ -224,7 +218,7 @@ main {
 
 article {
     //margin: 0 1em 0 1.5em;
-    padding: 1em 0;
+    padding: 1em 0 2em 0;
     width: 100%;
     position: relative;
     min-width: 0; // needed for <pre> not to be too wide
