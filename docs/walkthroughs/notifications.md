@@ -22,7 +22,7 @@ VS.Notifications.ShowMessage("Title", "The message", OLEMSGICON.OLEMSGICON_INFO,
 ```
 
 ## [Status bar](#status-bar)
-The status bar can display text and show animation icons and we there's an API for using that.
+A status bar is an area at the bottom of a primary window that displays information about the current window's state (such as what is being viewed and how), background tasks (such as printing, scanning, and formatting), or other contextual information (such as selection and keyboard state).
 
 ![Status bar showing custom text](../assets/img/statusbar.png)
 
