@@ -81,11 +81,19 @@ video {
     content: "Figure " counter(figure) ": ";
 }
 
+blockquote {
+    border: 1px solid var(--border-color);
+    border-left: 3px solid dodgerblue;
+    background: rgba(180, 180, 180, .1);
+    padding: 0.4em 1em;
+    font-style: italic;
+    margin: 1em 0;
+}
+
 pre {
     background: rgba(180, 180, 180, .1);
     color: var(--foreground);
     border: 1px solid var(--border-color);
-    border-left: 3px solid dodgerblue;
     overflow: auto;
     padding: 1em 1.5em;
     margin: -1em 0 2em 0;

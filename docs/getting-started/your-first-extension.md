@@ -20,6 +20,10 @@ Before we start writing our first Visual Studio extension (it's easy, I promise!
 ## [Create the project](#create-the-project)
 There are several project templates to choose from, so we want to make sure we make the right choice. The templates we use in this cookbook, all have the moniker **(Community)** in the name.
 
+The **VSIX Project w/Command (Community)** template comes with a command hooked up, making it easy to start from there. This is a great starting point for most extensions. If you know you want a tool window, use the **VSIX Project w/Tool Window (Community)** template. It also has a command to open the tool window.
+
+Use the **Empty VSIX Project (Community)** or **VSIX Project (Community)** templates for MEF-only extensions or other advanced scenarios.
+
 This time, we'll select the **VSIX Project w/Command (Community)** template, as shown in the screenshot below.
 
 ![New Project Dialog showing VSIX project templates](../assets/img/new-project-dialog.png)
@@ -60,7 +64,7 @@ You get full IntelliSense for the placements to make it easy to find the right s
 
 ![VSCT parent IntelliSense](../assets/img/vsct-parent-intellisense.png)
 
-The `<Button>` needs updating as well. We'll give it a new icon, update the button text and it's canonical name.
+The `<Button>` needs updating as well. We'll give it a new icon by updating the `id` attribute of the `<Icon>` element to *PasteAppend*. Update the `<ButtonText>` text with a good, descriptive name, and update the `<LocCanonicalName>` with the technical name of your command - this is the name shown users when they assign custom keyboard shortcuts to your command in the **Tools -> Options -> Environment -> Keyboard** dialog.
 
 ```xml
 <Button guid="InsertGuid" id="MyCommand" priority="0x0100" type="Button">
@@ -73,6 +77,8 @@ The `<Button>` needs updating as well. We'll give it a new icon, update the butt
   </Strings>
 </Button>
 ```
+
+> Always start the `<LocCanonicalName>` with a dot character. It ensures no other text is automatically prepended, and the dot will not be shown.  
 
 We can use the thousands of icons available within Visual Studio's image library and even get a preview shown in IntelliSense:
 
@@ -96,7 +102,7 @@ namespace InsertGuid
     {
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            await Package.JoinableTaskFactory.SwitchToMainThreadAsync();
             TextDocument doc = await VS.Editor.GetActiveTextDocumentAsync();
 
             doc?.Selection.Insert(Guid.NewGuid().ToString());
@@ -106,6 +112,8 @@ namespace InsertGuid
 ```
 
 We're using the `VS` object to get the active document, and then inserts the guid in the selection. There is always a selection in the editor even if it is zero length.
+
+> You'll see `await JoinableTaskFactory.SwitchToMainThreadAsync()` and `ThreadHelper.ThrowIfNotOnUIThread()` in many places in this cookbook. They handle thread switching best practices and you don't need to know when and how to use them at this point - compiler warnings with Code Fixes (light bulbs) makes that super easy.
 
 The first draft of our extension is now complete and it is time to test it.
 

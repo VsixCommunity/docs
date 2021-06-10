@@ -18,6 +18,7 @@
         "knownmonikers",
         "messagebox",
         "pkgdef",
+        "prepended",
         "textbuffer",
         "textview",
         "typeof",
