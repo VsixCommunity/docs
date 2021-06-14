@@ -28,9 +28,9 @@ using EnvDTE80;
 using Microsoft.VisualStudio.Imaging;
 using Microsoft.VisualStudio.Shell;
 
-public class MyWindow : BaseToolWindow<MyWindow>
+public class MyToolWindow : BaseToolWindow<MyToolWindow>
 {
-    public override string GetTitle(int toolWindowId) => "My Window";
+    public override string GetTitle(int toolWindowId) => "My Tool Window";
 
     public override Type PaneType => typeof(Pane);
 
@@ -70,7 +70,7 @@ It can be any XAML with its code-behind class, so here's a simple example of a `
              mc:Ignorable="d"
              toolkit:Themes.UseVsTheme="True"
              d:DesignHeight="300" d:DesignWidth="300"
-             Name="MyWindow">
+             Name="MyToolWindow">
     <Grid>
         <StackPanel Orientation="Vertical">
             <Label Margin="10" HorizontalAlignment="Center">My Window</Label>
@@ -86,10 +86,14 @@ Now we have our tool window that returns our custom control, so now we need to r
 Registering the tool window means that we are telling Visual Studio about its existence and how to instantiate it. We do that from our package class using the `[ProvideToolWindow]` attribute.
 
 ```csharp
-[ProvideToolWindow(typeof(MyWindow.Pane))]
+[ProvideToolWindow(typeof(MyToolWindow.Pane))]
 public sealed class MyPackage : ToolkitPackage
 {
-    ...
+     protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+     {
+         // Initialize the tool window here
+         await MyToolWindow.InitializeAsync(this);
+     }
 }
 ```
 
@@ -98,13 +102,13 @@ public sealed class MyPackage : ToolkitPackage
 You can specify what style the tool window should have and where it should show up by default. The following example shows that the tool window should be placed in the same docking container as Solution Explorer in a linked style.
 
 ```csharp
-[ProvideToolWindow(typeof(MyWindow.Pane), Style = VsDockStyle.Linked, Window = WindowGuids.SolutionExplorer)]
+[ProvideToolWindow(typeof(MyToolWindow.Pane), Style = VsDockStyle.Linked, Window = WindowGuids.SolutionExplorer)]
 ```
 
 To make the tool window visible by default, you can specify its visibility in different UI contexts using the `[ProvideToolWindowVisibility]` attribute.
 
 ```csharp
-[ProvideToolWindowVisibility(typeof(MyWindow.Pane), VSConstants.UICONTEXT.NoSolution_string)]
+[ProvideToolWindowVisibility(typeof(MyToolWindow.Pane), VSConstants.UICONTEXT.NoSolution_string)]
 ```
 
 ## [Command to show the tool window](#create-command)
@@ -118,13 +122,16 @@ using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
 [Command(PackageIds.RunnerWindow)]
-internal sealed class MyWindowCommand : BaseCommand<MyWindowCommand>
+internal sealed class MyToolWindowCommand : BaseCommand<MyToolWindowCommand>
 {
     protected override async Task ExecuteAsync(OleMenuCmdEventArgs e) =>
-        await MyWindow.ShowAsync();
+        await MyToolWindow.ShowAsync();
 }
 ```
 
 The command placement for tool windows is usually under **View -> Other Windows** in the main menu.
 
 That's it. Congratulations, you've now created your custom tool window.
+
+## [Get the source code](#source-code)
+You can find the source code for this recipe in the [samples repository](https://github.com/VsixCommunity/Samples/tree/master/ToolWindow).
