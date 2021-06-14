@@ -4,6 +4,7 @@
         "Cascadia",
         "GIFs",
         "Gitter",
+        "Guids",
         "OKCANCEL",
         "OLEMSGBUTTON",
         "OLEMSGICON",
@@ -23,7 +24,6 @@
         "textview",
         "typeof",
         "usercontrol",
-        "vsixmanifest",
-        "walkthrough"
+        "vsixmanifest"
     ]
 }

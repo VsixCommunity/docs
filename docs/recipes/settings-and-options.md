@@ -1,6 +1,6 @@
 ---
 title: Settings & options
-description: A walkthrough of how to handle custom settings and options.
+description: A recipe for how to handle custom settings and options.
 date: 2021-6-2
 ---
 

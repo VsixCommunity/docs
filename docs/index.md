@@ -16,7 +16,7 @@ If you are new to extension development, you want to start at the beginning to e
 
 ### Walk me through typical scenarios
 
-Once you know the basics of the Visual Studio extensibility model, it is time to explore what type of features to extend. To do that, check out the [walkthrough section](walkthroughs/) for inspiration and step-by-step walkthroughs.
+Once you know the basics of the Visual Studio extensibility model, it is time to explore what type of features to extend. To do that, check out the [recipe section](recipes/) for inspiration and step-by-step walkthroughs.
 
 ### Publishing the finished extension
 

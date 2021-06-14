@@ -59,4 +59,4 @@ When the exception has low severity to the user, there is no reason to interrupt
 
 If the exception is severe and causes the user flow to be interrupted, consider using a message box to let the user know about the error. Make sure to still log the exception through telemetry and/or the Output Window as described above.
 
-To learn more about how to use the statusbar and message boxes, see the [Notifications walkthrough](notifications.html).
+To learn more about how to use the statusbar and message boxes, see the [Notifications recipe](notifications.html).

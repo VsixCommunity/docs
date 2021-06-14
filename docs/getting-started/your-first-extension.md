@@ -138,5 +138,5 @@ You can find the code for this extension in the [samples repository](https://git
 ## [Additional resources](#additional-resources)
 
 * [Anatomy of extensions](extension-anatomy.md)
-* [Menus & Commands](../walkthroughs/menus-buttons-commands.html)
+* [Menus & Commands](../recipes/menus-buttons-commands.html)
 * [Best practices checklist](../publish/checklist.html)
