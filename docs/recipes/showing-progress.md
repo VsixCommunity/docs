@@ -3,6 +3,8 @@ title: Showing progress
 date: 2021-5-24
 ---
 
+There are several ways to show progress of a running background tasks in Visual Studio. Here's how to use them from your own extensions.
+
 ## [Status bar](#status-bar)
 The status bar has its own progress indicator and it is the easiest place to show progress to the user. It's visible, but doesn't demand attention from the user and isn't blocking them in doing what they are currently doing. This is a good option for most background tasks.
 
