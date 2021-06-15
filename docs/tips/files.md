@@ -14,7 +14,7 @@ var doc = await VS.Editor.GetActiveTextDocumentAsync();
 doc.Selection.Insert("some text"); // Inserts text at the caret or selection
 ```
 
-For more advanced capabilities, grab the TextView and its TextBuffer like this:
+For more advanced capabilities, grab the `TextView` and its `TextBuffer` like this:
 
 ```csharp
 var view = await VS.Editor.GetCurrentWpfTextViewAsync();
