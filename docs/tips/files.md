@@ -39,7 +39,7 @@ See the thousands of available icons in the `KnownMonikers` collection using the
 Use the `Microsoft.VisualStudio.Shell.VsShellUtilities` helper class.
 
 ```csharp
-string fileNath = "c:\\file.txt";
+string fileName = "c:\\file.txt";
 VsShellUtilities.OpenDocument(ServiceProvider.GlobalProvider, fileName);
 ```
 
