@@ -21,6 +21,7 @@ If you're not in an async context, use the synchronous way to build the project.
 using EnvDTE;
 
 ...
+
 vsBuildState state = project.Build(waitForBuildToFinish = true);
 ```
 
@@ -31,6 +32,7 @@ For async contexts, this is an easy way to build the project.
 using EnvDTE;
 
 ...
+
 bool buildSucceeded = await project.BuildAsync();
 ```
 
@@ -41,6 +43,7 @@ Shows how to set a build property on the `Project`.
 using EnvDTE;
 
 ...
+
 bool succeeded = await project.TrySetBuildPropertyAsync("propertyName", "value");
 ```
 
@@ -51,5 +54,6 @@ Shows how to get a build property on the `Project`.
 using EnvDTE;
 
 ...
+
 string? value = await project.GetBuildPropertyAsync("propertyName");
 ```

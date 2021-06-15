@@ -25,6 +25,7 @@
         "textview",
         "typeof",
         "usercontrol",
-        "vsixmanifest"
+        "vsixmanifest",
+        "walkthrough"
     ]
 }

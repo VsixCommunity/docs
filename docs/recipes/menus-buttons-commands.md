@@ -1,5 +1,6 @@
 ---
 title: Menus & commands
+description: A walkthrough of the menu and command system in Visual Studio
 date: 2021-5-24
 ---
 

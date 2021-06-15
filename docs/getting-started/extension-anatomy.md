@@ -1,5 +1,6 @@
 ---
 title: Anatomy of an extension
+description: Explains the structure of an extension
 date: 2021-6-7
 ---
 

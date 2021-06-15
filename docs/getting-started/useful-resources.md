@@ -1,5 +1,6 @@
 ---
 title: Useful resources
+description: A list of handy resources that help you better navigate the world of VS extensibility
 date: 2021-5-24
 ---
 

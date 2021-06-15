@@ -1,5 +1,6 @@
 ---
 title: Showing progress
+description: Explains the different types of progress bars and when to use each of them
 date: 2021-6-15
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Error handling
+description: Explains how to best handle errors and exceptions occurring in extensions
 date: 2021-6-3
 ---
 
