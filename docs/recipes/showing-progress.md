@@ -1,6 +1,6 @@
 ---
 title: Showing progress
-date: 2021-5-24
+date: 2021-6-15
 ---
 
 There are several ways to show progress of a running background tasks in Visual Studio. Here's how to use them from your own extensions.
