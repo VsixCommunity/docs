@@ -4,6 +4,8 @@ description: Tips for working with files.
 date: 2021-6-15
 ---
 
+Here's a collection of small code samples on different ways to work with files and documents.
+
 ## [Get active document](#get-active-document)
 Get the current active document to manipulate the text or take other related actions.
 
@@ -37,8 +39,16 @@ See the thousands of available icons in the `KnownMonikers` collection using the
 Use the `Microsoft.VisualStudio.Shell.VsShellUtilities` helper class.
 
 ```csharp
-string filePath = "c:\\file.txt";
-VsShellUtilities.OpenDocument(ServiceProvider.GlobalProvider, filePath);
+string fileNath = "c:\\file.txt";
+VsShellUtilities.OpenDocument(ServiceProvider.GlobalProvider, fileName);
+```
+
+## [Open file via project](#open-file-via-project)
+Use this method when the file you open is part of the solution.
+
+```csharp
+string fileName = "c:\\file.txt";
+await VS.Shell.OpenDocumentViaProjectAsync(fileName);
 ```
 
 ## [Open file in Preview tab](#open-file-in-preview-tab)
@@ -54,4 +64,13 @@ Use the extension method `buffer.GetFileName()` located in the `Microsoft.Visual
 
 ```csharp
 string fileName = buffer.GetFileName();
+```
+
+## [ProjectItem from file](#projectitem-from-file)
+Find the `EnvDTE.ProjectItem` from an absolute file path.
+
+```csharp
+string fileName = "c:\\file.txt";
+DTE2 dte = await VS.GetDTEAsync();
+ProjectItem item = dte.Solution?.FindProjectItem(fileName)
 ```
