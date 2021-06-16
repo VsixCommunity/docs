@@ -1,12 +1,12 @@
 ---
 title: Build custom tool windows
 description: A recipe for how to add custom tool windows to Visual Studio
-date: 2021-6-15
+date: 2021-6-16
 ---
 
-Custom tool windows are great options for adding complex UI to Visual Studio. A tool window is a window that can be moved around and docked just like the Solution Explorer, Error List, and other well-known tool windows. Any tool window consist of a outer shell that is provided by Visual Studio, and a custom inner UI control usually a XAML `<usercontrol>`.
+Custom tool windows are great options for adding complex UI to Visual Studio. A tool window is a window that can be moved around and docked just like the Solution Explorer, Error List, and other well-known tool windows. A tool window consists of an outer shell provided by Visual Studio and a custom inner UI control, which is usually a XAML `<usercontrol>`, provided by the extension.
 
-> To create a new tool window extension, then create a new project using the **VSIX Project w/Tool Window (Community)** template and skip the rest of this recipe. See [getting started](../getting-started/your-first-extension.html) for more info.
+> To create a new extension with a tool window, create a new project using the **VSIX Project w/Tool Window (Community)** template and skip the rest of this recipe. See [getting started](../getting-started/your-first-extension.html) for more info.
 
 Adding a tool window to an existing extension requires 4 simple steps:
 
@@ -61,7 +61,7 @@ You must create an instance of your custom user control from the `CreateAsync(in
 But first, you must create the user control.
 
 ## [Add the XAML user control](#add-user-control)
-It can be any XAML with its code-behind class, so here's a simple example of a `<usercontrol>` containing a single button as an example:
+It can be any XAML with its code-behind class, so here's a simple example of a `<usercontrol>` containing a single button:
 
 ```xml
 <UserControl x:Class="MyUserControl"
@@ -83,7 +83,7 @@ It can be any XAML with its code-behind class, so here's a simple example of a `
 </UserControl>
 ```
 
-Now we have our tool window that returns our custom control, so now we need to register the window with Visual Studio.
+Now we have our tool window class that returns our custom control. The next step is to register our tool window with Visual Studio.
 
 ## [Register the tool window](#register-tool-window)
 Registering the tool window means that we are telling Visual Studio about its existence and how to instantiate it. We do that from our package class using the `[ProvideToolWindow]` attribute.
