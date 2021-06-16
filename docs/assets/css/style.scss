@@ -84,13 +84,20 @@ video {
 }
 
 blockquote {
-    border: 1px solid var(--border-color);
-    border-left: 3px solid dodgerblue;
-    border-radius: 3px;
-    background: rgba(180, 180, 180, .1);
-    padding: 0.4em 1em;
-    font-style: italic;
+    padding: 0.6em 3em;
+    font-size: 1.2em;
     margin-bottom: 1em;
+    position: relative;
+}
+
+blockquote::before {
+    content: "”";
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7em;
+    opacity: .5;
+    position: absolute;
+    left: 0;
+    top: -.4em;
 }
 
 pre {
