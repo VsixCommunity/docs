@@ -28,6 +28,13 @@ You probably have ideas about what you want your extension to do and how it shou
 
 A good way is to find extensions on the Marketplace that does similar things or uses similar elements as to what you want to do. Then find the source code for that extension and look at what they did and what APIs they used and go from there.
 
+## Book
+To jump start your learning of the Visual Studio extensibility model, consider the [Visual Studio Extensibility Development](https://www.amazon.com/Visual-Studio-Extensibility-Development-Productivity/dp/1484258525) book by Rishabh Verma.
+
+![Visual Studio Extensibility Development book cover](../assets/img/book.png)
+
+It's the best book available to learn from.
+
 ## [Glossary](#glossary)
 To better understand this cookbook and being able to search for help online, having a shared vocabulary of extensibility terms is critical. Here's an alphabetical list of concepts and words that are important for extenders to know.
 

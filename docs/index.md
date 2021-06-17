@@ -1,5 +1,5 @@
 ---
-title: Cookbook
+title: VSIX Cookbook
 description: Welcome to the Visual Studio Extensibility Cookbook
 date: 2021-5-24
 ---
