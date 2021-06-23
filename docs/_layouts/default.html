@@ -121,7 +121,7 @@
             });
 
             // Display alt text as caption under the image
-            var images = document.querySelectorAll("main img[alt]");
+            var images = document.querySelectorAll("main img[alt]:not([alt=''])");
             images.forEach(function (img) {
                 var caption = document.createElement("span");
                 caption.classList.add("caption");

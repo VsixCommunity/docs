@@ -6,7 +6,7 @@ date: 2021-5-24
 
 This cookbook will help you write successful Visual Studio extensions and there's something for absolute beginners to experts alike.
 
-<img src="assets/img/extensions.png" style="border:none;margin: 0 auto; display:block" />
+<img src="assets/img/extensions.png" alt="" style="border:none;margin: 0 auto; display:block" />
 
 ## Pick your starting point
 
