@@ -115,7 +115,6 @@ pre {
 
 code {
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-    word-wrap: break-word;
 }
 
 code .c1 {
@@ -149,6 +148,7 @@ p > code {
     font-size: 85%;
     padding: .1em .3em;
     border: 1px solid rgba(180, 180, 180, .3);
+    word-wrap: break-word;
 }
 
 header h1 {
