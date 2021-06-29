@@ -6,12 +6,12 @@ date: 2021-6-15
 
 Here's a collection of small code samples on different ways to work with files and documents.
 
-## [Get active document](#get-active-document)
-Get the current active document to manipulate the text or take other related actions.
+## [Get active text view](#get-active-document)
+Get the current active text view to manipulate its text buffer text.
 
 ```csharp
-var doc = await VS.Editor.GetActiveTextDocumentAsync();
-doc.Selection.Insert("some text"); // Inserts text at the caret or selection
+var view = await VS.Editor.GetCurrentTextViewAsync();
+view?.TextBuffer.Insert(view.Caret.Position.BufferPosition, "some text"); // Inserts text at the caret
 ```
 
 For more advanced capabilities, grab the `TextView` and its `TextBuffer` like this:
@@ -40,7 +40,7 @@ Use the `Microsoft.VisualStudio.Shell.VsShellUtilities` helper class.
 
 ```csharp
 string fileName = "c:\\file.txt";
-VsShellUtilities.OpenDocument(ServiceProvider.GlobalProvider, fileName);
+await VS.Editor.OpenFileAsync(fileName);
 ```
 
 ## [Open file via project](#open-file-via-project)
@@ -48,7 +48,7 @@ Use this method when the file you open is part of the solution.
 
 ```csharp
 string fileName = "c:\\file.txt";
-await VS.Shell.OpenDocumentViaProjectAsync(fileName);
+await VS.Editor.OpenFileViaProjectAsync(fileName);
 ```
 
 ## [Open file in Preview tab](#open-file-in-preview-tab)
@@ -56,7 +56,7 @@ The Preview tab, also known as the Provisional tab, is a temporary tab that open
 
 ```csharp
 string fileName = "c:\\file.txt";
-VS.Shell.OpenInPreviewTab(fileName);
+VS.Editor.OpenFileInPreviewTabAsync(fileName);
 ```
 
 ## [Get file name from ITextBuffer](#get-file-name-from-textbuffer)
@@ -66,11 +66,10 @@ Use the extension method `buffer.GetFileName()` located in the `Microsoft.Visual
 string fileName = buffer.GetFileName();
 ```
 
-## [ProjectItem from file](#projectitem-from-file)
-Find the `EnvDTE.ProjectItem` from an absolute file path.
+## [SolutionItem from file](#projectitem-from-file)
+Find the `SolutionItem` from an absolute file path.
 
 ```csharp
 string fileName = "c:\\file.txt";
-DTE2 dte = await VS.GetDTEAsync();
-ProjectItem item = dte.Solution?.FindProjectItem(fileName)
+SolutionItem? item = await SolutionItem.FromFileAsync(fileName);
 ```

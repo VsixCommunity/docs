@@ -103,15 +103,15 @@ namespace InsertGuid
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
             await Package.JoinableTaskFactory.SwitchToMainThreadAsync();
-            TextDocument doc = await VS.Editor.GetActiveTextDocumentAsync();
+            var view = await VS.Editor.GetCurrentTextViewAsync();
 
-            doc?.Selection.Insert(Guid.NewGuid().ToString());
+            view?.TextBuffer.Insert(view.Caret.Position.BufferPosition, Guid.NewGuid().ToString());
         }
     }
 }
 ```
 
-We're using the `VS` object to get the active document, and then inserts the guid in the selection. There is always a selection in the editor even if it is zero length.
+We're using the `VS` object to get the active editor text view, and then insert the guid at its text buffer's caret position.
 
 > You'll see `await JoinableTaskFactory.SwitchToMainThreadAsync()` and `ThreadHelper.ThrowIfNotOnUIThread()` in many places in this cookbook. They handle thread switching best practices and you don't need to know when and how to use them at this point - compiler warnings with Code Fixes (light bulbs) makes that super easy.
 
