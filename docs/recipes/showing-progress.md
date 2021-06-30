@@ -15,13 +15,13 @@ Using the API to show the status bar progress is fairly simple:
 
 ```csharp
 await Task.Delay(1000); // long running task
-await VS.Notifications.ShowStatusBarProgressAsync("Step 1/3", 1, 3);
+await VS.StatusBar.ShowProgressAsync("Step 1/3", 1, 3);
 
 await Task.Delay(1000); // long running task
-await VS.Notifications.ShowStatusBarProgressAsync("Step 2/3", 2, 3);
+await VS.StatusBar.ShowProgressAsync("Step 2/3", 2, 3);
 
 await Task.Delay(1000); // long running task
-await VS.Notifications.ShowStatusBarProgressAsync("Step 3/3", 3, 3);
+await VS.StatusBar.ShowProgressAsync("Step 3/3", 3, 3);
 
 // Progress ends as current step (3) and total steps (3) are equal
 ```
@@ -34,7 +34,7 @@ The Threaded Wait Dialog (TWD) is a progress indicator dialog that only pops up 
 The TWD cannot be shown whenever you want to. It is managed by Visual Studio such that it doesn't interfere the end user too often. Using it is requires more code than just using the Status Bar, but it is still a relatively simple API to use:  
 
 ```csharp
-var fac = await VS.Notifications.GetThreadedWaitDialogAsync() as IVsThreadedWaitDialogFactory;
+var fac = await VS.Services.GetThreadedWaitDialogAsync() as IVsThreadedWaitDialogFactory;
 IVsThreadedWaitDialog4 twd = fac.CreateInstance();
 
 twd.StartWaitDialog("Demo", "Working on it...", "", null, "", 1, true, true);
@@ -66,7 +66,7 @@ The API has more concepts than using the other methods of showing progress.
 ```csharp
 private async Task StartAsync()
 {
-    IVsTaskStatusCenterService tsc = await VS.Notifications.GetTaskStatusCenterAsync();
+    IVsTaskStatusCenterService tsc = await VS.Services.GetTaskStatusCenterAsync();
 
     var options = default(TaskHandlerOptions);
     options.Title = "My long running task";

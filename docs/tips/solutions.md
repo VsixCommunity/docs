@@ -10,11 +10,7 @@ Here's a collection of small code samples on different ways to work with solutio
 Listen to any solution event.
 
 ```csharp
-using Microsoft.VisualStudio.Shell.Events;
-
-... 
-
-SolutionEvents.OnAfterOpenProject += OnAfterOpenProject;
+VS.Events.SolutionEvents.OnAfterOpenProject += OnAfterOpenProject;
 
 ...
 
@@ -28,15 +24,14 @@ private void OnAfterOpenProject(object sender, OpenProjectEventArgs e)
 Check if a solution is currently open or opening.
 
 ```csharp
-IVsSolution solution = await VS.Solution.GetSolutionAsync();
-bool isOpen = solution.IsOpen();
-bool isOpening = solution.IsOpening();
+
+bool isOpen = await VS.Solution.IsOpenAsync();
+bool isOpening = await VS.Solution.IsOpeningAsync();
 ```
 
 ## [Get all projects in solution](#get-all-projects-in-solution)
 Get a list of all projects in the solution.
 
 ```csharp
-IVsSolution solution = await VS.Solution.GetSolutionAsync();
-IEnumerable<EnvDTE.Project> projects = solution.GetAllProjects();
+var projects = await VS.Solution.GetAllProjectsAsync();
 ```

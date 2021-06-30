@@ -10,16 +10,8 @@ Here's a collection of small code samples on different ways to work with files a
 Get the current active text view to manipulate its text buffer text.
 
 ```csharp
-var view = await VS.Editor.GetCurrentTextViewAsync();
+var view = await VS.Documents.GetCurrentTextViewAsync();
 view?.TextBuffer.Insert(view.Caret.Position.BufferPosition, "some text"); // Inserts text at the caret
-```
-
-For more advanced capabilities, grab the `TextView` and its `TextBuffer` like this:
-
-```csharp
-var view = await VS.Editor.GetCurrentWpfTextViewAsync();
-var buffer = view.TextBuffer;
-buffer.Insert(0, "some text"); // Inserts text at position 0
 ```
 
 ## [File icon associations](#file-icon-associations)
@@ -40,7 +32,7 @@ Use the `Microsoft.VisualStudio.Shell.VsShellUtilities` helper class.
 
 ```csharp
 string fileName = "c:\\file.txt";
-await VS.Editor.OpenFileAsync(fileName);
+await VS.Document.OpenAsync(fileName);
 ```
 
 ## [Open file via project](#open-file-via-project)
@@ -48,7 +40,7 @@ Use this method when the file you open is part of the solution.
 
 ```csharp
 string fileName = "c:\\file.txt";
-await VS.Editor.OpenFileViaProjectAsync(fileName);
+await VS.Documents.OpenViaProjectAsync(fileName);
 ```
 
 ## [Open file in Preview tab](#open-file-in-preview-tab)
@@ -56,7 +48,7 @@ The Preview tab, also known as the Provisional tab, is a temporary tab that open
 
 ```csharp
 string fileName = "c:\\file.txt";
-VS.Editor.OpenFileInPreviewTabAsync(fileName);
+await VS.Documents.OpenInPreviewTabAsync(fileName);
 ```
 
 ## [Get file name from ITextBuffer](#get-file-name-from-textbuffer)

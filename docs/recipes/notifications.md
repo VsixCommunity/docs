@@ -33,10 +33,10 @@ This will set the text in the statusbar to any string.
 
 ```csharp
 // call it from an async context
-await VS.Notifications.SetStatusbarTextAsync("My text");
+await VS.StatusBar.ShowMessageAsync("My text");
 
 // or from a synchronous method:
-VS.Notifications.SetStatusbarTextAsync("My text").FireAndForget();
+VS.StatusBar.ShowMessageAsync("My text").FireAndForget();
 ```
 
 ### [Animation icon](#animation-icon)
@@ -48,20 +48,20 @@ Simply specify which animation icon to use.
 
 ```csharp
 // call it from an async context
-await VS.Notifications.StartStatusbarAnimationAsync(StatusAnimation.Sync);
+await VS.StatusBar.StartAnimationAsync(StatusAnimation.Sync);
 
 // or from a synchronous method:
-VS.Notifications.StartStatusbarAnimationAsync(StatusAnimation.Sync).FireAndForget();
+VS.StatusBar.StartAnimationAsync(StatusAnimation.Sync).FireAndForget();
 ```
 
 Stop the animation again by calling `EndStatusbarAnimationAsync`.
 
 ```csharp
 // call it from an async context
-await VS.Notifications.EndStatusbarAnimationAsync(StatusAnimation.Sync);
+await VS.StatusBar.EndAnimationAsync(StatusAnimation.Sync);
 
 // or from a synchronous method:
-VS.Notifications.EndStatusbarAnimationAsync(StatusAnimation.Sync).FireAndForget();
+VS.StatusBar.EndAnimationAsync(StatusAnimation.Sync).FireAndForget();
 ```
 
 ## [Info bar](#info-bar)
@@ -80,7 +80,7 @@ var model = new InfoBarModel(
     KnownMonikers.PlayStepGroup,
     true);
 
-InfoBar infoBar = VS.Notifications.CreateInfoBar(ToolWindowGuids80.SolutionExplorer, model);
+InfoBar infoBar = VS.InfoBar.CreateInfoBar(ToolWindowGuids80.SolutionExplorer, model);
 infoBar.ActionItemClicked += InfoBar_ActionItemClicked;
 await infoBar.TryShowInfoBarUIAsync();
 
@@ -116,10 +116,10 @@ Use a message box when you need to block the UI to get the full attention of the
 
 ```csharp
 // Simple text box
-VS.Notifications.ShowMessage("Title", "The message");
+VS.MessageBox.Show("Title", "The message");
 
-// With buttons defined
-VS.Notifications.ShowMessage("Title", "The message", OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OKCANCEL);   
+// Async and with buttons defined
+await VS.MessageBox.ShowAsync("Title", "The message", OLEMSGICON.OLEMSGICON_INFO, OLEMSGBUTTON.OLEMSGBUTTON_OKCANCEL);   
 ```
 
 ## [Output Window](#output-window)
@@ -127,7 +127,7 @@ Use the Output Window to display information about exceptions and other textual 
 
 ![Text written to custom Output Window pane](../assets/img/output-window.png)
 
-Creating a custom Output Window pane and write to it is straight forward when using the ` VS.Windows.CreateOutputWindowPaneAsync` method.
+Creating a custom Output Window pane and write to it is straight forward when using the `VS.Windows.CreateOutputWindowPaneAsync` method.
 
 ```csharp
 OutputWindowPane pane = await VS.Windows.CreateOutputWindowPaneAsync("Name of pane");
