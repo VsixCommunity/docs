@@ -1,7 +1,7 @@
 ---
 title: Notifications
 description: A recipe for the various different ways to show notifications to users.
-date: 2021-5-25
+date: 2021-6-30
 ---
 
 There are several mechanisms for displaying notifications to the user of your extension. Picking the right one can be challenging, so let's look at the options.

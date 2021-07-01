@@ -1,7 +1,7 @@
 ---
 title: Working with projects
 description: Tips for working with projects.
-date: 2021-6-15
+date: 2021-6-30
 ---
 
 Here's a collection of small code samples on different ways to work with projects.

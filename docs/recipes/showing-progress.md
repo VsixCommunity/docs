@@ -1,7 +1,7 @@
 ---
 title: Showing progress
 description: Explains the different types of progress bars and when to use each of them
-date: 2021-6-15
+date: 2021-6-30
 ---
 
 There are several ways to show progress of a running background tasks in Visual Studio. Here's how to use them from your own extensions.
