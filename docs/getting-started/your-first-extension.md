@@ -1,7 +1,7 @@
 ---
 title: Your first extension
 description: Shows you the few simple steps to get your first Visual Studio extension up and running.
-date: 2021-6-30s
+date: 2021-8-12
 ---
 
 A Visual Studio extension is written using the .NET Framework and C#.

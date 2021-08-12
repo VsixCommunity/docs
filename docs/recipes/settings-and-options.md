@@ -1,7 +1,7 @@
 ---
 title: Settings & options
 description: A recipe for how to handle custom settings and options.
-date: 2021-6-2
+date: 2021-8-12
 ---
 
 Storing and retrieving settings is a must-have for many extensions. Let's explore how to work with settings with these goals in mind:
@@ -11,6 +11,10 @@ Storing and retrieving settings is a must-have for many extensions. Let's explor
 * Thread-safe way to access and modify the settings
 * Both synchronous and asynchronous support
 * No need to load the package for the settings to initialize
+
+<video controls poster="../assets/img/adding-options.png">
+  <source src="../assets/video/adding-options.mp4" type="video/mp4" />
+</video>
 
 Here's what it should look like in the **Tools -> Options** dialog.
 
