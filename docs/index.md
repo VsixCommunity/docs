@@ -6,7 +6,9 @@ date: 2021-5-24
 
 This cookbook will help you write successful Visual Studio extensions and there's something for absolute beginners to experts alike.
 
-<img src="assets/img/extensions.png" alt="" style="border:none;margin: 0 auto; display:block" />
+<video controls poster="../assets/img/intro-poster.png">
+  <source src="../assets/video/intro.mp4" type="video/mp4" />
+</video>
 
 ## Pick your starting point
 

@@ -6,6 +6,10 @@ date: 2021-5-24
 
 To write extensions you have to install the extensibility workload. That's technically all you need, but this set of documentation make use of the community driven extension called [Extensibility Essentials](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityEssentials2019).  
 
+<video controls poster="../assets/img/get-the-tools-poster.png">
+  <source src="../assets/video/get-the-tools.mp4" type="video/mp4" />
+</video>
+
 ## [Install extensibility workload](#install-extensibility-workload)
 
 Open the *Visual Studio Installer* from **Tools -> Get Tools and Features...** top menu inside Visual Studio and make sure to install the *Visual Studio extension development* workload found toward the bottom.
