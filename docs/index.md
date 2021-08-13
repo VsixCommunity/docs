@@ -1,7 +1,7 @@
 ---
 title: VSIX Cookbook
 description: Welcome to the Visual Studio Extensibility Cookbook
-date: 2021-5-24
+date: 2021-8-12
 ---
 
 This cookbook will help you write successful Visual Studio extensions and there's something for absolute beginners to experts alike.

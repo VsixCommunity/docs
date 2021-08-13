@@ -1,7 +1,7 @@
 ---
 title: Working with files
 description: Tips for working with files.
-date: 2021-6-30
+date: 2021-8-13
 ---
 
 Here's a collection of small code samples on different ways to work with files and documents.
@@ -10,8 +10,9 @@ Here's a collection of small code samples on different ways to work with files a
 Get the current active text view to manipulate its text buffer text.
 
 ```csharp
-var view = await VS.Documents.GetCurrentTextViewAsync();
-view?.TextBuffer.Insert(view.Caret.Position.BufferPosition, "some text"); // Inserts text at the caret
+DocumentView docView = await VS.Documents.GetActiveDocumentViewAsync();
+SnapshotPoint position = docView.TextView.Caret.Position.BufferPosition;
+docView?.TextBuffer.Insert(position, "some text"); // Inserts text at the caret
 ```
 
 ## [File icon associations](#file-icon-associations)
@@ -63,5 +64,5 @@ Find the `SolutionItem` from an absolute file path.
 
 ```csharp
 string fileName = "c:\\file.txt";
-SolutionItem? item = await SolutionItem.FromFileAsync(fileName);
+File item = await File.FromFileAsync(fileName);
 ```

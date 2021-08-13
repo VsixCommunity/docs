@@ -1,7 +1,7 @@
 ---
 title: Working with projects
 description: Tips for working with projects.
-date: 2021-6-30
+date: 2021-8-13
 ---
 
 Here's a collection of small code samples on different ways to work with projects.
@@ -10,22 +10,22 @@ Here's a collection of small code samples on different ways to work with project
 This is how to get the project from one if its files.
 
 ```csharp
-string fileName = "c:\\file\\in\\project.txt";
-SolutionItem item = await SolutionItem.FromFileAsync(fileName);
-SolutionItem project = Item?.FindParent(NodeType.Project);
+ string fileName = "c:\\file\\in\\project.txt";
+ File item = await File.FromFileAsync(fileName);
+ Project project = item.ContainingProject;
 ```
 
 ## [Add files to project](#add-files-to-project)
 Here's how to add files from disk to the project.
 
 ```csharp
-SolutionItem project = VS.Solution.GetActiveProjectAsync()
+Project project = await VS.Solutions.GetActiveProjectAsync();
 
-string file1 = "c:\\file\\in\\project\\1.txt";
-string file2 = "c:\\file\\in\\project\\2.txt";
-string file3 = "c:\\file\\in\\project\\3.txt";
+var file1 = "c:\\file\\in\\project\\1.txt";
+var file2 = "c:\\file\\in\\project\\2.txt";
+var file3 = "c:\\file\\in\\project\\3.txt";
 
-await project.AddItemsAsync(file1, file2, file3);
+await project.AddExistingFilesAsync(file1, file2, file3);
 ```
 
 ## [Find type of project](#find-type-of-project)

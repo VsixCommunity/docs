@@ -1,7 +1,7 @@
 ---
 title: Menus & commands
 description: A walkthrough of the menu and command system in Visual Studio
-date: 2021-5-24
+date: 2021-8-13
 ---
 
 Commands are most often used as buttons in menus around Visual Studio. To create a command requires two steps:
@@ -48,9 +48,7 @@ Make sure to call it from your `Package` class's `InitializeAsync` method.
 ```csharp
 protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
 {
-    await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-
-    await MyCommand.InitializeAsync(this);
+    await this.RegisterCommandsAsync();
  }    
 ```
 
