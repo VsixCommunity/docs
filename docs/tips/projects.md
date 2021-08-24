@@ -11,7 +11,7 @@ This is how to get the project from one if its files.
 
 ```csharp
  string fileName = "c:\\file\\in\\project.txt";
- File item = await File.FromFileAsync(fileName);
+ PhysicalFile item = await PhysicalFile.FromFileAsync(fileName);
  Project project = item.ContainingProject;
 ```
 

@@ -64,5 +64,5 @@ Find the `SolutionItem` from an absolute file path.
 
 ```csharp
 string fileName = "c:\\file.txt";
-File item = await File.FromFileAsync(fileName);
+PhysicalFile item = await PhysicalFile.FromFileAsync(fileName);
 ```
