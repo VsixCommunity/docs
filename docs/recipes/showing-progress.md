@@ -57,7 +57,7 @@ for (var currentStep = 1; currentStep <= totalSteps; currentStep++)
 ```
 
 ## [Task Status Center](#task-status-center)
-At the bottom left corner of the status bar is the Task Status Center (TSC). It is used to report progress on long running backgroud tasks and is used by many services in Visual Studio.
+At the bottom left corner of the status bar is the Task Status Center (TSC). It is used to report progress on long running background tasks and is used by many services in Visual Studio.
 
 ![Task Status Center showing running background task](../assets/img/task-status-center.gif)
 
