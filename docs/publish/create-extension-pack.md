@@ -30,7 +30,6 @@ Visual Studio opens the project in Solution Explorer and opens the file **Extens
     }
   ]
 }
-
 ```
 
 ## Add to existing extension
