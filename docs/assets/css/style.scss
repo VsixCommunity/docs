@@ -122,13 +122,15 @@ code .c1 {
     font-weight: 600;
 }
 
-code .s {
+code .s,
+code .nl {
     color: var(--code-s);
 }
 
 code .n,
 code .na,
-code .nc {
+code .nc,
+code .s2 {
     color: var(--code-n);
 }
 
