@@ -6,6 +6,10 @@ date: 2021-6-7
 
 A VSIX package is a .vsix file that contains one or more Visual Studio extensions, together with the metadata Visual Studio uses to classify and install the extensions. The VSIX package format follows the Open Packaging Conventions (OPC) standard which means it can be opened by any tool that can open ZIP files.
 
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/mCxdeRrZ7LE?list=PLReL099Y5nRdz9jvxuy_LgHFKowkx8tS4&color=white" title="YouTube video player" allowfullscreen></iframe>
+</div>
+
 ## [File structure](#file-structure)
 When creating a new extensions using the **VSIX Project w/Command (Community)** template, this is what the file structure looks like:
 
