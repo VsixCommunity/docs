@@ -1,14 +1,14 @@
 ---
 title: Best practices checklist
 description: This is a checklist to ensure your extension follows best practices before you publish it.
-date: 2021-8-12
+date: 2021-10-12
 ---
 
 Here is a list of things to make sure to remember before publishing your Visual Studio extension.
 
-<video controls poster="../assets/img/checklist-poster.png">
-  <source src="../assets/video/checklist.mp4" type="video/mp4" />
-</video>
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/9Wj9O4hRuSs?list=PLReL099Y5nRdz9jvxuy_LgHFKowkx8tS4&color=white" title="YouTube video player" allowfullscreen></iframe>
+</div>
 
 ## [Adhere to threading rules](#adhere-to-threading-rules)
 Add the [Microsoft.VisualStudio.SDK.Analyzers](https://www.nuget.org/packages/Microsoft.VisualStudio.SDK.Analyzers/) NuGet package to your VSIX project, which will help you discover and fix common violations of best practices regarding threading.

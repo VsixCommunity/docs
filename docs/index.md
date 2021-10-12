@@ -1,14 +1,14 @@
 ---
 title: VSIX Cookbook
 description: Welcome to the Visual Studio Extensibility Cookbook
-date: 2021-8-12
+date: 2021-10-12
 ---
 
 This cookbook will help you write successful Visual Studio extensions and there's something for absolute beginners to experts alike.
 
-<video controls poster="../assets/img/intro-poster.png">
-  <source src="../assets/video/intro.mp4" type="video/mp4" />
-</video>
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/aMsyHiso4Vs?list=PLReL099Y5nRdz9jvxuy_LgHFKowkx8tS4&color=white" title="YouTube video player" allowfullscreen></iframe>
+</div>
 
 ## Pick your starting point
 

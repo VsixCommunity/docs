@@ -1,7 +1,7 @@
 ---
 title: Settings & options
 description: A recipe for how to handle custom settings and options.
-date: 2021-8-12
+date: 2021-10-12
 ---
 
 Storing and retrieving settings is a must-have for many extensions. Let's explore how to work with settings with these goals in mind:
@@ -12,9 +12,9 @@ Storing and retrieving settings is a must-have for many extensions. Let's explor
 * Both synchronous and asynchronous support
 * No need to load the package for the settings to initialize
 
-<video controls poster="../assets/img/adding-options.png">
-  <source src="../assets/video/adding-options.mp4" type="video/mp4" />
-</video>
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/1ysOqnaiz1o?list=PLReL099Y5nRdz9jvxuy_LgHFKowkx8tS4&color=white" title="YouTube video player" allowfullscreen></iframe>
+</div>
 
 Here's what it should look like in the **Tools -> Options** dialog.
 

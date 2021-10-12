@@ -1,14 +1,14 @@
 ---
 title: Build custom tool windows
 description: A recipe for how to add custom tool windows to Visual Studio
-date: 2021-8-13
+date: 2021-10-12
 ---
 
-Custom tool windows are great options for adding complex UI to Visual Studio. 
+Custom tool windows are great options for adding complex UI to Visual Studio.
 
-<video controls poster="../assets/img/tool-windows-poster.png">
-  <source src="../assets/video/tool-windows.mp4" type="video/mp4" />
-</video>
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/E71vJjOEH4g?list=PLReL099Y5nRdz9jvxuy_LgHFKowkx8tS4&color=white" title="YouTube video player" allowfullscreen></iframe>
+</div>
 
 A tool window is a window that can be moved around and docked just like the Solution Explorer, Error List, and other well-known tool windows. A tool window consists of an outer shell provided by Visual Studio and a custom inner UI control, which is usually a XAML `<usercontrol>`, provided by the extension.
 

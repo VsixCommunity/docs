@@ -1,7 +1,7 @@
 ---
 title: Your first extension
 description: Shows you the few simple steps to get your first Visual Studio extension up and running.
-date: 2021-8-12
+date: 2021-10-12
 ---
 
 A Visual Studio extension is written using the .NET Framework and C#.
@@ -11,9 +11,9 @@ The extension we'll be writing today adds a command that inserts a new guid into
 
 If you're a visual learner, check out this short video of someone following the tutorial.
 
-<video controls poster="../assets/img/writing-your-first-extension.png">
-  <source src="../assets/video/writing-your-first-extension.mp4" type="video/mp4" />
-</video>
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/4JL8EawZMvY?list=PLReL099Y5nRdz9jvxuy_LgHFKowkx8tS4&color=white" title="YouTube video player" allowfullscreen></iframe>
+</div>
 
 Before we start writing our first Visual Studio extension (it's easy, I promise!), make sure you've got the [tools needed](get-the-tools.md).
 

@@ -1,13 +1,13 @@
 ---
 title: Create an extension pack
-date: 2021-9-29
+date: 2021-10-12
 ---
 
 An Extension Pack is a set of extensions that can be installed together. Extension Packs enable you to easily share your favorite extensions with other users or bundle a set of extensions together for a particular scenario.
 
-<video controls poster="../assets/img/extension-packs-poster.png">
-  <source src="../assets/video/extension-packs.mp4" type="video/mp4" />
-</video>
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/fCQdqHTjGNM?list=PLReL099Y5nRdz9jvxuy_LgHFKowkx8tS4&color=white" title="YouTube video player" allowfullscreen></iframe>
+</div>
 
 ## Create from project template
 The Extension Pack project template creates an Extension Pack with set of extensions that can be installed together.
