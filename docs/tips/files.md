@@ -11,8 +11,9 @@ Get the current active text view to manipulate its text buffer text.
 
 ```csharp
 DocumentView docView = await VS.Documents.GetActiveDocumentViewAsync();
+if (docView?.TextView == null) return; //not a text window
 SnapshotPoint position = docView.TextView.Caret.Position.BufferPosition;
-docView?.TextBuffer.Insert(position, "some text"); // Inserts text at the caret
+docView.TextBuffer?.Insert(position, "some text"); // Inserts text at the caret
 ```
 
 ## [File icon associations](#file-icon-associations)
