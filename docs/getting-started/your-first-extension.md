@@ -103,9 +103,10 @@ namespace InsertGuid
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {
             await Package.JoinableTaskFactory.SwitchToMainThreadAsync();
-            var view = await VS.Documents.GetCurrentTextViewAsync();
-
-            view?.TextBuffer.Insert(view.Caret.Position.BufferPosition, Guid.NewGuid().ToString());
+            DocumentView docView = await VS.Documents.GetActiveDocumentViewAsync();
+            if (docView?.TextView == null) return;
+            SnapshotPoint position = docView.TextView.Caret.Position.BufferPosition;
+            docView.TextBuffer?.Insert(position, Guid.NewGuid().ToString()); 
         }
     }
 }
