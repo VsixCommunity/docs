@@ -6,6 +6,10 @@ date: 2021-5-24
 
 These resources can help you better navigate the world of Visual Studio extensibility.
 
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/20KeLMeB5fo?list=PLReL099Y5nRdz9jvxuy_LgHFKowkx8tS4&color=white" title="YouTube video player" allowfullscreen></iframe>
+</div>
+
 ## [Links](#links)
 Here are some useful links to resources that can help you in your extension journey.
 
