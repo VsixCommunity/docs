@@ -34,7 +34,7 @@ Use the `Microsoft.VisualStudio.Shell.VsShellUtilities` helper class.
 
 ```csharp
 string fileName = "c:\\file.txt";
-await VS.Document.OpenAsync(fileName);
+await VS.Documents.OpenAsync(fileName);
 ```
 
 ## [Open file via project](#open-file-via-project)
