@@ -1,3 +1,4 @@
+
 ---
 title: Build custom tool windows
 description: A recipe for how to add custom tool windows to Visual Studio
@@ -140,6 +141,253 @@ internal sealed class MyToolWindowCommand : BaseCommand<MyToolWindowCommand>
 The command placement for tool windows is usually under **View -> Other Windows** in the main menu.
 
 That's it. Congratulations, you've now created your custom tool window.
+
+## [Add a toolbar to the tool window](#add-toolbar)
+
+> **Note: This will be easier once: 'Add a Toolbar to the Tool Window' is part of the [VsixCommunity/Community.VisualStudio.Toolkit](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit)** 
+> 
+Add, 
+```csharp
+ToolWindowMessenger toolWindowMessenger = await Package.GetServiceAsync<ToolWindowMessenger, ToolWindowMessenger>(); 
+```
+to  the MyToolWindow.cs class in the:
+```<language>
+public override async Task<FrameworkElement> CreateAsync(int toolWindowId, CancellationToken cancellationToken)
+```
+Task.
+
+In the return line update return type to:
+
+```csharp
+return new MyUserControl(toolWindowMessenger);
+```
+
+In the Pane class add the toolbar:
+
+```csharp
+ToolBar = new CommandID(PackageGuids.HelpExplorer, PackageIds.TWindowToolbar);
+```
+#### MyToolWindow.cs class: Completed update example:
+
+
+```csharp
+using System;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using Community.VisualStudio.Toolkit;
+using EnvDTE80;
+using Microsoft.VisualStudio.Imaging;
+using Microsoft.VisualStudio.Shell;
+
+public class MyToolWindow : BaseToolWindow<MyToolWindow>
+{
+    public override string GetTitle(int toolWindowId) => "My Tool Window";
+
+    public override Type PaneType => typeof(Pane);
+
+    public override async Task<FrameworkElement> CreateAsync(int toolWindowId, CancellationToken cancellationToken)
+    {
+        ToolWindowMessenger toolWindowMessenger = await Package.GetServiceAsync<ToolWindowMessenger, ToolWindowMessenger>();
+        await Task.Delay(2000); // Long running async task
+        return new MyUserControl(toolWindowMessenger);
+    }
+
+    // Give this a new unique guid
+    [Guid("d3b3ebd9-87d1-41cd-bf84-268d88953417")] 
+    internal class Pane : ToolWindowPane
+    {
+        public Pane()
+        {
+            // Set an image icon for the tool window
+            BitmapImageMoniker = KnownMonikers.StatusInformation;
+            ToolBar = new CommandID(PackageGuids.HelpExplorer, PackageIds.TWindowToolbar);
+        }
+    }
+}
+```
+Add a public variable to the MyToolWindowControl.xaml.cs:
+
+```csharp
+public ToolWindowMessenger ToolWindowMessenger = null;
+
+```
+In the MyToolWindowControl.xaml.cs class, update the class constructor input parameter for ToolWindowMessenger:
+
+```csharp
+public MyToolWindowControl(ToolWindowMessenger toolWindowMessenger)
+```
+
+In the MyToolWindowControl.xaml.cs classconstructor also add add check for passed in parameter == null and add event to watch for:
+
+```csharp
+if (toolWindowMessenger == null)
+{
+    toolWindowMessenger = new ToolWindowMessenger();
+}
+    ToolWindowMessenger = toolWindowMessenger;
+    toolWindowMessenger.MessageReceived += OnMessageReceived;
+```
+
+Add a private void OnMessageReceived(object sender, string e) event handler to MyToolWindowControl.xaml.cs class:
+
+```csharp
+private void OnMessageReceived(object sender, string e)
+{
+    ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
+    {
+        switch (e)
+        {
+            case "CommandButton1 Message":
+                await [method1 to call in MyToolWindowControl.xaml.cs class];
+                break;
+            case "CommandButton2 Message":
+                await [method2 to call in MyToolWindowControl.xaml.cs class];
+                break;
+            default:
+                break;
+        }
+    }).FireAndForget();
+}
+```
+
+To your ToolWindow project add new ToolWindowMessenger.cs class and update the public class ToolWindowMessenger as follows:
+
+```csharp
+    public class ToolWindowMessenger
+    {
+        public void Send(string message)
+        {
+            // The tooolbar button will call this method.
+            // The tool window has added an event handler
+            MessageReceived?.Invoke(this, message);
+        }
+        public event EventHandler<string> MessageReceived;
+    }
+```
+
+In the project folder add a new Item: Select 'Extensibility' under 'Visual C# Items', and then 'Command (Cummunity)' Give the Command the name CommandButton1 and click Add.
+
+Note: Repeat this process for each button you want in the Toolbar inside the ToolWindow.
+
+The results should look similar to this:
+
+```csharp
+    [Command("<insert guid from .vsct file>", 0x0100)]
+    internal sealed class CommandButton1 : BaseCommand<CommandButton1>
+    {
+        protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
+        {
+            await VS.MessageBox.ShowWarningAsync("CommandButton1", "Button clicked");
+        }
+    }
+
+```
+Now replace the the above line: 
+
+```csharp
+[Command("<insert guid from .vsct file>", 0x0100)] 
+
+```
+with (Note: Get the PackageIds from the extension projects VSCommandTable.vsct file)
+
+```csharp
+[Command(PackageIds.MyCommandButton1CommandId)]
+
+```
+Replace line:
+
+```csharp
+await VS.MessageBox.ShowWarningAsync("CommandButton1", "Button clicked");
+
+```
+with:
+
+```csharp
+await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
+    {
+        await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+        ToolWindowMessenger messenger = await Package.GetServiceAsync<ToolWindowMessenger, ToolWindowMessenger>();
+        messenger.Send("CommandButton1 Message");
+    }).FireAndForget();
+```
+
+In you [projectname]Package.cs class Register you ProvideService:
+
+```csharp
+[ProvideService(typeof(ToolWindowMessenger), IsAsyncQueryable = true)]
+```
+
+Add the Service to the class construtor:
+
+```csharp
+AddService(typeof(ToolWindowMessenger), (_, _, _) => Task.FromResult<object>(new ToolWindowMessenger()));
+await this.RegisterCommandsAsync();
+this.RegisterToolWindows();
+
+```
+
+Mow edit you VSCommandTable.vsct
+
+Under Symbols\IDSymbol secion, add at least three items:
+
+1. The ToolBar name and value (i.e  name="TWindowToolbar" value="0x1000")
+2. The ToolBarGroup name and value (i.e name="TWindowToolbarGroup" value="0x1050")
+3. The CommandButton1 name and value (name="CommandButton1" value="0x0111")
+
+```xml
+   <Symbols>
+    <GuidSymbol name="MyToolWindowSample" value="{3fe2213e-0041-46e6-93bb-7db123589c7e}">
+        <IDSymbol name="MyCommand" value="0x0100" />
+        <IDSymbol name="TWindowToolbar" value="0x1000" />
+        <IDSymbol name="TWindowToolbarGroup" value="0x1050" />
+        <IDSymbol name="CommandButton1" value="0x0111" />
+    </GuidSymbol>
+  </Symbols>
+```
+
+Now under the Commands package section add Menus element and Menu elements:
+
+```xml
+<Menus>
+    <Menu guid="MyToolWindowSample" id="TWindowToolbar" type="ToolWindowToolbar">
+    <CommandFlag>DefaultDocked</CommandFlag>
+    <Strings>
+        <ButtonText>Tool Window Toolbar</ButtonText>
+    </Strings>
+    </Menu>
+</Menus>
+```
+
+Now between Menus element and Buttons element add Goups element:
+
+```xml
+<Groups>
+    <Group guid="MyToolWindowSample" id="TWindowToolbarGroup" priority="0x0000">
+    <Parent guid="MyToolWindowSample" id="TWindowToolbar" />
+    </Group>
+</Groups>
+
+```
+
+Now in the Buttons element add new button element for your command:
+
+```xml
+<Button guid="MyToolWindowSample" id="CommandButton1" priority="0x0001" type="Button">
+<Parent guid="MyToolWindowSample" id="TWindowToolbarGroup"/>
+<Icon guid="ImageCatalogGuid" id="DynamicDiscoveryDocument"/>
+<CommandFlag>IconIsMoniker</CommandFlag>
+<!--<CommandFlag>IconAndText</CommandFlag>-->
+<Strings>
+    <ButtonText>ComamndButton1 Text</ButtonText>
+</Strings>
+</Button>
+```
+
+In the Button element you added change the Icon id to what ever VS Icon Moniker you want to use. 
+VS IntelliSense should Should provide you a list while you edit. Or you can install [KnowMonikers Explorer 2022](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.KnownMonikersExplorer2022)
 
 ## [Get the source code](#source-code)
 You can find the source code for this recipe in the [samples repository](https://github.com/VsixCommunity/Samples/tree/master/ToolWindow).
