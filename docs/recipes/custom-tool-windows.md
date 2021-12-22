@@ -175,9 +175,8 @@ ToolBar = new CommandID(PackageGuids.HelpExplorer, PackageIds.TWindowToolbar);
 ```
 
 
-#### MyToolWindow.cs class: Completed update example:
-.
-
+#### MyToolWindow.cs class: Example:
+Complete Class example.
 
 
 ```csharp
