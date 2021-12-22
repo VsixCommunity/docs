@@ -175,10 +175,12 @@ ToolBar = new CommandID(PackageGuids.HelpExplorer, PackageIds.TWindowToolbar);
 ```
 
 
-#### MyToolWindow.cs class: Completed update example:
+### MyToolWindow.cs class: Completed update example:
+
 
 
 ```csharp
+
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
