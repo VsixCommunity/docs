@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<ArrayOfArrayOfArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ArrayOfArrayOfString>
-    <ArrayOfString>
-      <string>D:\Users\DannyMcNaught\source\repos\docs\docs\recipes\custom-tool-windows.md</string>
-    </ArrayOfString>
-  </ArrayOfArrayOfString>
-</ArrayOfArrayOfArrayOfString>
