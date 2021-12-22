@@ -144,17 +144,23 @@ That's it. Congratulations, you've now created your custom tool window.
 
 ## [Add a toolbar to the tool window](#add-toolbar)
 
+
 > **Note: This will be easier once: 'Add a Toolbar to the Tool Window' is part of the [VsixCommunity/Community.VisualStudio.Toolkit](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit)** 
-> 
+
+
 Add, 
+
 ```csharp
 ToolWindowMessenger toolWindowMessenger = await Package.GetServiceAsync<ToolWindowMessenger, ToolWindowMessenger>(); 
 ```
-to  the MyToolWindow.cs class in the:
+
+
+to  the MyToolWindow.cs class in the Task:
+
+
 ```<language>
 public override async Task<FrameworkElement> CreateAsync(int toolWindowId, CancellationToken cancellationToken)
 ```
-Task.
 
 In the return line update return type to:
 
@@ -167,6 +173,8 @@ In the Pane class add the toolbar:
 ```csharp
 ToolBar = new CommandID(PackageGuids.HelpExplorer, PackageIds.TWindowToolbar);
 ```
+
+
 #### MyToolWindow.cs class: Completed update example:
 
 
@@ -387,7 +395,7 @@ Now in the Buttons element add new button element for your command:
 ```
 
 In the Button element you added change the Icon id to what ever VS Icon Moniker you want to use. 
-VS IntelliSense should Should provide you a list while you edit. Or you can install [KnowMonikers Explorer 2022](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.KnownMonikersExplorer2022)
+VS IntelliSense should provide you a list while you edit. Or you can install [KnowMonikers Explorer 2022](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.KnownMonikersExplorer2022)
 
 ## [Get the source code](#source-code)
 You can find the source code for this recipe in the [samples repository](https://github.com/VsixCommunity/Samples/tree/master/ToolWindow).
