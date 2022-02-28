@@ -265,6 +265,7 @@ You should now see the following when you open your option page.
 > Note: Since this is WPF you can add what ever addition Textblocks you want to provide more details about the option.
 
 
+
 ## [Reading and writing options](#reading-and-writing-options)
 Now that you've registered the options to let your users change their values, it's time to read those values to use in our extension.
 
