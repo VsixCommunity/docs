@@ -111,6 +111,161 @@ public Numbers MyEnum { get; set; } = Numbers.First;
 
 ![Dropdown with enum values on the options page](../assets/img/tools-options-enum.png)
 
+
+## [Walkthrough: Create individual Options with Checkboxes](#Walkthrough-Create-individual-Options-with-Checkboxes)
+
+If you want to have individual options display Checkboxes, you have to create a custom option page.
+You will still use all the classes you created above but now you must create a WPF UIElementDialogPage.
+
+This WPF page will allow you to take total control of how your option is displayed in Tools Option Menu. We are not limited to just Checkboxes. 
+
+All WPF controls can be used.
+
+- CheckBox
+- TextBlock
+- TextBox
+- RadioButton
+- etc.
+
+
+You will need to create two additional files: A WPF Xaml file that holds your controls and a C# Class that initializes your option page.
+
+The following OptionsProvider code you created above does not change.
+
+
+```csharp
+internal partial class OptionsProvider
+{
+    // Register the options with these attributes on your package class:
+    // [ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
+    // [ProvideProfile(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
+    public class GeneralOptions : BaseOptionPage<General> { }
+}
+
+public class General : BaseOptionModel<General>
+{
+    [Category("My category")]
+    [DisplayName("My Option")]
+    [Description("An informative description.")]
+    [DefaultValue(true)]
+    public bool MyOption { get; set; } = true;
+}
+```
+
+
+Now create a new class GeneralOptionPage.cs.
+
+Add two using statements:
+
+```csharp
+using System.Runtime.InteropServices;
+using System.Windows;
+```
+
+Add the following code to the GeneralOptionPage.cs. 
+
+> Note: Make sure you replace the Guid with a new unique Guid.
+
+```csharp
+    [ComVisible(true)]
+    [Guid("D8B47497-8AC9-4E2E-9D62-D8E8E7A47AA4")]
+
+    public class GeneralOptionPage : UIElementDialogPage
+    {
+        protected override UIElement Child
+        {
+            get
+            {
+                GeneralOptions page = new GeneralOptions
+                {
+                    generalOptionsPage = this
+                };
+                page.Initialize();
+                return page;
+            }
+        }
+    }
+```
+
+
+Now create a new WPF UserControl called GeneralOptions.
+
+Add a WPF CheckBox named cbMyOption to the Grid in the GeneralOptions.xaml file then and add two events, Checked and Unchecked.
+
+
+```xml
+    <Grid>
+        <CheckBox x:Name="cbMyOption" Content="My Option" HorizontalAlignment="Left"
+                  Margin="30,36,0,0" VerticalAlignment="Top"
+                  IsThreeState="False"
+                  Checked="cbMyOption_Checked" Unchecked="cbMyOption_Unchecked"/>
+    </Grid>
+```
+
+
+![WPF Grid Check Box](WPFGridCheckBox.png)
+
+
+In the code behide GeneralOptions.xaml.cs file update or add the following:
+
+
+```csharp
+    public partial class GeneralOptions : UserControl
+    {
+        public GeneralOptions()
+        {
+            InitializeComponent();
+        }
+        internal GeneralOptionPage generalOptionsPage;
+
+        public void Initialize()
+        {
+            cbMyOption.IsChecked = General.Instance.MyOption;
+            General.Instance.Save();
+        }
+
+        private void cbMyOption_Checked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            General.Instance.MyOption = (bool)cbMyOption.IsChecked;
+            General.Instance.Save();
+        }
+
+        private void cbMyOption_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            General.Instance.MyOption = (bool)cbMyOption.IsChecked;
+            General.Instance.Save();
+        }
+    }
+```
+
+Now update you Package class and replace the entries you entered above to the following:
+
+from this:
+
+```csharp
+[ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
+[ProvideProfile(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
+```
+
+To this:
+
+```csharp
+[ProvideOptionPage(typeof(GeneralOptionPage), "MyExtension", "General", 0, 0, true)]
+[ProvideProfile(typeof(GeneralOptionPage), "MyExtension", "General", 0, 0, true)]
+```
+
+Build and debug to the experimetal instance of Visaul Studio.
+
+You should now see the following when you open your option page.
+
+![General Option Page](GeneralOptionPage.png)
+
+
+
+> Note: Since this is WPF you can add what ever addition Textblocks you want to provide more details about the option.
+
+
+
 ## [Reading and writing options](#reading-and-writing-options)
 Now that you've registered the options to let your users change their values, it's time to read those values to use in our extension.
 
