@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\docs",
+    "\\docs\\recipes",
+    "\\Local settings (.vs)"
   ],
-  "SelectedNode": "\\C:\\Users\\DannyMcNaught\\Source\\Repos\\docs",
+  "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
 }
