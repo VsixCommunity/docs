@@ -267,6 +267,7 @@ You should now see the following when you open your option page.
 
 
 
+
 ## [Reading and writing options](#reading-and-writing-options)
 Now that you've registered the options to let your users change their values, it's time to read those values to use in our extension.
 
