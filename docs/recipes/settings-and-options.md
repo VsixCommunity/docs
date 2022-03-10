@@ -114,6 +114,7 @@ public Numbers MyEnum { get; set; } = Numbers.First;
 
 ## [Walkthrough: Create individual Options with Checkboxes](#Walkthrough-Create-individual-Options-with-Checkboxes)
 
+
 If you want to have individual options display Checkboxes, you have to create a custom option page.
 You will still use all the classes you created above but now you must create a WPF UIElementDialogPage.
 
@@ -263,6 +264,7 @@ You should now see the following when you open your option page.
 
 
 > Note: Since this is WPF you can add what ever addition Textblocks you want to provide more details about the option.
+
 
 
 
