@@ -3753,7 +3753,7 @@ Get the full source solution for this walkthrough from:
 ### [Contribute to LinqLanguageEditor2022 Project](#Contribute-to-LinqLanguageEditor2022-Project)
 
 You are invited to become a Contributor to the [LinqLanguageEditor2022](https://github.com/SFC-Sarge/LinqLanguageEditor2022) project on GitHub.
-With you help we can makke it better for all developers.
+With your help we can make it better for all developers.
 
 Possible Changes:
 
