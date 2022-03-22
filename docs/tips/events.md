@@ -6,7 +6,7 @@ date: 2021-6-30
 
 Here's a collection of small code samples on different ways to listen to events.
 
-## [IVsRunningDocTableEvents Interface](#IVsRunningDocTableEvents-Interface)
+# [IVsRunningDocTableEvents Interface](#IVsRunningDocTableEvents-Interface)
 
 Implements methods that fire in response to changes to documents in the Running Document Table (RDT).
 
@@ -14,16 +14,17 @@ Implements methods that fire in response to changes to documents in the Running 
 Microsoft docs: [IVsRunningDocTableEvents Interface](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents?view=visualstudiosdk-2022)
 
 <!--TOC-->
-    - [[IVsRunningDocTableEvents Code Samples](#IVsRunningDocTableEvents-Code-Samples)](#ivsrunningdoctableevents-code-samplesivsrunningdoctableevents-code-samples)
-      - [[OnAfterFirstDocumentLock](#OnAfterFirstDocumentLock)](#onafterfirstdocumentlockonafterfirstdocumentlock)
-      - [[OnBeforeLastDocumentUnlock](#OnBeforeLastDocumentUnlock)](#onbeforelastdocumentunlockonbeforelastdocumentunlock)
-      - [[OnAfterSave](#OnAfterSave)](#onaftersaveonaftersave)
-      - [OnAfterAttributeChangeOnAfterAttributeChange)](#onafterattributechangeonafterattributechange)
-      - [[OnBeforeDocumentWindowShow](#OnBeforeDocumentWindowShow)](#onbeforedocumentwindowshowonbeforedocumentwindowshow)
-      - [[OnAfterDocumentWindowHide](#OnAfterDocumentWindowHide)](#onafterdocumentwindowhideonafterdocumentwindowhide)
+- [IVsRunningDocTableEvents Code Samples](#ivsrunningdoctableevents-code-samples)
+  - [OnAfterFirstDocumentLock](#onafterfirstdocumentlock)
+  - [OnBeforeLastDocumentUnlock](#onbeforelastdocumentunlock)
+  - [OnAfterSave](#onaftersave)
+  - [OnAfterAttributeChange](#onafterattributechange)
+  - [OnBeforeDocumentWindowShow](#onbeforedocumentwindowshow)
+  - [OnAfterDocumentWindowHide](#onafterdocumentwindowhide)
 <!--/TOC-->
 
-### [IVsRunningDocTableEvents Code Samples](#IVsRunningDocTableEvents-Code-Samples)
+
+# IVsRunningDocTableEvents Code Samples
 
 You must have a using statement for:
 
@@ -40,7 +41,7 @@ internal class Pane : ToolWindowPane, IVsRunningDocTableEvents
 }
 ```
 
-#### [OnAfterFirstDocumentLock](#OnAfterFirstDocumentLock)
+## OnAfterFirstDocumentLock
 
 [OnAfterFirstDocumentLock](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onafterfirstdocumentlock?view=visualstudiosdk-2022) is called after application of the first lock of the specified type to the specified document in the Running Document Table (RDT).
 
@@ -79,7 +80,7 @@ public int OnAfterFirstDocumentLock(uint docCookie, uint dwRDTLockType, uint dwR
 ```
 
 
-#### [OnBeforeLastDocumentUnlock](#OnBeforeLastDocumentUnlock)
+## OnBeforeLastDocumentUnlock
 
 
 [OnBeforeLastDocumentUnlock](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onbeforelastdocumentunlock?view=visualstudiosdk-2022) is called before releasing the last lock of the specified type on the specified document in the Running Document Table (RDT).
@@ -116,7 +117,7 @@ public int OnBeforeLastDocumentUnlock(uint docCookie, uint dwRDTLockType, uint d
 }
 ```
 
-#### [OnAfterSave](#OnAfterSave)
+## OnAfterSave
 
 
 [OnAfterSave](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onaftersave?view=visualstudiosdk-2022) is called after saving a document in the Running Document Table (RDT).
@@ -155,7 +156,7 @@ public int OnAfterSave(uint docCookie)
 }
 ```
 
-#### OnAfterAttributeChangeOnAfterAttributeChange)
+## OnAfterAttributeChange
 
 [OnAfterAttributeChange](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onafterattributechange?view=visualstudiosdk-2022) is called after a change in an attribute of a document in the Running Document Table (RDT).
 
@@ -193,7 +194,7 @@ public int OnAfterAttributeChange(uint docCookie, uint grfAttribs)
 }
 ```
 
-#### [OnBeforeDocumentWindowShow](#OnBeforeDocumentWindowShow)
+## OnBeforeDocumentWindowShow
 
 [OnBeforeDocumentWindowShow](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onbeforedocumentwindowshow?view=visualstudiosdk-2022) is called before displaying a document window.
 
@@ -308,7 +309,7 @@ public int OnBeforeDocumentWindowShow(uint docCookie, int fFirstShow, IVsWindowF
 }
 ```
 
-#### [OnAfterDocumentWindowHide](#OnAfterDocumentWindowHide)
+## OnAfterDocumentWindowHide
 
 [OnAfterDocumentWindowHide](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onafterdocumentwindowhide?view=visualstudiosdk-2022) is called after a document window is placed in the Hide state.
 
