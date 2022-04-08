@@ -32,7 +32,7 @@ You must have a using statement for:
 using Microsoft.VisualStudio.Shell.Interop;
 ```
 
-In the class where you want to handle the eventsm you must implament the interface: [IVsRunningDocTableEvents](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents?view=visualstudiosdk-2022)
+In the class where you want to handle the events you must implement the interface: [IVsRunningDocTableEvents](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents?view=visualstudiosdk-2022)
 
 ``` CSharp
 internal class Pane : ToolWindowPane, IVsRunningDocTableEvents
