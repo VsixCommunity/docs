@@ -21,6 +21,13 @@ Project project = await VS.Solutions.GetActiveProjectAsync();
 await project.BuildAsync(BuildAction.Rebuild);
 ```
 
+## [Pack project](#pack-project)
+SDK style .NET projects can be packed by executiong Visual Studio's built in command. See [#318](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit/issues/318).
+```csharp
+await Package.JoinableTaskFactory.SwitchToMainThreadAsync(Package.DisposalToken);
+await VS.Commands.ExecuteAsync("Build.Packselection");
+```
+
 ## [Set build property](#set-build-property)
 Shows how to set a build property on the project.
 
