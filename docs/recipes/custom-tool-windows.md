@@ -1,4 +1,3 @@
-
 ---
 title: Build custom tool windows
 description: A recipe for how to add custom tool windows to Visual Studio
