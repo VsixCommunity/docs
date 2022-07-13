@@ -49,7 +49,7 @@ for (var currentStep = 1; currentStep <= totalSteps; currentStep++)
     await Task.Delay(1000); // long running task
 }
 
-// Dismisses the dialog
+twd.EndWaitDialog();
 (twd as IDisposable).Dispose();
 ```
 
