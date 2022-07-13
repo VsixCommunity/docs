@@ -47,13 +47,10 @@ for (var currentStep = 1; currentStep <= totalSteps; currentStep++)
     twd.UpdateProgress("In progress", text, text, currentStep, totalSteps, true, out _);
 
     await Task.Delay(1000); // long running task
-
-    if (currentStep == totalSteps)
-    {
-        // Dismisses the dialog
-        (twd as IDisposable).Dispose();
-    }
 }
+
+// Dismisses the dialog
+(twd as IDisposable).Dispose();
 ```
 
 ## [Task Status Center](#task-status-center)
