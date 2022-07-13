@@ -34,7 +34,7 @@ The Threaded Wait Dialog (TWD) is a progress indicator dialog that only pops up 
 The TWD cannot be shown whenever you want to. It is managed by Visual Studio such that it doesn't interfere the end user too often. Using it is requires more code than just using the Status Bar, but it is still a relatively simple API to use:  
 
 ```csharp
-var fac = await VS.Services.GetThreadedWaitDialogAsync() as IVsThreadedWaitDialogFactory;
+var fac = (IVsThreadedWaitDialogFactory)await VS.Services.GetThreadedWaitDialogAsync();
 IVsThreadedWaitDialog4 twd = fac.CreateInstance();
 
 twd.StartWaitDialog("Demo", "Working on it...", "", null, "", 1, true, true);
