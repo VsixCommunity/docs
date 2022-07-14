@@ -80,7 +80,7 @@ var model = new InfoBarModel(
     KnownMonikers.PlayStepGroup,
     true);
 
-InfoBar infoBar = VS.InfoBar.CreateInfoBar(ToolWindowGuids80.SolutionExplorer, model);
+InfoBar infoBar = await VS.InfoBar.CreateAsync(ToolWindowGuids80.SolutionExplorer, model);
 infoBar.ActionItemClicked += InfoBar_ActionItemClicked;
 await infoBar.TryShowInfoBarUIAsync();
 
@@ -97,14 +97,14 @@ private void InfoBar_ActionItemClicked(object sender, InfoBarActionItemEventArgs
 }
 ```
 
-To add an Info Bar to a document window, simply pass in a file name of an open document to the `VS.Notifications.CreateInfoBar(fileName, model)` method.
+To add an Info Bar to a document window, simply pass in a file name of an open document to the `VS.InfoBar.CreateAsync(fileName, model)` method.
 
 ![An Info Bar showing at the top of a document](../assets/img/info-bar-document.png)
 
 If you want to the Info Bar directly to an `ITextView`, then you can do that with this handy extension method:
 
 ```csharp
-InfoBar infoBar = textView.CreateInfoBar(model);
+InfoBar infoBar = await textView.CreateInfoBarAsync(model);
 ```
 
 ## [Message box](#message-box)
