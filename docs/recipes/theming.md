@@ -61,7 +61,7 @@ Notice the imported namespaces for both the toolkit and the platform and the att
 That's all there is to it. Your dialog window is now themed using Visual Studio colors and styling.
 
 ## [Get the source code](#source-code)
-You can find the source code for this extension in the [Community Toolkit test project](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit/tree/master/test/VSSDK.TestExtension).
+You can find the source code for this extension in the [Community Toolkit test project](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit/tree/master/demo/VSSDK.TestExtension).
 
 ## [Additional resources](#additional-resources)
 Learn more about Visual Studio colors from these resources.
