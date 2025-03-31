@@ -32,9 +32,9 @@ Here's the content of the General.cs file:
 ```csharp
 internal partial class OptionsProvider
 {
-    // Register the options with these attributes on your package class:
-    // [ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
-    // [ProvideProfile(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
+    // Register the options with this attribute on your package class:
+    // [ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true, SupportsProfiles = true)]
+    [ComVisible(true)]
     public class GeneralOptions : BaseOptionPage<General> { }
 }
 
@@ -53,11 +53,10 @@ It's short and simple and we'll go over the details. But first, we must register
 ## [Register the Options page](#register-the-options-page)
 In a code comment in the *General.cs* file are instructions how to register the Options page.
 
-All we have to do is to copy those two attributes into our Package class. That might look something like this:
+All we have to do is to copy the `ProvideOptionsPage` attribute into our Package class. That might look something like this:
 
 ```csharp
-[ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
-[ProvideProfile(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
+[ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true, SupportsProfiles = true)]
 public sealed class OptionsPackage : ToolkitPackage
 {
     ...
@@ -68,11 +67,8 @@ Running the extension, we should now see the **MyExtension/General** options pag
 
 ![Custom options page registered](../assets/img/tools-options.png)
 
-The two attributes are very similar but handles different scenarios.
-
 The `ProvideOptionsPage` attribute is what makes the Options page show up in the **Tools -> Options** dialog. You can omit this attribute if you don't want the options page visible to your users.
-
-`ProvideProfile` registers the options on the roaming profile, which means the individual settings will roam with the user's account across instances and installs of Visual Studio. It also enables the import/export settings feature of Visual Studio. This attribute is optional.
+The `SupportsProfiles` flag on this attribute  registers the options on the roaming profile, which means the individual settings will roam with the user's account across instances and installs of Visual Studio. It also enables the import/export settings feature of Visual Studio. This attribute is optional.
 
 ## [The individual options](#the-individual-options)
 In the General.cs file, you can see how individual options are nothing more than simple C# properties decorated with attributes.
@@ -137,9 +133,9 @@ The following OptionsProvider code you created above does not change.
 ```csharp
 internal partial class OptionsProvider
 {
-    // Register the options with these attributes on your package class:
-    // [ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
-    // [ProvideProfile(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
+    // Register the options with this attribute on your package class:
+    // [ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true, SupportsProfiles = true)]
+    [ComVisible(true)]
     public class GeneralOptions : BaseOptionPage<General> { }
 }
 
@@ -160,7 +156,7 @@ Add two using statements:
 
 ```csharp
 using System.Runtime.InteropServices;
-using System.Windows;
+using WindowsUI = System.Windows;
 ```
 
 Add the following code to the GeneralOptionPage.cs. 
@@ -173,7 +169,7 @@ Add the following code to the GeneralOptionPage.cs.
 
     public class GeneralOptionPage : UIElementDialogPage
     {
-        protected override UIElement Child
+        protected override WindowsUI.UIElement Child
         {
             get
             {
@@ -207,7 +203,7 @@ Add a WPF CheckBox named cbMyOption to the Grid in the GeneralOptions.xaml file 
 ![WPF Grid Check Box](WPFGridCheckBox.png)
 
 
-In the code behide GeneralOptions.xaml.cs file update or add the following:
+In the code behind GeneralOptions.xaml.cs file update or add the following:
 
 
 ```csharp
@@ -239,31 +235,29 @@ In the code behide GeneralOptions.xaml.cs file update or add the following:
     }
 ```
 
-Now update you Package class and replace the entries you entered above to the following:
+Now update your Package class and replace the entry you entered above to the following:
 
-from this:
+From this:
 
 ```csharp
-[ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
-[ProvideProfile(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true)]
+[ProvideOptionPage(typeof(OptionsProvider.GeneralOptions), "MyExtension", "General", 0, 0, true, SupportsProfiles = true)]
 ```
 
 To this:
 
 ```csharp
-[ProvideOptionPage(typeof(GeneralOptionPage), "MyExtension", "General", 0, 0, true)]
-[ProvideProfile(typeof(GeneralOptionPage), "MyExtension", "General", 0, 0, true)]
+[ProvideOptionPage(typeof(GeneralOptionPage), "MyExtension", "General", 0, 0, true, SupportsProfiles = true)]
 ```
 
-Build and debug to the experimetal instance of Visaul Studio.
+Build and debug to the experimental instance of Visual Studio.
 
 You should now see the following when you open your option page.
 
-![General Option Page](GeneralOptionPage.png)
+![General Option Page](../assets/img/GeneralOptionPage.png)
 
 
 
-> Note: Since this is WPF you can add what ever addition Textblocks you want to provide more details about the option.
+> Note: Since this is WPF you can add whatever additional UI elements like for e.g. Textboxes, to provide more details about an option.
 
 
 
