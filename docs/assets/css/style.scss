@@ -447,6 +447,10 @@ footer li:not(:last-child):after{
         padding: 0 10px;
     }
     
+    main {
+        gap: 0;
+    }
+    
     #menu {
         padding: .8em 0 0 0;
         border: none;
