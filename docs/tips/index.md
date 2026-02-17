@@ -29,3 +29,6 @@ Get the current selection and listen for selection changes in tool and document 
 
 ## [Working with the shell](shell.html)
 Access shell services, open URLs, and prompt for restart.
+
+## [Working with services](services.html)
+Retrieve VS services, MEF services, and set up dependency injection.
