@@ -33,4 +33,13 @@ Theme your tool windows and dialogs to match Visual Studio's color themes.
 ## [Error Handling](error-handling.html)
 Handle and log exceptions in your extension.
 
+## [Dynamic Commands](dynamic-commands.html)
+Create dynamic menu items that change at runtime based on data.
+
+## [Fonts & Colors](fonts-and-colors.html)
+Register custom font and color categories that users can customize in Tools → Options.
+
+## [Solution Explorer](solution-explorer.html)
+Select, expand, filter, and edit items in the Solution Explorer window.
+
 For shorter and more specific guides, see the [Tips & tricks section](../tips/index.html).

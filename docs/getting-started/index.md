@@ -19,3 +19,6 @@ It's now time to go over all the [moving parts of an extension](extension-anatom
 
 ## [Useful resources](#useful-resources)
 To take full advantage of this cookbook and Visual Studio extensibility in general, check out the [useful resources section](useful-resources.html). That's a quick way to setting yourself up for future success.
+
+## [Multi-version targeting](#multi-version-targeting)
+Learn how to [choose the right toolkit package](multi-version-targeting.html) and target multiple versions of Visual Studio.

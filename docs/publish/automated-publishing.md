@@ -53,6 +53,7 @@ The recommended workflow uses two jobs: **build** (runs on every push/PR) and **
 
 Create `.github/workflows/build.yaml`:
 
+{% raw %}
 ```yaml
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: "Build"
@@ -142,6 +143,7 @@ jobs:
                   files: |
                       **/*.vsix
 ```
+{% endraw %}
 
 ## [How it works](#how-it-works)
 

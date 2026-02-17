@@ -32,3 +32,12 @@ Access shell services, open URLs, and prompt for restart.
 
 ## [Working with services](services.html)
 Retrieve VS services, MEF services, and set up dependency injection.
+
+## [Working with windows](windows.html)
+Find, show, and enumerate tool windows and document windows.
+
+## [Working with documents](documents.html)
+Open, read, edit, and monitor text documents and the DocumentView API.
+
+## [Troubleshooting](troubleshooting.html)
+Common issues, debugging tips, and FAQ for extension development.
