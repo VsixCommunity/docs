@@ -2,10 +2,16 @@
 ---
 
 :root {
-    --border-color: #d8d8d8;
-    --background: #efefef;
-    --foreground: #000;
+    --border-color: #e0e0e0;
+    --background: #f7f7f9;
+    --foreground: #1a1a2e;
     --link-color: #0A4F94;
+    --accent: #6B3FA0;
+    --accent-light: #8B5FBF;
+    --accent-gradient: linear-gradient(135deg, #6B3FA0, #9B59B6, #3498db);
+    --nav-bg: #ffffff;
+    --nav-hover: rgba(107, 63, 160, 0.06);
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.08);
     --code-c1: green;
     --code-k: blue;
     --code-s: #A31515;
@@ -16,12 +22,19 @@
 @media (prefers-color-scheme: dark)
 {
     :root {
-        --background: #121212;
-        --foreground: #ddd;
-        --link-color: #5AADFF;
-        --code-c1: #57A64A;
+        --background: #151520;
+        --foreground: #e0e0e8;
+        --border-color: #2a2a3e;
+        --link-color: #7DB8F0;
+        --accent: #9B6DD7;
+        --accent-light: #B48AE8;
+        --accent-gradient: linear-gradient(135deg, #7B4FBF, #B57EDC, #5DADE2);
+        --nav-bg: #1c1c2e;
+        --nav-hover: rgba(155, 109, 215, 0.1);
+        --card-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        --code-c1: #6A9955;
         --code-k: #569CD6;
-        --code-s: #D69D85;
+        --code-s: #CE9178;
         --code-n: #4EC9B0;
         --code-nf: #DCDCAA;
     }
@@ -31,6 +44,11 @@
     }
 }
 
+::selection {
+    background: var(--accent);
+    color: #fff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -38,37 +56,68 @@
 }
 
 html {
-      height: 100%;
+    height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     min-height: 100vh;
-    padding: 0 10px;
+    padding: 0 20px;
     display: flex;
     background: var(--background);
     color: var(--foreground);
     flex-direction: column;
     text-size-adjust: none;
     -webkit-text-size-adjust: none;
-    font: 18px/1.6 "Open Sans",Ubuntu,"Nimbus Sans L",Avenir,AvenirNext,"Segoe UI",Helvetica,Arial,sans-serif;
+    font: 18px/1.7 "Segoe UI","Open Sans",Ubuntu,"Nimbus Sans L",Avenir,AvenirNext,Helvetica,Arial,sans-serif;
     counter-reset: figure;
 }
 
 a {
     color: var(--link-color);
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+    color: var(--accent);
 }
 
 article > p {
     padding-bottom: 1.5em;
 }
 
+article > p:first-child {
+    font-size: 1.1em;
+    color: var(--foreground);
+    opacity: 0.85;
+    line-height: 1.8;
+}
+
+article h3 {
+    margin: 1em 0 .4em 0;
+    padding: .4em .6em;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+article h3:hover {
+    background: var(--nav-hover);
+}
+
+article h3 a {
+    display: flex;
+    align-items: center;
+    gap: .3em;
+}
+
 img{
     max-width: 100%;
     height: auto;
-    border-radius: 3px;
+    border-radius: 6px;
     border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
 }
 
 .video-container {
@@ -85,8 +134,9 @@ iframe {
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 3px;
+    border-radius: 8px;
     border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
 }
 
 .caption {
@@ -101,33 +151,31 @@ iframe {
 }
 
 blockquote {
-    padding: .6em 1em .6em 3em;
-    font-size: 1.2em;
-    margin-bottom: 1em;
+    padding: .8em 1.2em .8em 1.5em;
+    font-size: 1.1em;
+    margin-bottom: 1.2em;
     position: relative;
+    border-left: 4px solid var(--accent);
+    background: var(--nav-hover);
+    border-radius: 0 6px 6px 0;
 }
 
 blockquote::before {
-    content: "”";
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 7em;
-    opacity: .5;
-    position: absolute;
-    left: 0;
-    top: -.4em;
+    content: none;
 }
 
 pre {
-    background: rgba(180, 180, 180, .1);
+    background: rgba(180, 180, 180, .08);
     color: var(--foreground);
     border: 1px solid var(--border-color);
-    border-radius: 3px;
+    border-radius: 8px;
     overflow: auto;
-    padding: .5em .7em;
+    padding: .7em 1em;
     margin: -1em 0 2em 0;
     font-size: .9em;
     width: 100%;
     line-height: 1.4;
+    box-shadow: var(--card-shadow);
 }
 
 code {
@@ -162,41 +210,62 @@ code .nt {
 }
 
 p > code {
-    background: rgba(180, 180, 180, .1);
-    border-radius: 6px;
+    background: rgba(107, 63, 160, 0.06);
+    border-radius: 4px;
     font-size: 85%;
-    padding: .1em .3em;
-    border: 1px solid rgba(180, 180, 180, .3);
+    padding: .15em .4em;
+    border: 1px solid rgba(180, 180, 180, .25);
     word-wrap: break-word;
 }
 
+header {
+    padding-top: 4px;
+    border-top: 4px solid;
+    border-image: var(--accent-gradient) 1;
+}
+
 header h1 {
-    padding: .2em 0 0 0;
+    padding: .4em 0 .1em 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 header a {
     font-variant: small-caps;
-    letter-spacing: 1px;
-    font-size: 1.2em;
+    letter-spacing: 1.5px;
+    font-size: 1.1em;
     text-decoration: none;
     background-size: 20px;
-    color: inherit;
+    color: var(--accent-light);
+    opacity: 0.85;
 }
 
 main {
-    margin: 1em 0 0 0;
-    display: flex;;
+    margin: 1.5em 0 0 0;
+    display: flex;
     flex: 1;
     border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    gap: 2em;
 }
 
 #menu {
     font-size: .85em;
-    min-width: fit-content;
-    border-right: 1px solid var(--border-color);
-    padding: 1em 1.5em 1em .7em;
-    margin-right: 2em;
+    min-width: 200px;
+    max-width: 220px;
+    background: var(--nav-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.2em 1.2em 1.2em 1em;
+    margin-top: 1em;
+    align-self: flex-start;
+    position: sticky;
+    top: 1em;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.2s ease;
 }
 
 #menu label,
@@ -207,12 +276,18 @@ main {
 #menu a {
     color: var(--foreground);
     text-decoration: none;
+    display: block;
+    padding: .15em .4em;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 #menu a:hover,
 #menu a:focus,
 #menu a:active {
-    text-decoration: underline;
+    background: var(--nav-hover);
+    color: var(--accent);
+    text-decoration: none;
 }
 
 #menu > a {
@@ -220,7 +295,11 @@ main {
 }
 
 #menu a[aria-current] {
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--nav-hover);
+    border-left: 3px solid var(--accent);
+    padding-left: .5em;
 }
 
 #menu ul {
@@ -231,7 +310,10 @@ main {
 #menu a[aria-haspopup]::before {
     content: "›";
     position:absolute;
-    left: -10px;
+    left: -6px;
+    color: var(--accent-light);
+    font-weight: 700;
+    transition: transform 0.2s ease;
 }
 
 #menu .open a[aria-haspopup]::before {   
@@ -252,11 +334,16 @@ main {
 }
 
 article {
-    //margin: 0 1em 0 1.5em;
-    padding: 1em 0 2em 0;
+    padding: 1.5em 0 2em 0;
     width: 100%;
     position: relative;
-    min-width: 0; // needed for <pre> not to be too wide
+    min-width: 0;
+}
+
+article h2 {
+    border-left: 4px solid var(--accent);
+    padding-left: .5em;
+    margin-bottom: .4em;
 }
 
 article h2 a,
@@ -290,13 +377,24 @@ article li::marker {
 }
 
 footer {
-    padding: 1em 0;
+    padding: 1.5em 0;
     text-align: center;
     line-height: 1.5em;
+    border-top: 3px solid;
+    border-image: var(--accent-gradient) 1;
+    margin-top: 1em;
 }
 
 footer strong {
     color: crimson;
+}
+
+footer a {
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--accent);
 }
 
 footer li {
@@ -313,35 +411,49 @@ footer li:not(:last-child):after{
         margin-left: max(env(safe-area-inset-left), 10px);
     }
     #menu {
-        padding: 1em 0 0 0;
+        padding: .8em 0 0 0;
         border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
         margin: 0;
+        min-width: unset;
+        max-width: unset;
+        position: static;
     }
     #menu label {
         display: block;
         cursor: pointer;
-        color: darkgray;
+        color: var(--accent-light);
         position: absolute;
         top: .4em;
         right: .8em;
         font-size: 1.5em;
         background-color: var(--background);
+        transition: color 0.2s ease;
+    }
+    #menu label:hover {
+        color: var(--accent);
     }
     #hamburger { 
         display: none;
     }
     #menu > ul {
         display: none;
-        background: var(--background);
+        background: var(--nav-bg);
         position: absolute;
-        right: 0;
+        right: 10px;
         left: 10px;
-        z-index: 1;
+        z-index: 10;
         margin-left: max(env(safe-area-inset-left), 10px);
+        border-radius: 10px;
+        box-shadow: var(--card-shadow);
+        border: 1px solid var(--border-color);
+        padding: 1em;
     }
     #menu input:checked + ul {
         display: block;
-    }   
+    }
     
     main > section {
         margin: 0
