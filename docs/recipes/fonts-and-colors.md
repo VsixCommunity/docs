@@ -1,18 +1,18 @@
 ---
 title: Fonts & colors
-description: A recipe for registering custom fonts and color categories that users can customize in Tools â†’ Options.
+description: A recipe for registering custom fonts and color categories that users can customize in Tools -> Options.
 date: 2025-07-17
 ---
 
-Extensions can register custom font and color categories that appear on the **Tools â†’ Options â†’ Environment â†’ Fonts and Colors** page. Users can then customize foreground, background, and font styles for each item your extension defines.
+Extensions can register custom font and color categories that appear on the **Tools -> Options -> Environment -> Fonts and Colors** page. Users can then customize foreground, background, and font styles for each item your extension defines.
 
 The toolkit wraps this with three building blocks:
 
-1. **`BaseFontAndColorCategory<T>`** â€” defines a category with its default font and color items.
-2. **`BaseFontAndColorProvider`** â€” discovers categories and serves them to Visual Studio.
-3. **`VS.FontsAndColors`** â€” reads the user's configured colors at runtime.
+1. **`BaseFontAndColorCategory<T>`** - defines a category with its default font and color items.
+2. **`BaseFontAndColorProvider`** - discovers categories and serves them to Visual Studio.
+3. **`VS.FontsAndColors`** - reads the user's configured colors at runtime.
 
-## [Step 1 â€” Define a category](#step-1-define-a-category)
+## [Step 1 - Define a category](#step-1-define-a-category)
 
 Create a class inheriting from `BaseFontAndColorCategory<T>`. Give it a unique `[Guid]`, a display `Name`, and one or more `ColorDefinition` properties.
 
@@ -49,7 +49,7 @@ public class MyColorCategory : BaseFontAndColorCategory<MyColorCategory>
 }
 ```
 
-Each `ColorDefinition` property is automatically discovered by the toolkit. The property name doesn't matter â€” it's the `name` parameter passed to the constructor that appears on the options page.
+Each `ColorDefinition` property is automatically discovered by the toolkit. The property name doesn't matter - it's the `name` parameter passed to the constructor that appears on the options page.
 
 ### Color values
 
@@ -73,7 +73,7 @@ public ColorDefinition Literal { get; } = new(
 );
 ```
 
-## [Step 2 â€” Define a provider](#step-2-define-a-provider)
+## [Step 2 - Define a provider](#step-2-define-a-provider)
 
 Create a class inheriting from `BaseFontAndColorProvider`. It needs its own `[Guid]`. The provider automatically discovers all `BaseFontAndColorCategory<T>` classes in the same assembly.
 
@@ -82,7 +82,7 @@ Create a class inheriting from `BaseFontAndColorProvider`. It needs its own `[Gu
 public class MyFontAndColorProvider : BaseFontAndColorProvider { }
 ```
 
-## [Step 3 â€” Register in the package](#step-3-register-in-the-package)
+## [Step 3 - Register in the package](#step-3-register-in-the-package)
 
 Add the `[ProvideFontsAndColors]` attribute to your package class and call `RegisterFontAndColorProvidersAsync()` during initialization.
 
@@ -122,7 +122,7 @@ System.Drawing.Color foreground = keywordColor.ForegroundColor;
 System.Drawing.Color background = keywordColor.BackgroundColor;
 ```
 
-The returned `ConfiguredFontAndColorSet` is live â€” it raises change notifications when the user modifies colors while your extension is running.
+The returned `ConfiguredFontAndColorSet` is live - it raises change notifications when the user modifies colors while your extension is running.
 
 ## [Listening for changes](#listening-for-changes)
 
@@ -136,5 +136,5 @@ ConfiguredColor latest = config.GetColor(category.Keyword);
 
 ## [Additional resources](#additional-resources)
 
-* [Theming recipe](theming.html) â€” using VS theme colors in tool window UI
-* [Fonts and Colors Overview](https://docs.microsoft.com/visualstudio/extensibility/font-and-color-overview) â€” official VS SDK docs
+* [Theming recipe](theming.html) - using VS theme colors in tool window UI
+* [Fonts and Colors Overview](https://docs.microsoft.com/visualstudio/extensibility/font-and-color-overview) - official VS SDK docs

@@ -88,7 +88,7 @@ This Language Editor's current features are:
 
 ### [Getting Started](#getting-started)
 
-In Visual Studio 2022 install: (If you donâ€™tâ€™ already have it.) [VsixCommunity
+In Visual Studio 2022 install: (If you don't already have it.) [VsixCommunity
 Community.VisualStudio.Toolkit](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit)
 then create a new Visual Studio 2022 CSharp Extension using the:
 `VSIX Project w/Tool Window (Community) Project Template`

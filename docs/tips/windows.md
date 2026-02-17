@@ -129,5 +129,5 @@ See the [Solution Explorer recipe](../recipes/solution-explorer.html) for more o
 
 ## [Additional resources](#additional-resources)
 
-* [Custom tool windows recipe](../recipes/custom-tool-windows.html) â€” create your own dockable tool windows
-* [Notifications recipe](../recipes/notifications.html) â€” Info Bars, message boxes, and Output Window messages
+* [Custom tool windows recipe](../recipes/custom-tool-windows.html) - create your own dockable tool windows
+* [Notifications recipe](../recipes/notifications.html) - Info Bars, message boxes, and Output Window messages

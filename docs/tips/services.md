@@ -6,7 +6,7 @@ date: 2024-12-15
 
 Visual Studio exposes functionality through services. The toolkit provides several ways to retrieve them, from simple one-liners to full dependency injection.
 
-## [VS.Services â€” pre-wired service accessors](#vsservices-pre-wired-service-accessors)
+## [VS.Services - pre-wired service accessors](#vsservices-pre-wired-service-accessors)
 The toolkit pre-wires the most commonly needed VS services through `VS.Services`. Each method returns the service asynchronously, already cast to the correct interface.
 
 ```csharp

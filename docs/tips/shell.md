@@ -43,7 +43,7 @@ VS.Events.ShellEvents.ShellAvailable += () =>
 
 VS.Events.ShellEvents.ShutdownStarted += () =>
 {
-    // VS is beginning to shut down â€” clean up resources
+    // VS is beginning to shut down - clean up resources
 };
 
 VS.Events.ShellEvents.EnvironmentColorChanged += () =>

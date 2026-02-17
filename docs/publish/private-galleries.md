@@ -11,7 +11,7 @@ A private gallery lets you distribute Visual Studio extensions within your team 
 1. You build your `.vsix` files as normal.
 2. You create an **Atom feed** (an XML file) that lists each extension with its download URL.
 3. You host both the feed XML and the `.vsix` files on a web server, file share, or blob storage.
-4. Users add the feed URL in **Extensions â†’ Manage Extensions â†’ Settings** (or your extension registers it automatically).
+4. Users add the feed URL in **Extensions -> Manage Extensions -> Settings** (or your extension registers it automatically).
 
 ## [Create an Atom feed](#create-an-atom-feed)
 
@@ -51,17 +51,17 @@ The `<content src="...">` attribute points to where the `.vsix` file can be down
 
 You can host the feed and `.vsix` files anywhere that's reachable by your users:
 
-- **Web server** â€” IIS, nginx, Azure App Service, etc.
-- **Azure Blob Storage** â€” set the container to allow read access.
-- **File share** â€” use a UNC path like `\\server\share\feed.xml`.
-- **GitHub Pages** â€” host the XML and `.vsix` files in a repository.
+- **Web server** - IIS, nginx, Azure App Service, etc.
+- **Azure Blob Storage** - set the container to allow read access.
+- **File share** - use a UNC path like `\\server\share\feed.xml`.
+- **GitHub Pages** - host the XML and `.vsix` files in a repository.
 
 ## [Register the feed manually](#register-the-feed-manually)
 
 Users can add your feed URL manually:
 
-1. Open **Extensions â†’ Manage Extensions**.
-2. Click **Change your Extensions and Updates settings** (gear icon) or go to **Tools â†’ Options â†’ Environment â†’ Extensions**.
+1. Open **Extensions -> Manage Extensions**.
+2. Click **Change your Extensions and Updates settings** (gear icon) or go to **Tools -> Options -> Environment -> Extensions**.
 3. Click **Add** under **Additional Extension Galleries**.
 4. Enter the name and URL of your Atom feed.
 5. Click **Apply**. The gallery now appears under the **Online** tab.
@@ -101,7 +101,7 @@ PrivateGalleryCreator.exe --input C:\extensions --output C:\gallery\feed.xml
 
 It reads each `.vsixmanifest` automatically to extract the ID, version, name, and description, then produces a valid feed that Visual Studio can consume directly.
 
-## [vsixgallery.com â€” a free public CI gallery](#vsixgallerycom-a-free-public-ci-gallery)
+## [vsixgallery.com - a free public CI gallery](#vsixgallerycom-a-free-public-ci-gallery)
 
 [vsixgallery.com](https://www.vsixgallery.com) is a free gallery service for open-source extension authors. It's designed for CI/CD workflows where you want to publish nightly or pre-release builds without going through the Marketplace review process.
 
@@ -115,8 +115,8 @@ This is a great way to let early adopters test new versions of your extension be
 
 ## [Additional resources](#additional-resources)
 
-* [Private Gallery Creator](https://github.com/madskristensen/PrivateGalleryCreator) â€” open-source Atom feed generator
-* [vsixgallery.com](https://www.vsixgallery.com) â€” free CI gallery for open-source extensions
-* [Publishing to the Marketplace](marketplace.html) â€” for public extensions
-* [Automated publishing](automated-publishing.html) â€” CI/CD for the public Marketplace
+* [Private Gallery Creator](https://github.com/madskristensen/PrivateGalleryCreator) - open-source Atom feed generator
+* [vsixgallery.com](https://www.vsixgallery.com) - free CI gallery for open-source extensions
+* [Publishing to the Marketplace](marketplace.html) - for public extensions
+* [Automated publishing](automated-publishing.html) - CI/CD for the public Marketplace
 * [Private Galleries (VS SDK docs)](https://docs.microsoft.com/visualstudio/extensibility/private-galleries)

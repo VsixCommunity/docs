@@ -1,10 +1,10 @@
 ---
 title: Solution Explorer integration
-description: A recipe for interacting with the Solution Explorer window â€” selecting, expanding, filtering, and editing items.
+description: A recipe for interacting with the Solution Explorer window - selecting, expanding, filtering, and editing items.
 date: 2025-07-17
 ---
 
-The toolkit provides a typed `SolutionExplorerWindow` wrapper that lets you programmatically interact with Solution Explorer â€” select items, expand/collapse nodes, apply filters, and start label editing.
+The toolkit provides a typed `SolutionExplorerWindow` wrapper that lets you programmatically interact with Solution Explorer - select items, expand/collapse nodes, apply filters, and start label editing.
 
 ## [Get the Solution Explorer window](#get-the-solution-explorer-window)
 
@@ -120,5 +120,5 @@ solExp.DisableFilter();
 
 ## [Additional resources](#additional-resources)
 
-* [Working with solutions](../tips/solutions.html) â€” enumerate projects and solution events
-* [Working with projects](../tips/projects.html) â€” add files, inspect project types
+* [Working with solutions](../tips/solutions.html) - enumerate projects and solution events
+* [Working with projects](../tips/projects.html) - add files, inspect project types

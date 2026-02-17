@@ -16,4 +16,4 @@ Share your fantastic extension with the world, but publishing it to the [Marketp
 Set up [automated publishing](automated-publishing.html) with GitHub Actions or Azure Pipelines so every tagged release gets published to the Marketplace automatically.
 
 ## [Publish on a private gallery](#publish-on-a-private-gallery)
-You can also [host your own gallery](private-galleries.html) of extensions using Atom feeds â€” either internally in your organization or on any web host. Register feeds manually or automatically from your extension.
+You can also [host your own gallery](private-galleries.html) of extensions using Atom feeds - either internally in your organization or on any web host. Register feeds manually or automatically from your extension.
