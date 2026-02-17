@@ -125,12 +125,17 @@
                 }
             });
 
-            // Open menu items on click
+            // Open menu items on click (accordion: close siblings)
             var menu = document.getElementById("menu");
             menu.addEventListener("click", function (e) {
                 if (e.target.nextElementSibling !== null && e.target.tagName === "A") {
                     e.preventDefault();
-                    e.target.parentNode.classList.toggle("open")
+                    var li = e.target.parentNode;
+                    var siblings = li.parentNode.children;
+                    for (var i = 0; i < siblings.length; i++) {
+                        if (siblings[i] !== li) siblings[i].classList.remove("open");
+                    }
+                    li.classList.toggle("open");
                 }
             });
 

@@ -341,8 +341,6 @@ article {
 }
 
 article h2 {
-    border-left: 4px solid var(--accent);
-    padding-left: .5em;
     margin-bottom: .4em;
 }
 
@@ -374,6 +372,43 @@ article ul {
 
 article li::marker {
     font-weight: bold;
+}
+
+article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+    font-size: .95em;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+
+article th {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    padding: .6em 1em;
+    letter-spacing: .3px;
+}
+
+article td {
+    padding: .55em 1em;
+    border-top: 1px solid var(--border-color);
+}
+
+article tr:nth-child(even) td {
+    background: rgba(107, 63, 160, 0.04);
+}
+
+article tr:hover td {
+    background: var(--nav-hover);
+}
+
+article td code {
+    font-size: .88em;
 }
 
 footer {
