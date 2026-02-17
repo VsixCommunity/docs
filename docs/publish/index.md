@@ -12,5 +12,8 @@ Make sure to check out [the checklist](checklist.html) to ensure your extension 
 ## [Publish to the Marketplace](#publish-to-the-marketplace)
 Share your fantastic extension with the world, but publishing it to the [Marketplace](marketplace.html).
 
+## [Automate publishing with CI/CD](#automate-publishing)
+Set up [automated publishing](automated-publishing.html) with GitHub Actions or Azure Pipelines so every tagged release gets published to the Marketplace automatically.
+
 ## [Publish on a private galleries](#publish-on-a-private-galleries)
 You can also [host your own gallery](private-galleries.html) of extensions either internally in your organization or in public on any web host.

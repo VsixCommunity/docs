@@ -99,17 +99,26 @@ internal sealed class ValidateCommand : BaseCommand<ValidateCommand>
 
 ## [ErrorListItem properties](#properties)
 
-| Property | Type | Description |
-|---|---|---|
-| `ProjectName` | `string?` | Project name shown in the Error List |
-| `FileName` | `string?` | Full path to the file (required for clickable navigation) |
-| `Line` | `int` | 0-based line number |
-| `Column` | `int?` | 0-based column number |
-| `Message` | `string?` | The error/warning message text |
-| `ErrorCode` | `string?` | Short error code (e.g. "EXT001") |
-| `ErrorCodeToolTip` | `string?` | Tooltip shown when hovering the error code |
-| `ErrorCategory` | `string?` | Category string |
-| `Severity` | `__VSERRORCATEGORY` | Error, Warning, or Message |
-| `HelpLink` | `string?` | URL for the help link |
-| `BuildTool` | `string?` | Name of the tool that generated the error |
-| `Icon` | `ImageMoniker` | Custom icon moniker |
+**ProjectName** (string) — Project name shown in the Error List.
+
+**FileName** (string) — Full path to the file. Required for clickable navigation.
+
+**Line** (int) — 0-based line number.
+
+**Column** (int) — 0-based column number.
+
+**Message** (string) — The error/warning message text.
+
+**ErrorCode** (string) — Short error code (e.g. "EXT001").
+
+**ErrorCodeToolTip** (string) — Tooltip shown when hovering the error code.
+
+**ErrorCategory** (string) — Category string.
+
+**Severity** (__VSERRORCATEGORY) — Error, Warning, or Message.
+
+**HelpLink** (string) — URL for the help link.
+
+**BuildTool** (string) — Name of the tool that generated the error.
+
+**Icon** (ImageMoniker) — Custom icon moniker.
