@@ -443,6 +443,10 @@ footer li:not(:last-child):after{
 }
 
 @media only screen and (max-width: 1023px) {
+    body {
+        padding: 0 10px;
+    }
+    
     #menu {
         padding: .8em 0 0 0;
         border: none;
