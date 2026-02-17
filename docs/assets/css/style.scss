@@ -310,7 +310,7 @@ footer li:not(:last-child):after{
 
 @media only screen and (max-width: 1023px) {
     body {
-        margin-left: unquote("max(env(safe-area-inset-left), 10px)");
+        margin-left: max(env(safe-area-inset-left), 10px);
     }
     #menu {
         padding: 1em 0 0 0;
@@ -337,7 +337,7 @@ footer li:not(:last-child):after{
         right: 0;
         left: 10px;
         z-index: 1;
-        margin-left: unquote("max(env(safe-area-inset-left), 10px)");
+        margin-left: max(env(safe-area-inset-left), 10px);
     }
     #menu input:checked + ul {
         display: block;

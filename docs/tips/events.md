@@ -1,387 +1,202 @@
 ---
 title: Working with events
-description: Tips for working with events.
+description: Tips for working with events using the VS.Events helpers.
 date: 2021-6-30
 ---
 
-Here's a collection of small code samples on different ways to listen to events.
+The Community Toolkit exposes all common Visual Studio events through `VS.Events`. Simply subscribe to any event with a single line - no COM interfaces or advise cookies needed.
 
-# [IVsRunningDocTableEvents Interface](#IVsRunningDocTableEvents-Interface)
+## [Solution events](#solution-events)
+React to solutions and projects being opened, closed, loaded, or renamed.
 
-Implements methods that fire in response to changes to documents in the Running Document Table (RDT).
-
-
-Microsoft docs: [IVsRunningDocTableEvents Interface](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents?view=visualstudiosdk-2022)
-
-<!--TOC-->
-- [IVsRunningDocTableEvents Code Samples](#ivsrunningdoctableevents-code-samples)
-  - [OnAfterFirstDocumentLock](#onafterfirstdocumentlock)
-  - [OnBeforeLastDocumentUnlock](#onbeforelastdocumentunlock)
-  - [OnAfterSave](#onaftersave)
-  - [OnAfterAttributeChange](#onafterattributechange)
-  - [OnBeforeDocumentWindowShow](#onbeforedocumentwindowshow)
-  - [OnAfterDocumentWindowHide](#onafterdocumentwindowhide)
-<!--/TOC-->
-
-
-# IVsRunningDocTableEvents Code Samples
-
-You must have a using statement for:
-
-``` CSharp
-using Microsoft.VisualStudio.Shell.Interop;
-```
-
-In the class where you want to handle the events you must implement the interface: [IVsRunningDocTableEvents](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents?view=visualstudiosdk-2022)
-
-``` CSharp
-internal class Pane : ToolWindowPane, IVsRunningDocTableEvents
+```csharp
+VS.Events.SolutionEvents.OnAfterOpenSolution += solution =>
 {
-...
-}
-```
+    // A solution was opened
+};
 
-## OnAfterFirstDocumentLock
-
-[OnAfterFirstDocumentLock](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onafterfirstdocumentlock?view=visualstudiosdk-2022) is called after application of the first lock of the specified type to the specified document in the Running Document Table (RDT).
-
-``` CSharp
-public:
- int OnAfterFirstDocumentLock(unsigned int docCookie, unsigned int dwRDTLockType, unsigned int dwReadLocksRemaining, unsigned int dwEditLocksRemaining);
- ```
-
-``` CSharp
-[MethodImpl(MethodImplOptions.PreserveSig | MethodImplOptions.InternalCall)]
-int OnAfterFirstDocumentLock([In][ComAliasName("Microsoft.VisualStudio.Shell.Interop.VSCOOKIE")] uint docCookie, [In][ComAliasName("Microsoft.VisualStudio.Shell.Interop.VSRDTFLAGS")] uint dwRDTLockType, [In][ComAliasName("Microsoft.VisualStudio.OLE.Interop.DWORD")] uint dwReadLocksRemaining, [In][ComAliasName("Microsoft.VisualStudio.OLE.Interop.DWORD")] uint dwEditLocksRemaining);
-```
-
- Code Sample from: [Walkthrough-Create-Language-Editor](https://www.vsixcookbook.com/recipes/Walkthrough-Create-Language-Editor.html)
-
-``` CSharp
-public int OnAfterFirstDocumentLock(uint docCookie, uint dwRDTLockType, uint dwReadLocksRemaining, uint dwEditLocksRemaining)
+VS.Events.SolutionEvents.OnAfterOpenProject += project =>
 {
-    ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
+    // A project was loaded
+};
+
+VS.Events.SolutionEvents.OnBeforeCloseProject += project =>
+{
+    // A project is about to close
+};
+
+VS.Events.SolutionEvents.OnAfterBackgroundSolutionLoadComplete += () =>
+{
+    // All projects have finished loading (including background-loaded ones)
+};
+```
+
+**Available events:** `OnBeforeOpenSolution`, `OnAfterOpenSolution`, `OnBeforeCloseSolution`, `OnAfterCloseSolution`, `OnAfterOpenProject`, `OnBeforeCloseProject`, `OnAfterLoadProject`, `OnBeforeUnloadProject`, `OnAfterRenameProject`, `OnAfterOpenFolder`, `OnBeforeCloseFolder`, `OnAfterCloseFolder`, `OnAfterMergeSolution`, `OnAfterBackgroundSolutionLoadComplete`
+
+## [Build events](#build-events)
+Listen for solution and individual project build/clean lifecycle events.
+
+```csharp
+VS.Events.BuildEvents.SolutionBuildStarted += (sender, args) =>
+{
+    // The solution build just kicked off
+};
+
+VS.Events.BuildEvents.ProjectBuildDone += args =>
+{
+    if (args.IsSuccessful)
     {
-        try
-        {
-            var activeItem = await VS.Solutions.GetActiveItemAsync();
-            if (activeItem != null)
-            {
-                //Your code here.
-            }
-        }
-        catch (Exception)
-        {
-            //Your exception code here.
-        }
-    }).FireAndForget();
-    return VSConstants.S_OK;
-}
-```
+        // Project built successfully
+    }
+};
 
-
-## OnBeforeLastDocumentUnlock
-
-
-[OnBeforeLastDocumentUnlock](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onbeforelastdocumentunlock?view=visualstudiosdk-2022) is called before releasing the last lock of the specified type on the specified document in the Running Document Table (RDT).
-
-``` CSharp
-public:
- int OnBeforeLastDocumentUnlock(unsigned int docCookie, unsigned int dwRDTLockType, unsigned int dwReadLocksRemaining, unsigned int dwEditLocksRemaining);
- ```
-
- ``` CSharp
-[MethodImpl(MethodImplOptions.PreserveSig | MethodImplOptions.InternalCall)]
-int OnBeforeLastDocumentUnlock([In][ComAliasName("Microsoft.VisualStudio.Shell.Interop.VSCOOKIE")] uint docCookie, [In][ComAliasName("Microsoft.VisualStudio.Shell.Interop.VSRDTFLAGS")] uint dwRDTLockType, [In][ComAliasName("Microsoft.VisualStudio.OLE.Interop.DWORD")] uint dwReadLocksRemaining, [In][ComAliasName("Microsoft.VisualStudio.OLE.Interop.DWORD")] uint dwEditLocksRemaining);
-```
-Code Sample from: [Walkthrough-Create-Language-Editor](https://www.vsixcookbook.com/recipes/Walkthrough-Create-Language-Editor.html)
-``` CSharp
-public int OnBeforeLastDocumentUnlock(uint docCookie, uint dwRDTLockType, uint dwReadLocksRemaining, uint dwEditLocksRemaining)
+VS.Events.BuildEvents.SolutionBuildDone += succeeded =>
 {
-    ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
-    {
-        try
-        {
-            var activeItem = await VS.Solutions.GetActiveItemAsync();
-            if (activeItem != null)
-            {
-                //Your coe here.
-            }
-        }
-        catch (Exception)
-        {
-            //Your exception code here.
-        }
-    }).FireAndForget();
-    return VSConstants.S_OK;
-}
+    // The entire solution build finished. succeeded = true/false
+};
 ```
 
-## OnAfterSave
+**Available events:** `SolutionBuildStarted`, `SolutionBuildDone`, `SolutionBuildCancelled`, `ProjectBuildStarted`, `ProjectBuildDone`, `ProjectCleanStarted`, `ProjectCleanDone`, `ProjectConfigurationChanged`, `SolutionConfigurationChanged`
 
+## [Document events](#document-events)
+Track documents being opened, saved, and closed without implementing any COM interfaces.
 
-[OnAfterSave](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onaftersave?view=visualstudiosdk-2022) is called after saving a document in the Running Document Table (RDT).
-
-``` CSharp
-public:
- int OnAfterSave(unsigned int docCookie);
- ```
-
- ``` CSharp
-[MethodImpl(MethodImplOptions.PreserveSig | MethodImplOptions.InternalCall)]
-int OnAfterSave([In][ComAliasName("Microsoft.VisualStudio.Shell.Interop.VSCOOKIE")] uint docCookie);
-```
-
-Code Sample from: [Walkthrough-Create-Language-Editor](https://www.vsixcookbook.com/recipes/Walkthrough-Create-Language-Editor.html)
-``` CSharp
-public int OnAfterSave(uint docCookie)
+```csharp
+VS.Events.DocumentEvents.Saved += filePath =>
 {
-    ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
-    {
-        try
-        {
-            var activeItem = await VS.Solutions.GetActiveItemAsync();
-            if (activeItem != null)
-            {
-                //Your code here.
-            }
-        }
-        catch (Exception)
-        { 
-            //Your exception code here.
-        }
-    }).FireAndForget();
+    // A document was saved to disk
+};
 
-    return VSConstants.S_OK;
-}
-```
-
-## OnAfterAttributeChange
-
-[OnAfterAttributeChange](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onafterattributechange?view=visualstudiosdk-2022) is called after a change in an attribute of a document in the Running Document Table (RDT).
-
-``` CSharp
-public:
- int OnAfterAttributeChange(unsigned int docCookie, unsigned int grfAttribs);
-```
-
-``` CSharp
-[MethodImpl(MethodImplOptions.PreserveSig | MethodImplOptions.InternalCall)]
-int OnAfterAttributeChange([In][ComAliasName("Microsoft.VisualStudio.Shell.Interop.VSCOOKIE")] uint docCookie, [In][ComAliasName("Microsoft.VisualStudio.Shell.Interop.VSRDTATTRIB")] uint grfAttribs);
-```
-
-Code Sample from: [Walkthrough-Create-Language-Editor](https://www.vsixcookbook.com/recipes/Walkthrough-Create-Language-Editor.html)
-``` CSharp
-public int OnAfterAttributeChange(uint docCookie, uint grfAttribs)
+VS.Events.DocumentEvents.Opened += filePath =>
 {
-    ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
-    {
-        try
-        {
-            var activeItem = await VS.Solutions.GetActiveItemAsync();
-            if (activeItem != null)
-            {
-                //Your code here.
-            }
-        }
-        catch (Exception)
-        {
-            //Your exception code here.
-        }
-    }).FireAndForget();
+    // A document was opened in the editor
+};
 
-    return VSConstants.S_OK;
-}
-```
-
-## OnBeforeDocumentWindowShow
-
-[OnBeforeDocumentWindowShow](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onbeforedocumentwindowshow?view=visualstudiosdk-2022) is called before displaying a document window.
-
-``` CSharp
-public:
- int OnBeforeDocumentWindowShow(unsigned int docCookie, int fFirstShow, Microsoft::VisualStudio::Shell::Interop::IVsWindowFrame ^ pFrame);
- ```
-
- ``` CSharp
-[MethodImpl(MethodImplOptions.PreserveSig | MethodImplOptions.InternalCall)]
-int OnBeforeDocumentWindowShow([In][ComAliasName("Microsoft.VisualStudio.Shell.Interop.VSCOOKIE")] uint docCookie, [In][ComAliasName("Microsoft.VisualStudio.OLE.Interop.BOOL")] int fFirstShow, [In][MarshalAs(UnmanagedType.Interface)] IVsWindowFrame pFrame);
-```
-
-Code Sample from: [Walkthrough-Create-Language-Editor](https://www.vsixcookbook.com/recipes/Walkthrough-Create-Language-Editor.html)
-``` CSharp
-public int OnBeforeDocumentWindowShow(uint docCookie, int fFirstShow, IVsWindowFrame pFrame)
+VS.Events.DocumentEvents.Closed += filePath =>
 {
-    ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
-    {
-        await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-        var activeItem = await VS.Solutions.GetActiveItemAsync();
-        win = VsShellUtilities.GetWindowObject(pFrame);
-        string currentFilePath = win.Document.Path;
-        string currentFileTitle = win.Document.Name;
-        string currentFileFullPath = System.IO.Path.Combine(currentFilePath, currentFileTitle);
-        if (pFrame != null && currentFileTitle.EndsWith(Constants.LinqExt))
-        {
-            ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
-            {
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                Project project = await VS.Solutions.GetActiveProjectAsync();
-                if (project != null)
-                {
-                    XDocument xdoc = XDocument.Load(project.FullPath);
-                    try
-                    {
-                        xdoc = RemoveEmptyItemGroupNode(xdoc);
-                        xdoc.Save(project.FullPath);
-                        await project.SaveAsync();
-                        xdoc = XDocument.Load(project.FullPath);
-                    }
-                    catch (Exception)
-                    { }
-                    if (ItemGroupExists(xdoc, Constants.ProjectItemGroup, Constants.ProjectCompile))
-                    {
-                        try
-                        {
-                            if (CompileItemExists(xdoc, currentFileTitle))
-                            {
-                                xdoc = UpdateItemGroupItem(xdoc, currentFileTitle, currentFileFullPath);
-                            }
-                            else if (ItemGroupExists(xdoc, Constants.ProjectItemGroup, Constants.ProjectNone))
-                            {
-                                try
-                                {
-                                    if (NoneCompileItemExists(xdoc, currentFileTitle))
-                                    {
-                                        xdoc = UpdateItemGroupItem(xdoc, currentFileTitle, currentFileFullPath);
-                                    }
-                                    else
-                                    {
-                                        xdoc = CreateNewCompileItem(xdoc, currentFileFullPath);
-                                    }
-                                    xdoc.Save(project.FullPath);
-                                    await project.SaveAsync();
-                                    xdoc = XDocument.Load(project.FullPath);
-                                }
-                                catch (Exception)
-                                { }
-                            }
-                            else
-                            {
-                                xdoc = CreateNewCompileItem(xdoc, currentFileFullPath);
-                            }
-                            xdoc.Save(project.FullPath);
-                            await project.SaveAsync();
-                            xdoc = XDocument.Load(project.FullPath);
-                        }
-                        catch (Exception)
-                        { }
-                    }
-                    else if (ItemGroupExists(xdoc, Constants.ProjectItemGroup, Constants.ProjectNone))
-                    {
-                        try
-                        {
-                            if (NoneCompileItemExists(xdoc, currentFileTitle))
-                            {
-                                xdoc = UpdateItemGroupItem(xdoc, currentFileTitle, currentFileFullPath);
-                            }
-                            else
-                            {
-                                xdoc = CreateNewCompileItem(xdoc, currentFileFullPath);
-                            }
-                            xdoc.Save(project.FullPath);
-                            await project.SaveAsync();
-                            xdoc = XDocument.Load(project.FullPath);
-                        }
-                        catch (Exception)
-                        { }
-                    }
-                    else
-                    {
-                        xdoc = CreateNewItemGroup(xdoc, currentFileFullPath);
-                        xdoc.Save(project.FullPath);
-                        await project.SaveAsync();
-                    }
-                }
-            }).FireAndForget();
-        }
-    }).FireAndForget();
-    return VSConstants.S_OK;
-}
-```
+    // A document was closed
+};
 
-## OnAfterDocumentWindowHide
-
-[OnAfterDocumentWindowHide](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.shell.interop.ivsrunningdoctableevents.onafterdocumentwindowhide?view=visualstudiosdk-2022) is called after a document window is placed in the Hide state.
-
-``` CSharp
-public:
- int OnAfterDocumentWindowHide(unsigned int docCookie, Microsoft::VisualStudio::Shell::Interop::IVsWindowFrame ^ pFrame);
- ```
-
- ``` CSharp
-[MethodImpl(MethodImplOptions.PreserveSig | MethodImplOptions.InternalCall)]
-int OnAfterDocumentWindowHide([In][ComAliasName("Microsoft.VisualStudio.Shell.Interop.VSCOOKIE")] uint docCookie, [In][MarshalAs(UnmanagedType.Interface)] IVsWindowFrame pFrame);
-```
-
-Code Sample from: [Walkthrough-Create-Language-Editor](https://www.vsixcookbook.com/recipes/Walkthrough-Create-Language-Editor.html)
-
-``` CSharp
-public int OnAfterDocumentWindowHide(uint docCookie, IVsWindowFrame pFrame)
+VS.Events.DocumentEvents.BeforeDocumentWindowShow += docView =>
 {
-    ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
-    {
-        await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-        try
-        {
-            var activeItem = await VS.Solutions.GetActiveItemAsync();
-            if (activeItem != null)
-            {
-                //(LinqToolWindowControl)this.Content).LinqlistBox.Items.Add($"OnAfterDocumentWindowHide: {activeItem.Name}");
-            }
-        }
-        catch (Exception)
-        { }
-        try
-        {
-            var win = VsShellUtilities.GetWindowObject(pFrame);
-            if (win != null)
-            {
-                //((LinqToolWindowControl)this.Content).LinqlistBox.Items.Add($"OnAfterDocumentWindowHide: {win.Caption}");
-            }
-        }
-        catch (Exception)
-        { }
-        win = VsShellUtilities.GetWindowObject(pFrame);
-        if (pFrame != null && win.Caption.EndsWith(Constants.LinqExt))
-        {
-            ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
-            {
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                Project project = await VS.Solutions.GetActiveProjectAsync();
-                if (project != null)
-                {
-                    XDocument xdoc = XDocument.Load(project.FullPath);
-                    try
-                    {
-                        xdoc = RemoveCompileItem(xdoc, win.Caption);
-                        xdoc.Save(project.FullPath);
-                    }
-                    catch (Exception)
-                    { }
-                    try
-                    {
-                        xdoc = RemoveEmptyItemGroupNode(xdoc);
-                        xdoc.Save(project.FullPath);
-                    }
-                    catch (Exception)
-                    {
-                    }
-                    xdoc.Save(project.FullPath);
-                    await project.SaveAsync();
-                }
-            }).FireAndForget();
-        }
-    }).FireAndForget();
-    return VSConstants.S_OK;
-}
+    // A document window is about to take focus
+};
+
+VS.Events.DocumentEvents.AfterDocumentWindowHide += docView =>
+{
+    // A document window lost focus
+};
 ```
+
+**Available events:** `Saved`, `Opened`, `Closed`, `BeforeDocumentWindowShow`, `AfterDocumentWindowHide`
+
+## [Window events](#window-events)
+Monitor window frame creation, destruction, visibility, and focus changes.
+
+```csharp
+VS.Events.WindowEvents.Created += frame =>
+{
+    // A new window frame was created
+};
+
+VS.Events.WindowEvents.ActiveFrameChanged += args =>
+{
+    // The active window changed from args.OldFrame to args.NewFrame
+};
+
+VS.Events.WindowEvents.FrameIsVisibleChanged += args =>
+{
+    // A frame's visibility changed: args.IsNewVisible
+};
+```
+
+**Available events:** `Created`, `Destroyed`, `FrameIsVisibleChanged`, `FrameIsOnScreenChanged`, `ActiveFrameChanged`
+
+## [Debugger events](#debugger-events)
+React to the debugger starting, stopping, or hitting breakpoints.
+
+```csharp
+VS.Events.DebuggerEvents.EnterRunMode += () =>
+{
+    // Debugging started (or resumed from a breakpoint)
+};
+
+VS.Events.DebuggerEvents.EnterBreakMode += () =>
+{
+    // The debugger hit a breakpoint
+};
+
+VS.Events.DebuggerEvents.EnterDesignMode += () =>
+{
+    // Debugging stopped - back to design mode
+};
+```
+
+**Available events:** `EnterRunMode`, `EnterBreakMode`, `EnterDesignMode`, `EnterEditAndContinueMode`
+
+## [Selection events](#selection-events)
+Know when the user selects a different item in Solution Explorer or changes UI context.
+
+```csharp
+VS.Events.SelectionEvents.SelectionChanged += (sender, args) =>
+{
+    SolutionItem from = args.From;
+    SolutionItem to = args.To;
+    // The selection changed from one item to another
+};
+
+VS.Events.SelectionEvents.UIContextChanged += (sender, args) =>
+{
+    bool isActive = args.IsActive;
+    // A UI context was activated or deactivated
+};
+```
+
+**Available events:** `SelectionChanged`, `UIContextChanged`
+
+## [Project item events](#project-item-events)
+Track files and folders being added, removed, or renamed within projects.
+
+```csharp
+VS.Events.ProjectItemsEvents.AfterAddProjectItems += items =>
+{
+    foreach (SolutionItem item in items)
+    {
+        // A file or folder was added to a project
+    }
+};
+
+VS.Events.ProjectItemsEvents.AfterRemoveProjectItems += args =>
+{
+    // Files or folders were removed
+};
+
+VS.Events.ProjectItemsEvents.AfterRenameProjectItems += args =>
+{
+    // Files or folders were renamed
+};
+```
+
+**Available events:** `AfterAddProjectItems`, `AfterRemoveProjectItems`, `AfterRenameProjectItems`
+
+## [Shell events](#shell-events)
+Listen for Visual Studio lifecycle and environment changes.
+
+```csharp
+VS.Events.ShellEvents.ShellAvailable += () =>
+{
+    // VS has finished initializing and is ready for interaction
+};
+
+VS.Events.ShellEvents.ShutdownStarted += () =>
+{
+    // VS is beginning to shut down
+};
+
+VS.Events.ShellEvents.EnvironmentColorChanged += () =>
+{
+    // The user changed the VS color theme
+};
+```
+
+**Available events:** `ShellAvailable`, `ShutdownStarted`, `MainWindowVisibilityChanged`, `EnvironmentColorChanged`
