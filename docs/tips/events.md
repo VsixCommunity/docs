@@ -59,34 +59,39 @@ VS.Events.BuildEvents.SolutionBuildDone += succeeded =>
 **Available events:** `SolutionBuildStarted`, `SolutionBuildDone`, `SolutionBuildCancelled`, `ProjectBuildStarted`, `ProjectBuildDone`, `ProjectCleanStarted`, `ProjectCleanDone`, `ProjectConfigurationChanged`, `SolutionConfigurationChanged`
 
 ## [Document events](#document-events)
-Track documents being opened, saved, and closed without implementing any COM interfaces.
+Track documents being opened, saved, and closed without implementing any COM interfaces. The toolkit wraps `IVsRunningDocTableEvents` for you and handles the deduplication of events so they only fire once per action.
 
 ```csharp
-VS.Events.DocumentEvents.Saved += filePath =>
-{
-    // A document was saved to disk
-};
-
 VS.Events.DocumentEvents.Opened += filePath =>
 {
-    // A document was opened in the editor
+    // A document was opened in the editor.
+    // filePath is the full path of the document that was opened.
 };
 
 VS.Events.DocumentEvents.Closed += filePath =>
 {
-    // A document was closed
+    // A document was closed.
+    // filePath is the full path of the document that was closed.
+};
+
+VS.Events.DocumentEvents.Saved += filePath =>
+{
+    // A document was saved to disk.
 };
 
 VS.Events.DocumentEvents.BeforeDocumentWindowShow += docView =>
 {
-    // A document window is about to take focus
+    // A document window is about to be shown.
+    // Use docView.Document?.FilePath to get the file path.
 };
 
 VS.Events.DocumentEvents.AfterDocumentWindowHide += docView =>
 {
-    // A document window lost focus
+    // A document window was hidden (e.g. another tab took focus).
 };
 ```
+
+> **Note:** The `Opened` and `Closed` events may also fire for project files, solution files, and special internal documents — not just files visible in the editor. If you only care about text editor files, check the file path or extension in your handler.
 
 **Available events:** `Saved`, `Opened`, `Closed`, `BeforeDocumentWindowShow`, `AfterDocumentWindowHide`
 
@@ -200,3 +205,43 @@ VS.Events.ShellEvents.EnvironmentColorChanged += () =>
 ```
 
 **Available events:** `ShellAvailable`, `ShutdownStarted`, `MainWindowVisibilityChanged`, `EnvironmentColorChanged`
+
+## [Subscribing to events](#subscribing-to-events)
+The best place to subscribe to events is in the `InitializeAsync` method of your package class.
+
+```csharp
+[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+[Guid(PackageGuids.MyPackageString)]
+public sealed class MyPackage : ToolkitPackage
+{
+    protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
+    {
+        await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
+        VS.Events.DocumentEvents.Opened += OnDocumentOpened;
+        VS.Events.DocumentEvents.Closed += OnDocumentClosed;
+        VS.Events.DocumentEvents.Saved += OnDocumentSaved;
+        VS.Events.SolutionEvents.OnAfterOpenSolution += OnSolutionOpened;
+    }
+
+    private void OnDocumentOpened(string filePath)
+    {
+        // Handle the document being opened
+    }
+
+    private void OnDocumentClosed(string filePath)
+    {
+        // Handle the document being closed
+    }
+
+    private void OnDocumentSaved(string filePath)
+    {
+        // Handle the document being saved
+    }
+
+    private void OnSolutionOpened(Solution solution)
+    {
+        // Handle the solution being opened
+    }
+}
+```
