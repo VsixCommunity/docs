@@ -4,7 +4,7 @@ description: A recipe for how to add custom errors and warnings to the Visual St
 date: 2024-12-15
 ---
 
-The Error List is one of Visual Studio's most prominent tool windows. Extensions can push custom errors, warnings, and messages into it using the toolkit's `TableDataSource` and `ErrorListItem` classes â€” no raw `ITableDataSource` or `ITableEntry` implementation needed.
+The Error List is one of Visual Studio's most prominent tool windows. Extensions can push custom errors, warnings, and messages into it using the toolkit's `TableDataSource` and `ErrorListItem` classes - no raw `ITableDataSource` or `ITableEntry` implementation needed.
 
 ## [Create a TableDataSource](#create-a-tabledatasource)
 The `TableDataSource` is the bridge between your extension and the Error List. Create one and give it a unique name (typically your extension name).
@@ -49,11 +49,11 @@ _errorList.AddErrors(errors);
 
 The `Severity` property controls the icon and how the item shows up when filtering the Error List:
 
-- `__VSERRORCATEGORY.EC_ERROR` â€” Error (red)
-- `__VSERRORCATEGORY.EC_WARNING` â€” Warning (yellow)
-- `__VSERRORCATEGORY.EC_MESSAGE` â€” Message (blue)
+- `__VSERRORCATEGORY.EC_ERROR` - Error (red)
+- `__VSERRORCATEGORY.EC_WARNING` - Warning (yellow)
+- `__VSERRORCATEGORY.EC_MESSAGE` - Message (blue)
 
-> **Tip:** Setting the `Line` and `Column` properties makes the entry clickable â€” double-clicking navigates to that location in the editor.
+> **Tip:** Setting the `Line` and `Column` properties makes the entry clickable - double-clicking navigates to that location in the editor.
 
 ## [Clear errors](#clear-errors)
 Remove all previously added errors when they are no longer relevant (for example, after a successful re-validation).
@@ -99,26 +99,26 @@ internal sealed class ValidateCommand : BaseCommand<ValidateCommand>
 
 ## [ErrorListItem properties](#errorlistitem-properties)
 
-**ProjectName** (string) â€” Project name shown in the Error List.
+**ProjectName** (string) - Project name shown in the Error List.
 
-**FileName** (string) â€” Full path to the file. Required for clickable navigation.
+**FileName** (string) - Full path to the file. Required for clickable navigation.
 
-**Line** (int) â€” 0-based line number.
+**Line** (int) - 0-based line number.
 
-**Column** (int) â€” 0-based column number.
+**Column** (int) - 0-based column number.
 
-**Message** (string) â€” The error/warning message text.
+**Message** (string) - The error/warning message text.
 
-**ErrorCode** (string) â€” Short error code (e.g. "EXT001").
+**ErrorCode** (string) - Short error code (e.g. "EXT001").
 
-**ErrorCodeToolTip** (string) â€” Tooltip shown when hovering the error code.
+**ErrorCodeToolTip** (string) - Tooltip shown when hovering the error code.
 
-**ErrorCategory** (string) â€” Category string.
+**ErrorCategory** (string) - Category string.
 
-**Severity** (__VSERRORCATEGORY) â€” Error, Warning, or Message.
+**Severity** (__VSERRORCATEGORY) - Error, Warning, or Message.
 
-**HelpLink** (string) â€” URL for the help link.
+**HelpLink** (string) - URL for the help link.
 
-**BuildTool** (string) â€” Name of the tool that generated the error.
+**BuildTool** (string) - Name of the tool that generated the error.
 
-**Icon** (ImageMoniker) â€” Custom icon moniker.
+**Icon** (ImageMoniker) - Custom icon moniker.

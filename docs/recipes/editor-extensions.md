@@ -44,7 +44,7 @@ internal class MyTokenTagger : TokenTaggerBase<MyTokenType>
         foreach (ITextSnapshotLine line in Lines)
         {
             string text = line.GetText();
-            // Your parsing logic â€” for each token found:
+            // Your parsing logic - for each token found:
             // AddTag(new TagSpan<TokenTag<MyTokenType>>(
             //     new SnapshotSpan(line.Snapshot, line.Start + startIndex, length),
             //     new TokenTag<MyTokenType>(MyTokenType.Keyword)));
@@ -144,7 +144,7 @@ public class MyBraceCompletion : BraceCompletionBase
 ```
 
 ## [Same-word highlighting](#same-word-highlighting)
-Use `SameWordHighlighterBase` to highlight all occurrences of the word under the caret. No configuration needed â€” just export it for your content type.
+Use `SameWordHighlighterBase` to highlight all occurrences of the word under the caret. No configuration needed - just export it for your content type.
 
 ```csharp
 [Export(typeof(IViewTaggerProvider))]

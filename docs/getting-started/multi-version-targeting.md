@@ -23,10 +23,10 @@ The Community Visual Studio Toolkit ships as several NuGet packages, each target
 
 Ask yourself: *What is the oldest version of Visual Studio my users need?*
 
-- **VS 2022 / 2026 only** — Use the `.17` package. Both VS 2022 and VS 2026 share the 17.x version line and are 64-bit.
-- **VS 2019 + 2022 + 2026** — Use the `.16` package. Your extension will work in all three, but you won't have access to VS 2022-only APIs.
-- **VS 2017 and later** — Use the `.15` package.
-- **VS 2015 and later** — Use the `.14` package.
+- **VS 2022 / 2026 only** - Use the `.17` package. Both VS 2022 and VS 2026 share the 17.x version line and are 64-bit.
+- **VS 2019 + 2022 + 2026** - Use the `.16` package. Your extension will work in all three, but you won't have access to VS 2022-only APIs.
+- **VS 2017 and later** - Use the `.15` package.
+- **VS 2015 and later** - Use the `.14` package.
 
 ## [Install the package](#install-the-package)
 

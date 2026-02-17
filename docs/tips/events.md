@@ -91,7 +91,7 @@ VS.Events.DocumentEvents.AfterDocumentWindowHide += docView =>
 };
 ```
 
-> **Note:** The `Opened` and `Closed` events may also fire for project files, solution files, and special internal documents — not just files visible in the editor. If you only care about text editor files, check the file path or extension in your handler.
+> **Note:** The `Opened` and `Closed` events may also fire for project files, solution files, and special internal documents - not just files visible in the editor. If you only care about text editor files, check the file path or extension in your handler.
 
 **Available events:** `Saved`, `Opened`, `Closed`, `BeforeDocumentWindowShow`, `AfterDocumentWindowHide`
 

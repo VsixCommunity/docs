@@ -4,7 +4,7 @@ description: A recipe for creating dynamic menu items that change at runtime.
 date: 2025-07-17
 ---
 
-Dynamic commands create menu items on the fly based on runtime data. Unlike regular commands that have a fixed set of buttons, dynamic commands generate one menu item per data item â€” perfect for "recent files" lists, open-document pickers, or any contextual menu that changes over time.
+Dynamic commands create menu items on the fly based on runtime data. Unlike regular commands that have a fixed set of buttons, dynamic commands generate one menu item per data item - perfect for "recent files" lists, open-document pickers, or any contextual menu that changes over time.
 
 The toolkit provides `BaseDynamicCommand<TCommand, TItem>` to make this easy.
 
@@ -33,9 +33,9 @@ Create a class that inherits from `BaseDynamicCommand<TCommand, TItem>` where `T
 
 You must override three methods:
 
-1. `GetItems()` â€” return the list of items to create menu entries for.
-2. `BeforeQueryStatus(...)` â€” set the text and visibility of each menu item.
-3. `ExecuteAsync(...)` or `Execute(...)` â€” handle the click on a dynamic item.
+1. `GetItems()` - return the list of items to create menu entries for.
+2. `BeforeQueryStatus(...)` - set the text and visibility of each menu item.
+3. `ExecuteAsync(...)` or `Execute(...)` - handle the click on a dynamic item.
 
 ```csharp
 [Command("489ba882-f600-4c8b-89db-eb366a4ee3b3", 0x0100)]
@@ -106,5 +106,5 @@ public class RecentFilesCommand : BaseDynamicCommand<RecentFilesCommand, RecentF
 
 ## [Additional resources](#additional-resources)
 
-* [Menus & commands recipe](menus-buttons-commands.html) â€” regular (non-dynamic) commands
+* [Menus & commands recipe](menus-buttons-commands.html) - regular (non-dynamic) commands
 * [Visual Studio Command Table (.Vsct) Files](https://docs.microsoft.com/visualstudio/extensibility/internals/visual-studio-command-table-dot-vsct-files)

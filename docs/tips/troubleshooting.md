@@ -12,7 +12,7 @@ This is the most common error when developing extensions. It typically means you
 
 **To diagnose:**
 
-1. Check the **Activity Log** â€” open it at `%AppData%\Microsoft\VisualStudio\<version>\ActivityLog.xml` or launch VS with:
+1. Check the **Activity Log** - open it at `%AppData%\Microsoft\VisualStudio\<version>\ActivityLog.xml` or launch VS with:
 
     ```
     devenv.exe /Log
@@ -28,7 +28,7 @@ This is the most common error when developing extensions. It typically means you
 
 ## [Extension doesn't appear after building](#extension-doesnt-appear-after-building)
 
-- Make sure your project is set to **deploy to the Experimental Instance**. Right-click the VSIX project â†’ Properties â†’ Debug, and verify the "Start external program" is set to `devenv.exe` with `/rootsuffix Exp`.
+- Make sure your project is set to **deploy to the Experimental Instance**. Right-click the VSIX project -> Properties -> Debug, and verify the "Start external program" is set to `devenv.exe` with `/rootsuffix Exp`.
 - Verify the `.vsixmanifest` has the correct `InstallationTarget` version range for the Visual Studio version you're running.
 - Try **resetting the Experimental Instance** (see below).
 
@@ -52,7 +52,7 @@ Alternatively, delete the folder manually:
 
 - Verify the GUID and ID in your `[Command]` attribute match exactly with the `<Button>` element in the `.vsct` file.
 - Make sure you call `await this.RegisterCommandsAsync()` in your package's `InitializeAsync`.
-- Check that the parent group in the `.vsct` file is correct. Use the **Command Explorer** tool window (View â†’ Other Windows) to inspect the command table.
+- Check that the parent group in the `.vsct` file is correct. Use the **Command Explorer** tool window (View -> Other Windows) to inspect the command table.
 - If using `DynamicVisibility`, ensure your `BeforeQueryStatus` handler sets `Visible = true`.
 
 ## [Threading errors](#threading-errors)
@@ -73,7 +73,7 @@ Visual Studio has strict threading rules. Most VS services must be accessed on t
     ```
 
 - Use the toolkit's async APIs (`VS.GetServiceAsync`, `VS.Documents.OpenAsync`, etc.) which handle thread switching for you.
-- Never block the UI thread with `.Result` or `.Wait()` â€” use `async`/`await` instead.
+- Never block the UI thread with `.Result` or `.Wait()` - use `async`/`await` instead.
 
 ## [MEF component not found](#mef-component-not-found)
 
@@ -100,7 +100,7 @@ If your MEF-exported component isn't being picked up:
 When you press F5, Visual Studio launches the Experimental Instance with the debugger attached. If you need to attach manually:
 
 1. Launch the Experimental Instance: `devenv.exe /rootsuffix Exp`
-2. In your development VS instance, use **Debug â†’ Attach to Process** and select the `devenv.exe` process.
+2. In your development VS instance, use **Debug -> Attach to Process** and select the `devenv.exe` process.
 
 ### Use the Activity Log
 
@@ -141,5 +141,5 @@ After updating NuGet packages, you may see build errors related to missing types
 
 ## [Additional resources](#additional-resources)
 
-* [Useful resources](../getting-started/useful-resources.html) â€” links to documentation and community help
-* [Error handling recipe](../recipes/error-handling.html) â€” handle and log exceptions in your extension
+* [Useful resources](../getting-started/useful-resources.html) - links to documentation and community help
+* [Error handling recipe](../recipes/error-handling.html) - handle and log exceptions in your extension

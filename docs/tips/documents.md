@@ -164,5 +164,5 @@ private void OnAfterHide(DocumentView docView)
 
 ## [Additional resources](#additional-resources)
 
-* [Working with files](files.html) â€” file icons, opening files, and Preview Tab tips
-* [Working with events](events.html) â€” all event types available in the toolkit
+* [Working with files](files.html) - file icons, opening files, and Preview Tab tips
+* [Working with events](events.html) - all event types available in the toolkit
