@@ -13,8 +13,8 @@ Quickly determine whether the debugger is currently attached.
 bool isDebugging = await VS.Debugger.IsDebuggingAsync();
 ```
 
-## [Get the debug mode](#get-debug-mode)
-Get the specific mode the debugger is in — not debugging, at a breakpoint, or running.
+## [Get the debug mode](#get-the-debug-mode)
+Get the specific mode the debugger is in â€” not debugging, at a breakpoint, or running.
 
 ```csharp
 var mode = await VS.Debugger.GetDebugModeAsync();
@@ -22,7 +22,7 @@ var mode = await VS.Debugger.GetDebugModeAsync();
 switch (mode)
 {
     case Community.VisualStudio.Toolkit.Debugger.DebugMode.NotDebugging:
-        // Design mode — no debugger attached
+        // Design mode â€” no debugger attached
         break;
     case Community.VisualStudio.Toolkit.Debugger.DebugMode.AtBreakpoint:
         // Stopped at a breakpoint
@@ -33,7 +33,7 @@ switch (mode)
 }
 ```
 
-## [Listen for debug mode changes](#debug-mode-events)
+## [Listen for debug mode changes](#listen-for-debug-mode-changes)
 React when the debugger starts, stops, or hits a breakpoint.
 
 ```csharp

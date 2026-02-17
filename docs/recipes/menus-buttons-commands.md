@@ -29,7 +29,7 @@ This button is placed in the parent group located in the **View -> Other Windows
 
 You can now run the extension now to see if the command shows up in the right location and menu.
 
-## [Handle the click/invocations](#handle-the-click)
+## [Handle the click/invocations](#handle-the-clickinvocations)
 Once the button is defined, we need to handle what happens when it is invoked. We do that in a C# class that looks like this:
 
 ```csharp

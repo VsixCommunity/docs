@@ -6,7 +6,7 @@ date: 2024-12-15
 
 Visual Studio exposes functionality through services. The toolkit provides several ways to retrieve them, from simple one-liners to full dependency injection.
 
-## [VS.Services — pre-wired service accessors](#vs-services)
+## [VS.Services â€” pre-wired service accessors](#vsservices-pre-wired-service-accessors)
 The toolkit pre-wires the most commonly needed VS services through `VS.Services`. Each method returns the service asynchronously, already cast to the correct interface.
 
 ```csharp
@@ -24,7 +24,7 @@ IVsActivityLog activityLog = await VS.Services.GetActivityLogAsync();
 
 > **Tip:** Explore `VS.Services.` in IntelliSense to discover all available pre-wired services.
 
-## [Get any global service](#get-any-service)
+## [Get any global service](#get-any-global-service)
 For services not exposed through `VS.Services`, use the generic `VS.GetServiceAsync` or `VS.GetRequiredServiceAsync` methods. These work the same way as `AsyncPackage.GetServiceAsync` but can be called from anywhere.
 
 ```csharp

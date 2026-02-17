@@ -10,7 +10,7 @@ date: 2021-10-12
 After you have published your extension, publishing updates to your extension is also very easy to do.
 
 
-## [To publish an update of your extension to Marketplace](#publish-update-extension-to-marketplace)
+## [To publish an update of your extension to Marketplace](#to-publish-an-update-of-your-extension-to-marketplace)
 
 1. In Visual Studio, open the solution for the extension you want to update. Make the changes.
 
@@ -27,7 +27,7 @@ After you have published your extension, publishing updates to your extension is
 
 5. Upload the new .vsix file (in the *\bin\release* folder of the project) to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/vs) Web site.
 
-## [How to update your extension in the Marketplace?](#How-To-publish-update-extension-to-marketplace)
+## [How to update your extension in the Marketplace?](#how-to-update-your-extension-in-the-marketplace)
 
 1. Sign in to Marketplace using your current [Visual Studio Marketplace](https://marketplace.visualstudio.com/vs) account.
 
@@ -77,7 +77,7 @@ After you have published your extension, publishing updates to your extension is
 
 ![Save Upload](SaveUpload.png)
 
-## [Users of your extension will now see your update is available](#User-update-extension)
+## [Users of your extension will now see your update is available](#users-of-your-extension-will-now-see-your-update-is-available)
 
 When a user who has an earlier version of the extension opens Extensions and Updates, the new version will appear in the Updates list, provided that the tool is set to automatically look for updates.
 

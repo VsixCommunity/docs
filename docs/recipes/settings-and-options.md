@@ -108,7 +108,7 @@ public Numbers MyEnum { get; set; } = Numbers.First;
 ![Dropdown with enum values on the options page](../assets/img/tools-options-enum.png)
 
 
-## [Walkthrough: Create individual Options with Checkboxes](#Walkthrough-Create-individual-Options-with-Checkboxes)
+## [Walkthrough: Create individual Options with Checkboxes](#walkthrough-create-individual-options-with-checkboxes)
 
 
 If you want to have individual options display Checkboxes, you have to create a custom option page.
@@ -304,7 +304,7 @@ private void OnSettingsSaved(object sender, General e)
 }
 ```
 
-## [Get the source code](#source-code)
+## [Get the source code](#get-the-source-code)
 You can find the source code for this extension in the [samples repository](https://github.com/VsixCommunity/Samples).
 
 ## [Additional resources](#additional-resources)

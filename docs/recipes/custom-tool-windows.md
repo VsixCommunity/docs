@@ -23,7 +23,7 @@ Adding a tool window to an existing extension requires 4 simple steps:
 
 Let's start with step 1.
 
-## [Create the tool window](#create-tool-window)
+## [Create the tool window](#create-the-tool-window)
 Using the `BaseToolWindow<T>` generic base class, we are asked to provide a few basic pieces of information. We must specify the title of the tool window, create and return the XAML user control, and set the actual `ToolWindowPane` class used by Visual Studio to create the outer shell of the window.
 
 ```csharp
@@ -66,7 +66,7 @@ You must create an instance of your custom user control from the `CreateAsync(in
 
 But first, you must create the user control.
 
-## [Add the XAML user control](#add-user-control)
+## [Add the XAML user control](#add-the-xaml-user-control)
 It can be any XAML with its code-behind class, so here's a simple example of a `<usercontrol>` containing a single button:
 
 ```xml
@@ -91,7 +91,7 @@ It can be any XAML with its code-behind class, so here's a simple example of a `
 
 Now we have our tool window class that returns our custom control. The next step is to register our tool window with Visual Studio.
 
-## [Register the tool window](#register-tool-window)
+## [Register the tool window](#register-the-tool-window)
 Registering the tool window means that we are telling Visual Studio about its existence and how to instantiate it. We do that from our package class using the `[ProvideToolWindow]` attribute.
 
 ```csharp
@@ -119,7 +119,7 @@ To make the tool window visible by default, you can specify its visibility in di
 [ProvideToolWindowVisibility(typeof(MyToolWindow.Pane), VSConstants.UICONTEXT.NoSolution_string)]
 ```
 
-## [Command to show the tool window](#create-command)
+## [Command to show the tool window](#command-to-show-the-tool-window)
 This is the same as any other command, and you can see how to add one in the [Menus & Commands recipe](menus-buttons-commands.html).
 
 The command handler class that shows the tool window will look something like this:
@@ -141,7 +141,7 @@ The command placement for tool windows is usually under **View -> Other Windows*
 
 That's it. Congratulations, you've now created your custom tool window.
 
-## [Add a toolbar to the tool window](#add-toolbar)
+## [Add a toolbar to the tool window](#add-a-toolbar-to-the-tool-window)
 
 
 > **Note: This will be easier once: 'Add a Toolbar to the Tool Window' is part of the [VsixCommunity/Community.VisualStudio.Toolkit](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit)** 
@@ -398,5 +398,5 @@ Now in the Buttons element add new button element for your command:
 In the Button element you added change the Icon id to what ever VS Icon Moniker you want to use. 
 VS IntelliSense should provide you a list while you edit. Or you can install [KnowMonikers Explorer 2022](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.KnownMonikersExplorer2022)
 
-## [Get the source code](#source-code)
+## [Get the source code](#get-the-source-code)
 You can find the source code for this recipe in the [samples repository](https://github.com/VsixCommunity/Samples/tree/master/ToolWindow).

@@ -6,7 +6,7 @@ date: 2021-8-13
 
 Here's a collection of small code samples on different ways to work with files and documents.
 
-## [Get active text view](#get-active-document)
+## [Get active text view](#get-active-text-view)
 Get the current active text view to manipulate its text buffer text.
 
 ```csharp
@@ -53,14 +53,14 @@ string fileName = "c:\\file.txt";
 await VS.Documents.OpenInPreviewTabAsync(fileName);
 ```
 
-## [Get file name from ITextBuffer](#get-file-name-from-textbuffer)
+## [Get file name from ITextBuffer](#get-file-name-from-itextbuffer)
 Use the extension method `buffer.GetFileName()` located in the `Microsoft.VisualStudio.Text` namespace.
 
 ```csharp
 string fileName = buffer.GetFileName();
 ```
 
-## [SolutionItem from file](#projectitem-from-file)
+## [SolutionItem from file](#solutionitem-from-file)
 Find the `SolutionItem` from an absolute file path.
 
 ```csharp

@@ -6,14 +6,14 @@ date: 2024-12-15
 
 The Community Toolkit provides a set of MEF base classes that make it easy to add language editor features to Visual Studio. These base classes handle all the plumbing so you only have to implement your language-specific logic.
 
-## [Overview of the token-based approach](#overview)
+## [Overview of the token-based approach](#overview-of-the-token-based-approach)
 Most editor features in the toolkit are built around a **tokenizer** pattern:
 
 1. You define a set of **token types** (keywords, strings, comments, etc.)
 2. You implement a **tokenizer** that parses each line into tokens
 3. You plug the tokenizer into one or more **base classes** for syntax highlighting, error squiggles, outlining, etc.
 
-## [Define your token types](#define-tokens)
+## [Define your token types](#define-your-token-types)
 Start by defining an enum (or bool set) for the token types your language supports. Each token type can later be mapped to a classification (color), an error, or a collapsible region.
 
 ```csharp
@@ -28,7 +28,7 @@ public enum MyTokenType
 }
 ```
 
-## [Implement the tokenizer](#implement-tokenizer)
+## [Implement the tokenizer](#implement-the-tokenizer)
 Inherit from `TokenTaggerBase<T>` where T is your token type. The `TokenizeAsync` method receives a line of text and must return a list of `ITagSpan<TokenTag<T>>` describing the tokens on that line.
 
 ```csharp
@@ -44,7 +44,7 @@ internal class MyTokenTagger : TokenTaggerBase<MyTokenType>
         foreach (ITextSnapshotLine line in Lines)
         {
             string text = line.GetText();
-            // Your parsing logic — for each token found:
+            // Your parsing logic â€” for each token found:
             // AddTag(new TagSpan<TokenTag<MyTokenType>>(
             //     new SnapshotSpan(line.Snapshot, line.Start + startIndex, length),
             //     new TokenTag<MyTokenType>(MyTokenType.Keyword)));
@@ -93,7 +93,7 @@ public class MyErrorTagger : TokenErrorTaggerBase<MyTokenType>
 }
 ```
 
-## [Outlining / code folding](#outlining)
+## [Outlining / code folding](#outlining-code-folding)
 Use `TokenOutliningTaggerBase<T>` to add collapsible regions. You specify which token types start and end a region.
 
 ```csharp
@@ -144,7 +144,7 @@ public class MyBraceCompletion : BraceCompletionBase
 ```
 
 ## [Same-word highlighting](#same-word-highlighting)
-Use `SameWordHighlighterBase` to highlight all occurrences of the word under the caret. No configuration needed — just export it for your content type.
+Use `SameWordHighlighterBase` to highlight all occurrences of the word under the caret. No configuration needed â€” just export it for your content type.
 
 ```csharp
 [Export(typeof(IViewTaggerProvider))]
@@ -155,7 +155,7 @@ public class MySameWordHighlighter : SameWordHighlighterBase
 }
 ```
 
-## [Quick Info (tooltips)](#quick-info)
+## [Quick Info (tooltips)](#quick-info-tooltips)
 Use `TokenQuickInfoBase<T>` to show tooltip information when the user hovers over a token.
 
 ```csharp
@@ -177,7 +177,7 @@ public class MyQuickInfo : TokenQuickInfoBase<MyTokenType>
 }
 ```
 
-## [Register your content type](#register-content-type)
+## [Register your content type](#register-your-content-type)
 All the above classes reference a `ContentType`. You must define and register it so Visual Studio knows which files get your editor features.
 
 ```csharp

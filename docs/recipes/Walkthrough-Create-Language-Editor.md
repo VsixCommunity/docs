@@ -84,11 +84,11 @@ This Language Editor's current features are:
 
 - Tools Options and Settings Support
 
-## [Creating a Visual Studio 2022 CSharp Extension Project](#Create-Visual-Studio-2022-CSharp-Extension)
+## [Creating a Visual Studio 2022 CSharp Extension Project](#creating-a-visual-studio-2022-csharp-extension-project)
 
-### [Getting Started](#Getting-Started)
+### [Getting Started](#getting-started)
 
-In Visual Studio 2022 install: (If you don’t’ already have it.) [VsixCommunity
+In Visual Studio 2022 install: (If you donâ€™tâ€™ already have it.) [VsixCommunity
 Community.VisualStudio.Toolkit](https://github.com/VsixCommunity/Community.VisualStudio.Toolkit)
 then create a new Visual Studio 2022 CSharp Extension using the:
 `VSIX Project w/Tool Window (Community) Project Template`
@@ -231,7 +231,7 @@ In the Constants.cs file change the class visibility from public to internal and
     }
 ```
 
-## [ToolWindow Features](#ToolWindow-Features)
+## [ToolWindow Features](#toolwindow-features)
 
 In Solution Explorer open the ToolWindows\MyToolWindow.cs file.
 
@@ -273,7 +273,7 @@ At this point the project will build without issues.
 
 ![First Build](media/FirstBuild.png)
 
-## [Update Package file](#Update-Package-file)
+## [Update Package file](#update-package-file)
 
 Open the package file `LinqLanguageEditor2022Package.cs`.
 
@@ -322,7 +322,7 @@ To this:
 
 At this point the project should still build without issues.
 
-## [Create a LINQ Editor Factory](#Create-LINQ-Editor-Factory)
+## [Create a LINQ Editor Factory](#create-a-linq-editor-factory)
 
 In Solution Explorer right-click the project and click `Add` then `New Empty File...`
 
@@ -377,7 +377,7 @@ Rename `[Command(PackageIds.MyCommand)]` to `[Command(PackageIds.LinqToolWindowC
 
 Should build without issues now.
 
-## [Add Toolbar and Button to ToolWindow](#Add-Toolbar-and-Buttons-to-ToolWindow)
+## [Add Toolbar and Button to ToolWindow](#add-toolbar-and-button-to-toolwindow)
 
 In the `VSCommandTable.vsct` file under the `<Symbols>` section Add below the `LinqCommand` line:
 
@@ -538,7 +538,7 @@ internal sealed class LinqLanguageFactory : LanguageBase
 }
 ```
 
-## [Register the Language Factory](#Register-the-Language-Factory)
+## [Register the Language Factory](#register-the-language-factory)
 
 In the `LinqLanguageEditor2022Package.cs` file, under the Task InitializeAsync method of the LinqLanguageEditor2022Package Class, Register the Language Factory by add this code:
 
@@ -1480,7 +1480,7 @@ namespace LinqLanguageEditor2022
 }
 ```
 
-## [Add Messenger Service to Package, to handle ToolWindow Toolbar button Commands](#Add-Messenger-Service-to-Package-to-handle-commands)
+## [Add Messenger Service to Package, to handle ToolWindow Toolbar button Commands](#add-messenger-service-to-package-to-handle-toolwindow-toolbar-button-commands)
 
 In Solution Explorer right-click the project and click `Add` then `New Empty File...`
 
@@ -1692,7 +1692,7 @@ To this:
 public override string GetTitle(int toolWindowId) => Constants.LinqEditorToolWindowTitle;
 ```
 
-## [Add Toolbar Button to the ToolWindow Toolbar](#Toolbar-Buttons-to-ToolWindow-Toolbar)
+## [Add Toolbar Button to the ToolWindow Toolbar](#add-toolbar-button-to-the-toolwindow-toolbar)
 
 In the `VSCommandTable.vsct` file under the `<Symbols>` section Add below the `LinqTWindowToolbarGroup` line:
 
@@ -1780,7 +1780,7 @@ The `LINQ Query Tool Window` should display:
 
 Close the Visual Stuiod 2022 Experimental Instance and stop debugging.
 
-## [Add Events Handlers for the ToolWindow, Toolbar, and Button](#Add-Events-Handlers-ToolWindow-Toolbar-Buttons)
+## [Add Events Handlers for the ToolWindow, Toolbar, and Button](#add-events-handlers-for-the-toolwindow-toolbar-and-button)
 
 The ToolWindow Toolbar Button Events are Handled as Commands in one Class.
 
@@ -1817,7 +1817,7 @@ internal sealed class LinqMessageCommandHandler : BaseCommand<LinqMessageCommand
 }
 ```
 
-## [Add the meat of the code to the `LinqToolWindowControl.xaml.cs` file](#ProjectLogic)
+## [Add the meat of the code to the `LinqToolWindowControl.xaml.cs` file](#add-the-meat-of-the-code-to-the-linqtoolwindowcontrolxamlcs-file)
 
 The WPF Code behide file `LinqToolWindowControl.xaml.cs` is th main controling logic for handling the selected LINQ Query, Compiling the LINQ Query, and displaying the results in the ToolWindow:
 
@@ -2547,7 +2547,7 @@ namespace LinqLanguageEditor2022.ToolWindows
 }
 ```
 
-## [Add RadioListBox UserControl to the Project](#RadioListBoxUserControl)
+## [Add RadioListBox UserControl to the Project](#add-radiolistbox-usercontrol-to-the-project)
 
 Since we are currently using one option variable for a result when we select our LINQ Query we need to know if the Selected LINQ Query has that result variable.
 
@@ -3241,7 +3241,7 @@ namespace LinqLanguageEditor2022
 }
 ```
 
-## [Add .editorconfig file](#editorconfigFile)
+## [Add .editorconfig file](#add-editorconfig-file)
 
 Last but not least we need to add a .editorconfig file to the extension project that includes our .ling file settings.
 
@@ -3498,7 +3498,7 @@ linq_style_prefer_extended_property_pattern = true:suggestion
 visual_basic_preferred_modifier_order = Partial,Default,Private,Protected,Public,Friend,NotOverridable,Overridable,MustOverride,Overloads,Overrides,MustInherit,NotInheritable,Static,Shared,Shadows,ReadOnly,WriteOnly,Dim,Const,WithEvents,Widening,Narrowing,Custom,Async:suggestion
 ```
 
-## [Update .editorconfig Buuild Action](#UPdateBuildAction)
+## [Update .editorconfig Buuild Action](#update-editorconfig-buuild-action)
 
 Now we need to include the .editorconfig in or extension.
 
@@ -3507,7 +3507,7 @@ Right click the `.editorconfig` in Soluiton Explorer and click `Properties` then
 - Build Action to `Content`
 - Include in VSIX to `True`
 
-## [Build the Solution and Test](#BuildTest)
+## [Build the Solution and Test](#build-the-solution-and-test)
 
 Debug the extension to the Visual Studio EXP instanse:
 
@@ -3717,7 +3717,7 @@ Now we have the results we want:
 
 ![Results Query Editor2](media/ResultsQueryEditor2.png)
 
-## [Change The Result Options ToolWindow Colors](#ChangResultOptionsToolWindowColors)
+## [Change The Result Options ToolWindow Colors](#change-the-result-options-toolwindow-colors)
 
 To change the colors of the ToolWindows text display, open the Option Page:
 `Tool` `Options...` `Text Editor` `Linq` `Advanced`:
@@ -3730,6 +3730,6 @@ From this option page you can change colors and the default "result" variable us
 
 The original source repository for this walkthrough is no longer available. For a simpler, focused guide to adding editor features using the toolkit's MEF base classes, see [Editor extensions](editor-extensions.html).
 
-### [Contribute to the VSIX Cookbook Project](#Contribute-to-the-VSIX-Cookbook-Project)
+### [Contribute to the VSIX Cookbook Project](#contribute-to-the-vsix-cookbook-project)
 
 You are invited to become a Contributor to the [VSIX Cookbook](https://github.com/VsixCommunity/docs) project on GitHub.

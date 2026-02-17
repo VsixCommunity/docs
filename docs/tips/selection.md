@@ -6,7 +6,7 @@ date: 2024-12-15
 
 Here's a collection of small code samples on different ways to work with selection and UI contexts.
 
-## [Set a UI context](#set-ui-context)
+## [Set a UI context](#set-a-ui-context)
 UI contexts control the visibility and enabled state of commands and tool windows. You can activate or deactivate a custom UI context from code.
 
 ```csharp
@@ -17,7 +17,7 @@ await VS.Selection.SetUIContextAsync("your-guid-here", true);
 await VS.Selection.SetUIContextAsync("your-guid-here", false);
 ```
 
-## [Listen for selection changes](#selection-changed)
+## [Listen for selection changes](#listen-for-selection-changes)
 React when the user selects a different item in Solution Explorer or other tool windows.
 
 ```csharp
@@ -33,7 +33,7 @@ VS.Events.SelectionEvents.SelectionChanged += (sender, args) =>
 };
 ```
 
-## [Listen for UI context changes](#ui-context-changed)
+## [Listen for UI context changes](#listen-for-ui-context-changes)
 Know when a UI context is activated or deactivated (e.g. when a solution opens or a specific editor gains focus).
 
 ```csharp

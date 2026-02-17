@@ -6,7 +6,7 @@ date: 2021-8-13
 
 Here's a collection of small code samples on different ways to work with projects.
 
-## [Get project from contained file](#get-project-from-file)
+## [Get project from contained file](#get-project-from-contained-file)
 This is how to get the project from one if its files.
 
 ```csharp
@@ -35,7 +35,7 @@ Find out what type of project you're dealing with.
 bool isCsharp = await project.IsKindAsync(ProjectTypes.CSHARP);
 ```
 
-## [Find Current Project Template Capabilities](#capabilities-of-project)
+## [Find Current Project Template Capabilities](#find-current-project-template-capabilities)
 To find out what capabilities the current open project template supports. 
 
 > Note: For SDK Style project files only.
@@ -57,7 +57,7 @@ In Solution Explorer if you expand the Capabilities element you will see all the
 
 ![Capabilities Expanded](CapabilitiesExpanded.png)
 
-## [Add Project Template Capabilities to your own templates](#add-capabilities-to-project)
+## [Add Project Template Capabilities to your own templates](#add-project-template-capabilities-to-your-own-templates)
 Experienced Developers or Visual Studio 2022 Template Developers.
 
 How to update your Visual Studio 2022 Custom Project Template Extensions to provide Custom Project Capabilities.

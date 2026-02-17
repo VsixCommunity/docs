@@ -17,14 +17,14 @@ Make sure to set the property **Include Debug Symbols in VSIX Container** to **T
 
 This sets you up to collect the information you need. Let's look at some strategies for doing that.
 
-## [Automated telemetry](#telemetry)
+## [Automated telemetry](#automated-telemetry)
 You can use any telemetry mechanism you can use in any .NET application from your extension. Popular options are [Application Insights](https://docs.microsoft.com/powerapps/maker/canvas-apps/application-insights), [Raygun](https://raygun.com/), [Google Analytics](https://analytics.google.com/) etc.
 
 You'll manually have to report the exception details through these telemetry systems using their APIs. This option is a great way to stay on top of any issues that occur on your user's machines and allow you to proactive fix issues early.
 
 When using this option, make sure to mention it in your privacy statement, since some users don't like reporting telemetry.
 
-## [Log to Output Window](#output-window)
+## [Log to Output Window](#log-to-output-window)
 When using `try/catch` blocks to handle exceptions, it may be advantageous to let the user know what went wrong. That way they can easily report the issue to you in a way that's easy for you to fix.
 
 One of the best ways is to output the exception details to the Output Window. That way, the user can see an exception occurred and provide them with the stacktrace to send you in a bug report.
@@ -55,7 +55,7 @@ catch (Exception ex)
 }
 ```
 
-## [Notify the user](#notify)
+## [Notify the user](#notify-the-user)
 When the exception has low severity to the user, there is no reason to interrupt them. Consider using the statusbar to show that an error occurred.
 
 If the exception is severe and causes the user flow to be interrupted, consider using a message box to let the user know about the error. Make sure to still log the exception through telemetry and/or the Output Window as described above.

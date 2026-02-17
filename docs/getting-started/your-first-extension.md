@@ -47,7 +47,7 @@ Let's go over the most important files.
 
 **Commands/MyCommand.cs** is the command handler for the command defined in the *VSCommandTable.vsct* file. It controls what happens when the command is executed - aka. the button is clicked.
 
-## [Modifying the command](#modify-command)
+## [Modifying the command](#modifying-the-command)
 First, we want to make sure our command has the right name, icon, and position within the Visual Studio menu system.
 
 Open the *VSCommandTable.vsct* file and find a `<Group>` and a `<Button>`. Notice how the button specifies the group as being its parent and the group's parent is the built-in *VSMainMenu/Tools* menu.

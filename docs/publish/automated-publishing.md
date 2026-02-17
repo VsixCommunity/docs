@@ -6,8 +6,8 @@ date: 2024-12-15
 
 Automating the build and publish process for your extension saves time and ensures every release is consistent. This guide shows the recommended approach using GitHub Actions with community-maintained actions that handle version stamping, building, and publishing.
 
-## [The publish manifest](#publish-manifest)
-Create a `vs-publish.json` file in the root of your repo. This tells the Marketplace about your extension's metadata. For a VSIX extension, most identity fields come from the `.vsixmanifest` — you only need to set the `internalName`:
+## [The publish manifest](#the-publish-manifest)
+Create a `vs-publish.json` file in the root of your repo. This tells the Marketplace about your extension's metadata. For a VSIX extension, most identity fields come from the `.vsixmanifest` â€” you only need to set the `internalName`:
 
 ```json
 {
@@ -37,18 +37,18 @@ If your Marketplace listing includes images, add them to `assetFiles`:
 
 > For full details on the manifest format, see [Publishing via command line](https://docs.microsoft.com/visualstudio/extensibility/walkthrough-publishing-a-visual-studio-extension-via-command-line) on Microsoft Learn.
 
-## [Create a Personal Access Token](#create-pat)
+## [Create a Personal Access Token](#create-a-personal-access-token)
 You need a Personal Access Token (PAT) to authenticate with the Marketplace.
 
 1. Go to [dev.azure.com](https://dev.azure.com) and sign in with the Microsoft account that owns your Marketplace publisher
-2. Open **User Settings** → **Personal access tokens** → **New Token**
+2. Open **User Settings** â†’ **Personal access tokens** â†’ **New Token**
 3. Set the organization to **All accessible organizations**
-4. Under scopes, select **Marketplace → Manage**
+4. Under scopes, select **Marketplace â†’ Manage**
 5. Create the token and copy it immediately
 
-In your GitHub repository, go to **Settings → Secrets and variables → Actions** and add the token as a secret named `VS_PUBLISHER_ACCESS_TOKEN`.
+In your GitHub repository, go to **Settings â†’ Secrets and variables â†’ Actions** and add the token as a secret named `VS_PUBLISHER_ACCESS_TOKEN`.
 
-## [GitHub Actions workflow](#github-actions)
+## [GitHub Actions workflow](#github-actions-workflow)
 The recommended workflow uses two jobs: **build** (runs on every push/PR) and **publish** (runs only on push to master or manual dispatch). Publishing to the Marketplace happens when the commit message contains `[release]` or the workflow is triggered manually.
 
 Create `.github/workflows/build.yaml`:
@@ -149,21 +149,21 @@ jobs:
 
 The workflow has two jobs:
 
-**Build** — runs on every push and PR to master. Restores, version-stamps, builds, and uploads the VSIX as an artifact.
+**Build** â€” runs on every push and PR to master. Restores, version-stamps, builds, and uploads the VSIX as an artifact.
 
-**Publish** — runs only on push to master or manual dispatch. It always publishes to [Open VSIX Gallery](https://www.vsixgallery.com/) so nightly users get updates. When the commit message contains `[release]` (or on manual dispatch), it also publishes to the VS Marketplace and creates a tagged GitHub release.
+**Publish** â€” runs only on push to master or manual dispatch. It always publishes to [Open VSIX Gallery](https://www.vsixgallery.com/) so nightly users get updates. When the commit message contains `[release]` (or on manual dispatch), it also publishes to the VS Marketplace and creates a tagged GitHub release.
 
 ### Key actions used
 
-[timheuer/bootstrap-dotnet](https://github.com/timheuer/bootstrap-dotnet) — sets up MSBuild and .NET dependencies.
+[timheuer/bootstrap-dotnet](https://github.com/timheuer/bootstrap-dotnet) â€” sets up MSBuild and .NET dependencies.
 
-[timheuer/vsix-version-stamp](https://github.com/timheuer/vsix-version-stamp) — auto-increments the VSIX version based on the build number.
+[timheuer/vsix-version-stamp](https://github.com/timheuer/vsix-version-stamp) â€” auto-increments the VSIX version based on the build number.
 
-[timheuer/openvsixpublish](https://github.com/timheuer/openvsixpublish) — publishes to the Open VSIX Gallery.
+[timheuer/openvsixpublish](https://github.com/timheuer/openvsixpublish) â€” publishes to the Open VSIX Gallery.
 
-[cezarypiatek/VsixPublisherAction](https://github.com/cezarypiatek/VsixPublisherAction) — wraps VsixPublisher.exe for Marketplace publishing.
+[cezarypiatek/VsixPublisherAction](https://github.com/cezarypiatek/VsixPublisherAction) â€” wraps VsixPublisher.exe for Marketplace publishing.
 
-[softprops/action-gh-release](https://github.com/softprops/action-gh-release) — creates a GitHub release with the VSIX attached.
+[softprops/action-gh-release](https://github.com/softprops/action-gh-release) â€” creates a GitHub release with the VSIX attached.
 
 ### Publishing a release
 To publish to the Marketplace, include `[release]` in your commit message:
@@ -179,13 +179,13 @@ Or trigger the workflow manually from the **Actions** tab in GitHub.
 
 **Set DeployExtension to False** in CI to prevent the build from trying to launch the VS experimental instance.
 
-**Always sign your VSIX** — unsigned extensions don't auto-update for users. See the [publishing checklist](checklist.html).
+**Always sign your VSIX** â€” unsigned extensions don't auto-update for users. See the [publishing checklist](checklist.html).
 
-**Keep PATs short-lived** — set an expiration and rotate regularly.
+**Keep PATs short-lived** â€” set an expiration and rotate regularly.
 
 **Adjust the VsixManifestPath and VsixManifestSourcePath** env variables to match your project structure.
 
 ## [Additional resources](#additional-resources)
-* [Publishing via command line](https://docs.microsoft.com/visualstudio/extensibility/walkthrough-publishing-a-visual-studio-extension-via-command-line) — full `VsixPublisher.exe` reference on Microsoft Learn
-* [Marketplace publisher management](https://marketplace.visualstudio.com/manage) — manage your publisher and extensions
-* [TomlEditor workflow](https://github.com/madskristensen/TomlEditor/blob/master/.github/workflows/build.yaml) — the real-world example this page is based on
+* [Publishing via command line](https://docs.microsoft.com/visualstudio/extensibility/walkthrough-publishing-a-visual-studio-extension-via-command-line) â€” full `VsixPublisher.exe` reference on Microsoft Learn
+* [Marketplace publisher management](https://marketplace.visualstudio.com/manage) â€” manage your publisher and extensions
+* [TomlEditor workflow](https://github.com/madskristensen/TomlEditor/blob/master/.github/workflows/build.yaml) â€” the real-world example this page is based on

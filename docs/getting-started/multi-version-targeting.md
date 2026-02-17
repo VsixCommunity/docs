@@ -17,16 +17,16 @@ The Community Visual Studio Toolkit ships as several NuGet packages, each target
 
 > **Recommendation:** If you only need to support Visual Studio 2022, use `Community.VisualStudio.Toolkit.17`. It provides the cleanest experience and access to the latest APIs.
 
-## [Choosing your target](#choosing-target)
+## [Choosing your target](#choosing-your-target)
 
 Ask yourself: *What is the oldest version of Visual Studio my users need?*
 
-- **VS 2022 only** — Use the `.17` package. VS 2022 is 64-bit and the most common target for new extensions.
-- **VS 2019 + 2022** — Use the `.16` package. Your extension will work in both, but you won't have access to VS 2022-only APIs.
-- **VS 2017 and later** — Use the `.15` package.
-- **VS 2015 and later** — Use the `.14` package.
+- **VS 2022 only** â€” Use the `.17` package. VS 2022 is 64-bit and the most common target for new extensions.
+- **VS 2019 + 2022** â€” Use the `.16` package. Your extension will work in both, but you won't have access to VS 2022-only APIs.
+- **VS 2017 and later** â€” Use the `.15` package.
+- **VS 2015 and later** â€” Use the `.14` package.
 
-## [Install the package](#install-package)
+## [Install the package](#install-the-package)
 
 Install the package matching your target:
 
@@ -36,7 +36,7 @@ dotnet add package Community.VisualStudio.Toolkit.17
 
 Or via the NuGet Package Manager in Visual Studio, search for `Community.VisualStudio.Toolkit` and pick the version matching your target.
 
-## [VSSDK version alignment](#vssdk-alignment)
+## [VSSDK version alignment](#vssdk-version-alignment)
 
 Your `Microsoft.VSSDK.BuildTools` and `Microsoft.VisualStudio.SDK` package versions should match the Visual Studio version you're targeting:
 
@@ -55,26 +55,26 @@ Make sure your `.vsixmanifest` declares the correct `InstallationTarget` version
 </Installation>
 ```
 
-## [Supporting both VS 2019 and VS 2022](#dual-targeting)
+## [Supporting both VS 2019 and VS 2022](#supporting-both-vs-2019-and-vs-2022)
 
 VS 2022 moved to 64-bit, which means a single `.vsix` cannot target both VS 2019 (32-bit) and VS 2022 (64-bit). If you need to support both:
 
 1. Use the `.16` toolkit package.
-2. Create **two VSIX projects** in your solution — one for VS 2019, one for VS 2022.
+2. Create **two VSIX projects** in your solution â€” one for VS 2019, one for VS 2022.
 3. Share code via a shared project or class library.
 4. Each VSIX project references the appropriate `Microsoft.VisualStudio.SDK` version.
 5. Publish them as separate extensions on the Marketplace, or use the same extension ID with different version ranges in the `.vsixmanifest`.
 
-## [API differences between versions](#api-differences)
+## [API differences between versions](#api-differences-between-versions)
 
 Most toolkit APIs work identically across all versions. However, some features are only available in newer packages:
 
 - The `.17` package can use APIs introduced in VS 2022 (e.g., newer editor APIs).
 - The `.14`/`.15`/`.16` packages are limited to APIs available in those older VS versions.
 
-The toolkit uses `#if` directives internally to handle version differences, so you generally don't need to worry about it — just choose your minimum version and the toolkit handles the rest.
+The toolkit uses `#if` directives internally to handle version differences, so you generally don't need to worry about it â€” just choose your minimum version and the toolkit handles the rest.
 
 ## [Additional resources](#additional-resources)
 
-* [Get the tools](get-the-tools.html) — setting up your development environment
-* [Your first extension](your-first-extension.html) — creating a new extension project
+* [Get the tools](get-the-tools.html) â€” setting up your development environment
+* [Your first extension](your-first-extension.html) â€” creating a new extension project

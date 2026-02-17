@@ -24,7 +24,7 @@ Install the *Extensibility Essentials* by going to **Extensions -> Manage Extens
 
 ![Install Extensibility Essentials from the Extension Manager dialog](../assets/img/install-ext-essentials.png)
 
-## [Install the Extensibility Template Pack](#install-template-pack)
+## [Install the Extensibility Template Pack](#install-the-extensibility-template-pack)
 The recipes and walkthroughs in this cookbook use project and item templates from the *Extensibility Template Pack*. Install it from **Extensions -> Manage Extensions** and search for *extensibility template*.
 
 * For Visual Studio 2019 install [Extensibility Template Pack 2019](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.ExtensibilityItemTemplates)

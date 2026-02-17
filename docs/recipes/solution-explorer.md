@@ -1,18 +1,18 @@
 ---
 title: Solution Explorer integration
-description: A recipe for interacting with the Solution Explorer window — selecting, expanding, filtering, and editing items.
+description: A recipe for interacting with the Solution Explorer window â€” selecting, expanding, filtering, and editing items.
 date: 2025-07-17
 ---
 
-The toolkit provides a typed `SolutionExplorerWindow` wrapper that lets you programmatically interact with Solution Explorer — select items, expand/collapse nodes, apply filters, and start label editing.
+The toolkit provides a typed `SolutionExplorerWindow` wrapper that lets you programmatically interact with Solution Explorer â€” select items, expand/collapse nodes, apply filters, and start label editing.
 
-## [Get the Solution Explorer window](#get-solution-explorer)
+## [Get the Solution Explorer window](#get-the-solution-explorer-window)
 
 ```csharp
 SolutionExplorerWindow solExp = await VS.Windows.GetSolutionExplorerWindowAsync();
 ```
 
-## [Get selected items](#get-selection)
+## [Get selected items](#get-selected-items)
 
 Retrieve the items currently selected in Solution Explorer:
 
@@ -28,7 +28,7 @@ foreach (SolutionItem item in selected)
 
 Each `SolutionItem` gives you the item's name, type (project, folder, file, etc.), full path, and access to its hierarchy.
 
-## [Set the selection](#set-selection)
+## [Set the selection](#set-the-selection)
 
 Select a specific item or multiple items:
 
@@ -44,7 +44,7 @@ IEnumerable<SolutionItem> items = await GetMyItemsAsync();
 solExp.SetSelection(items);
 ```
 
-## [Expand and collapse nodes](#expand-collapse)
+## [Expand and collapse nodes](#expand-and-collapse-nodes)
 
 Expand a project or folder node in Solution Explorer:
 
@@ -73,7 +73,7 @@ The `SolutionItemExpansionMode` flags can be combined:
 | `Recursive` | Expand the item and all its descendants |
 | `Ancestors` | Expand parent nodes to make the item visible |
 
-## [Edit an item label](#edit-label)
+## [Edit an item label](#edit-an-item-label)
 
 Start an inline rename of an item:
 
@@ -88,7 +88,7 @@ if (item != null)
 }
 ```
 
-## [Solution Explorer filters](#filters)
+## [Solution Explorer filters](#solution-explorer-filters)
 
 Check if any filter is active, or if a specific filter is enabled:
 
@@ -120,5 +120,5 @@ solExp.DisableFilter();
 
 ## [Additional resources](#additional-resources)
 
-* [Working with solutions](../tips/solutions.html) — enumerate projects and solution events
-* [Working with projects](../tips/projects.html) — add files, inspect project types
+* [Working with solutions](../tips/solutions.html) â€” enumerate projects and solution events
+* [Working with projects](../tips/projects.html) â€” add files, inspect project types

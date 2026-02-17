@@ -6,7 +6,7 @@ date: 2025-07-17
 
 Here's a collection of code samples for working with text documents using the toolkit's `VS.Documents` API and the `DocumentView` class.
 
-## [Open a document](#open-document)
+## [Open a document](#open-a-document)
 
 Open a file in the editor and get a `DocumentView` back:
 
@@ -26,13 +26,13 @@ Open a file in the Preview Tab (provisional tab):
 DocumentView docView = await VS.Documents.OpenInPreviewTabAsync(@"C:\src\MyFile.cs");
 ```
 
-## [Check if a file is open](#check-open)
+## [Check if a file is open](#check-if-a-file-is-open)
 
 ```csharp
 bool isOpen = await VS.Documents.IsOpenAsync(@"C:\src\MyFile.cs");
 ```
 
-## [Get the active document](#active-document)
+## [Get the active document](#get-the-active-document)
 
 Get the `DocumentView` for the currently focused text editor:
 
@@ -41,7 +41,7 @@ DocumentView docView = await VS.Documents.GetActiveDocumentViewAsync();
 if (docView?.TextView == null) return; // not a text window
 ```
 
-## [Get a document view for a specific file](#specific-document)
+## [Get a document view for a specific file](#get-a-document-view-for-a-specific-file)
 
 If a file is already open, retrieve its `DocumentView` without activating it:
 
@@ -49,7 +49,7 @@ If a file is already open, retrieve its `DocumentView` without activating it:
 DocumentView docView = await VS.Documents.GetDocumentViewAsync(@"C:\src\MyFile.cs");
 ```
 
-## [The DocumentView class](#documentview)
+## [The DocumentView class](#the-documentview-class)
 
 `DocumentView` is the toolkit's unified object for a text document in the editor. It provides:
 
@@ -61,7 +61,7 @@ DocumentView docView = await VS.Documents.GetDocumentViewAsync(@"C:\src\MyFile.c
 | `Document` | The `ITextDocument` (provides dirty tracking, encoding, etc.) |
 | `WindowFrame` | The `WindowFrame` hosting the document |
 
-## [Read text from a document](#read-text)
+## [Read text from a document](#read-text-from-a-document)
 
 Use the `TextBuffer` to access all text or specific lines:
 
@@ -77,7 +77,7 @@ ITextSnapshotLine line = docView.TextBuffer.CurrentSnapshot.GetLineFromLineNumbe
 string firstLine = line.GetText();
 ```
 
-## [Insert text at the caret](#insert-text)
+## [Insert text at the caret](#insert-text-at-the-caret)
 
 ```csharp
 DocumentView docView = await VS.Documents.GetActiveDocumentViewAsync();
@@ -87,7 +87,7 @@ SnapshotPoint position = docView.TextView.Caret.Position.BufferPosition;
 docView.TextBuffer?.Insert(position, "inserted text");
 ```
 
-## [Replace text in a document](#replace-text)
+## [Replace text in a document](#replace-text-in-a-document)
 
 Use an edit session on the text buffer for reliable replacements:
 
@@ -109,7 +109,7 @@ using (ITextEdit edit = docView.TextBuffer.CreateEdit())
 }
 ```
 
-## [Get the caret position and selection](#caret-selection)
+## [Get the caret position and selection](#get-the-caret-position-and-selection)
 
 ```csharp
 DocumentView docView = await VS.Documents.GetActiveDocumentViewAsync();
@@ -125,7 +125,7 @@ string selectedText = docView.TextView.Selection.StreamSelectionSpan
     .GetText();
 ```
 
-## [Listen for document events](#document-events)
+## [Listen for document events](#listen-for-document-events)
 
 The toolkit exposes document lifecycle events through `VS.Events.DocumentEvents`:
 
@@ -164,5 +164,5 @@ private void OnAfterHide(DocumentView docView)
 
 ## [Additional resources](#additional-resources)
 
-* [Working with files](files.html) — file icons, opening files, and Preview Tab tips
-* [Working with events](events.html) — all event types available in the toolkit
+* [Working with files](files.html) â€” file icons, opening files, and Preview Tab tips
+* [Working with events](events.html) â€” all event types available in the toolkit
