@@ -309,8 +309,9 @@ main {
 
 #menu a[aria-haspopup]::before {
     content: "›";
-    position:absolute;
-    left: -6px;
+    position: relative;
+    display: inline-block;
+    margin-right: 0.3em;
     color: var(--accent-light);
     font-weight: 700;
     transition: transform 0.2s ease;
@@ -442,9 +443,6 @@ footer li:not(:last-child):after{
 }
 
 @media only screen and (max-width: 1023px) {
-    body {
-        margin-left: max(env(safe-area-inset-left), 10px);
-    }
     #menu {
         padding: .8em 0 0 0;
         border: none;
@@ -480,7 +478,6 @@ footer li:not(:last-child):after{
         right: 10px;
         left: 10px;
         z-index: 10;
-        margin-left: max(env(safe-area-inset-left), 10px);
         border-radius: 10px;
         box-shadow: var(--card-shadow);
         border: 1px solid var(--border-color);
