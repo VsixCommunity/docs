@@ -447,11 +447,6 @@ footer li:not(:last-child):after{
         padding: 0 10px;
     }
     
-    header {
-        padding-left: max(10px, env(safe-area-inset-left));
-        padding-right: max(10px, env(safe-area-inset-right));
-    }
-    
     #menu {
         padding: .8em 0 0 0;
         border: none;
