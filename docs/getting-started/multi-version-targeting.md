@@ -10,21 +10,23 @@ The Community Visual Studio Toolkit ships as several NuGet packages, each target
 
 | NuGet package | Minimum VS version | VS range |
 |---------------|-------------------|----------|
-| `Community.VisualStudio.Toolkit.17` | Visual Studio 2022 (17.0) | 2022+ only |
-| `Community.VisualStudio.Toolkit.16` | Visual Studio 2019 (16.0) | 2019 and 2022+ |
-| `Community.VisualStudio.Toolkit.15` | Visual Studio 2017 (15.0) | 2017, 2019, and 2022+ |
-| `Community.VisualStudio.Toolkit.14` | Visual Studio 2015 (14.0) | 2015, 2017, 2019, and 2022+ |
+| `Community.VisualStudio.Toolkit.17` | Visual Studio 2022 (17.0) | 2022, 2026, and later |
+| `Community.VisualStudio.Toolkit.16` | Visual Studio 2019 (16.0) | 2019, 2022, 2026, and later |
+| `Community.VisualStudio.Toolkit.15` | Visual Studio 2017 (15.0) | 2017, 2019, 2022, 2026, and later |
+| `Community.VisualStudio.Toolkit.14` | Visual Studio 2015 (14.0) | 2015, 2017, 2019, 2022, 2026, and later |
 
-> **Recommendation:** If you only need to support Visual Studio 2022, use `Community.VisualStudio.Toolkit.17`. It provides the cleanest experience and access to the latest APIs.
+> **Note:** Visual Studio 2026 continues to use the 17.x version line, so the `.17` package covers both VS 2022 and VS 2026.
+
+> **Recommendation:** If you only need to support Visual Studio 2022 and later, use `Community.VisualStudio.Toolkit.17`. It provides the cleanest experience and access to the latest APIs.
 
 ## [Choosing your target](#choosing-your-target)
 
 Ask yourself: *What is the oldest version of Visual Studio my users need?*
 
-- **VS 2022 only** â€” Use the `.17` package. VS 2022 is 64-bit and the most common target for new extensions.
-- **VS 2019 + 2022** â€” Use the `.16` package. Your extension will work in both, but you won't have access to VS 2022-only APIs.
-- **VS 2017 and later** â€” Use the `.15` package.
-- **VS 2015 and later** â€” Use the `.14` package.
+- **VS 2022 / 2026 only** — Use the `.17` package. Both VS 2022 and VS 2026 share the 17.x version line and are 64-bit.
+- **VS 2019 + 2022 + 2026** — Use the `.16` package. Your extension will work in all three, but you won't have access to VS 2022-only APIs.
+- **VS 2017 and later** — Use the `.15` package.
+- **VS 2015 and later** — Use the `.14` package.
 
 ## [Install the package](#install-the-package)
 
@@ -60,7 +62,7 @@ Make sure your `.vsixmanifest` declares the correct `InstallationTarget` version
 VS 2022 moved to 64-bit, which means a single `.vsix` cannot target both VS 2019 (32-bit) and VS 2022 (64-bit). If you need to support both:
 
 1. Use the `.16` toolkit package.
-2. Create **two VSIX projects** in your solution â€” one for VS 2019, one for VS 2022.
+2. Create **two VSIX projects** in your solution - one for VS 2019, one for VS 2022.
 3. Share code via a shared project or class library.
 4. Each VSIX project references the appropriate `Microsoft.VisualStudio.SDK` version.
 5. Publish them as separate extensions on the Marketplace, or use the same extension ID with different version ranges in the `.vsixmanifest`.
@@ -72,9 +74,9 @@ Most toolkit APIs work identically across all versions. However, some features a
 - The `.17` package can use APIs introduced in VS 2022 (e.g., newer editor APIs).
 - The `.14`/`.15`/`.16` packages are limited to APIs available in those older VS versions.
 
-The toolkit uses `#if` directives internally to handle version differences, so you generally don't need to worry about it â€” just choose your minimum version and the toolkit handles the rest.
+The toolkit uses `#if` directives internally to handle version differences, so you generally don't need to worry about it - just choose your minimum version and the toolkit handles the rest.
 
 ## [Additional resources](#additional-resources)
 
-* [Get the tools](get-the-tools.html) â€” setting up your development environment
-* [Your first extension](your-first-extension.html) â€” creating a new extension project
+* [Get the tools](get-the-tools.html) - setting up your development environment
+* [Your first extension](your-first-extension.html) - creating a new extension project
